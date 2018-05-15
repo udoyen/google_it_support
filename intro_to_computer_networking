@@ -7,17 +7,17 @@ Course Intro:
 
              ===================================================================================================
              | #   |  Layer Name       |     Protocol          |         Protocol Data  |     Addressing       |
-             |     |                   |                       |           Unit         |                      |
+             |     |                   |                       |           Unit         |                      | 
              |-----|-------------------|-----------------------|------------------------|----------------------|
-             | 5   | Application       |   HTTP, SMTP, etc..   |         Messages       |         n/a          |
+             | 5   | Application       |   HTTP, SMTP, etc..   |         Messages       |         n/a          |Web browser
              |-----|-------------------|-----------------------|------------------------|----------------------|
-             | 4   |  Transport        |   TCP/UDP             |         Segment        |       Port #'s       |
+             | 4   |  Transport        |   TCP/UDP             |         Segment        |       Port #'s       |Client/Server
              |-----|-------------------|-----------------------|------------------------|----------------------|
-             | 3   |   Network         |        IP             |         Datagram       |      IP address      |
+             | 3   |   Network         |        IP             |         Datagram       |      IP address      |Router
              |-----|-------------------|-----------------------|------------------------|----------------------|
-             | 2   |  Data Link        |  Ethernet, Wi-Fi      |          Frames        |      MAC Address     |
+             | 2   |  Data Link        |  Ethernet, Wi-Fi      |          Frames        |      MAC Address     |Switch
              |-----|-------------------|-----------------------|------------------------|----------------------|
-             | 1   |  Physical         |  10 Base T, 802,11    |          Bits          |        n/a           |
+             | 1   |  Physical         |  10 Base T, 802,11    |          Bits          |        n/a           |Ethernet Cable
              ===================================================================================================    
 
 
@@ -124,7 +124,7 @@ The Physical Layer:
 
 The Data Link Layer:
     - The ethernet protocol is used to send data across individual links
-    - CSMA/CD: Carrier Sense Multiple Access with Collision Detection, is used by ethernet to detect collision and prevent it. Use to determine when communication channels are clear, and when a device is free to transmit data.
+    - CSMA/CD: Carrier Sense Multiple Access with Collision Detection, is used by ethernet to detect collision and prevent it. Used to determine when communication channels are clear, and when a device is free to transmit data.
     - Media Access Controll Address or MAC Address:
         -- it's a 48-bit number normally represented by six groupings of two hexadecimal numbers.
             -- Hexadecimal ( or Base 16) numbers are: 0 1 2 3 4 5 6 7 8 9 A B C D E F, 
@@ -164,6 +164,37 @@ Electrical Engineers   ++++++>> | Identifier           | | (NIC Cards, Interface
                 :: The address is FF:FF:FF:FF:FF:FF
 
     - Dissectin An Ethernet Frame:
-        -- 
+        -- Data packet:
+            -- An all-encompassing term that represents any single set of binary data being sent across a network link
+            -- Data packets at the Ethernet level are known as Ethernet Frames.
+            -- Ethernet frames: A highly structured collection of information presented in a specific order.
 
-            
+            -- Ethernet Frames structure:
+               
+                Preamble                        Source Address    Ether-type                            FCS
+                  8 bytes                          6 bytes         2 bytes                            4 bytes
+                     |                               |                |                                  |
+                -----------------------------------------------------------------------------------------------
+                |                |            |            |        |    |                           |        |  
+                -----------------------------------------------------------------------------------------------
+                                        |                      |                         |
+                                Destination Address           Tag                     Payload
+                                      6 bytes               4 bytes                 0-1,500 bytes
+
+            -- Preamble: 8 bytes)=(or 64bits) long, and can be split into two sections:
+                -- Sections:    
+                    -- 7 bytes:> alternating ones and zeros which act partially as buffers between frames and are used as internal clocks to regulate speed
+                                at which data is sent.
+                    -- 1 byte:> SFD ==: Start Frame Delimiter. It signals to a receiving device that the preamble is over and that the actual frame contents will soon follow.
+            -- Destination and Source Address: destination and source of data. 
+            -- EtherType field:
+                -- 16 bits long and used to describe the protocol of the contents of the frame
+            -- Tag or VALN Tag:
+                -- Indicates that the frame itself is what's called a VLAN frame.
+                    --- VLAN: A technique that lets you have multiple logical LANs operating on the same physical equipment.
+            -- Payload:
+                -- Is the actual data being transported, which is everything that isn't a header. Length 46 - 1500 bytes long and contains layers 3 - 5 in the TCP/IP layer module.
+            -- FCS: Frame Check Sequence
+                - A 4 byte ( or 32 bit) number that represents a checksum value for the entire frame
+                - This checksum value is calculated by performing what's known as a cyclical redundancy check against the frame.
+                - CRC (Cyclical Redundancy Check) is an important concept used for data integrity, and is used all over computing, not just network transmissions. 
