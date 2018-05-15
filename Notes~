@@ -1,0 +1,348 @@
+History of computing
+Timeline:
+    punch cards --> maganetic tapes --> vacuum tubes --> transitors
+
+First computer: xerox alpha with mouse, GUI
+
+Group of 8bits = byte
+Each byte == 1 character
+
+Computer Architecture:
+    Hardware    :   Operating System    :   Software    :              Users
+        |               |                        |                       |
+        |               |                        |                       |
+    physical    helps interaction           helps humans interact    interacts with the        
+                between hardware            with our computers       computer                              
+                and the system
+
+
+The Modern Computer
+
+Hardware:
+    ports:
+         Connection points that we can connect devices to that extend the functionality of
+    our computer
+
+Components:
+    CPU:
+        central processing unit
+    RAM:
+        Random Access Memory, temporary memory
+    Hard Drive:
+        Permanent data staorage device
+    Power supply:
+        Convert electricity from outside to a format that the computer can use
+    Motherboard:
+        The body or circulatory system of the computer that connects all the pieces together.
+
+EDB: External Data Bus --> rows of  wires that interconnect the parts of the computer used to move information around a computer
+     Types of EDB: 64bits, 32bits, 16bits, 8bits
+
+CPU:
+    Components:
+        Registers: used to stored data it works with.
+
+                     --->(Memory Controller Chip)
+                     |
+Program ++> RAM     MCC <++ CPU
+             /\              |
+             /\              |
+              |              v
+            [[ADDRESS BUS]]     ---> Accesses information 
+                                   from based on memory 
+                                   address or register
+
+                need a recipe
+ ---------------------------------------
+ |           ------------------------- |
+ |           | get recipe address    | |
+ | (3)       v(2)                    | v (1)        (5)
+CPU <-- ADDRESS BUS        Memory Controller Chip --> RAM <-- Program copied into RAM
+/ \(6)       |                    (4) / \  |
+ |           |return recipe add on RAM |   |
+ |           |-------------------------|   |
+ |                                         |
+ ---------------[EDB: External Data Bus]----
+   Get the information using the add from MCC
+   and pass it to CPU
+
+Instruction Set:
+    - Set of instructions used by the CPU to carry out certain basic
+    functions.
+    - Hard coded into CPU
+
+CPU Socket configurations:
+    - Land Grid Array (LGA):
+
+    - Pin Grid Array(PGA):
+
+RAM:
+    - volatile
+    - Programs are copied to RAM to the CPU access to it
+    Types:
+        - DRAM: Dynamic Random-Access Memory
+        - SDRAM: Synchronous Dynamic Random-Access Memory:- synchronized to system clock speed
+        - DDR SDRAM: double data rate SDRAM: Faster, uses less power, 
+
+Motherboards:
+    - Conponents:
+        - Chipset: South Bridge [ IO devices like hard drives and USB devices],  and North Bridge [Video Cards and RAM]
+        - helps in the management of data between the RAM, CPU and peripherals
+    - Expansion slots:
+        - helps to increase the functionality of the conputer; 
+            - Expansion Bus
+                - PCI Express --> Peripheral Component Interconnect Express
+                - PCI E Base expansion card
+        - 
+    - formafactor determines the size and hence the number of devices that can be connected to it.
+        - ATX: Advanced Technology eXtended
+        - ITX: Information Technology eXtended
+
+Storage:
+    - 1 bit
+    - 8 bits -> 1 byte (B)
+    - 1,024 bytes -> 1 kilobyte (KB) or 1 KebiByte (KiB)
+    - 1,024 kb -> 1 megabyte (MB)
+    - 1,024 megabytes -> 1 gigabyte (GB)
+    - 1,024 gigabtyes -> 1 terabyte (TB)
+    -Types:
+        - HDD: Hard Disk Drive
+        - SSD: Solid State Drive
+    - Connectors: connectes our system to the harddrive
+        - Serial ATA
+        - NVMe or NVM express for SSD connections
+
+Power Supplies:
+    - DC: computers used this type of current.
+    - Voltage: pushes electricity with no consideration on amount
+    - Amperage: pulls in electricity based on the quantity needed
+    - Wattage:
+        - The amount of volts and amps that a device needs
+    - Problems:
+
+Peripherals:
+    - Anything that when connected to your computer adds more functionality
+    - USB: Universal Serial Ports devices
+        - USB 2.0 - Speed 480 Mb/s ==> Megabit
+        - USB 3.0 - Speed 5 Gb/s ==> Gigabit
+        - USB 3.1 - 10 Gb/s
+        - Note: MB and Mb/s are not the same
+        - Speed caculation:
+            - 1 byte == 8 bits
+                so to move 1MB of data in a second you need 8 Mb/s connection speed,
+                hence 40MB data in a second ==> 320 Mb/s tranfer rate
+        - Color code for ports:
+            - 2.0 : Black
+            - 3.0 : Blue
+            - 3.1 : teal
+        - Types of USB connectors:
+            - Standard: Type C - Connectors: video, audio, data, and power
+        - Display Connectors:
+            - DVI: no audio
+            - HDMI: with audio and video
+            - Display port: audio and video
+
+
+BIOS: Basic Input and Output System
+            
+                   |------------------> Initialize hardware
+                   |
+    Hardware <<-- BIOS <<-- CPU
+       / \                   |
+        |                    |
+        |------[DRIVERS]------
+                    |
+                    |------------------> Instructions on how the hardware is given to the CPU
+
+BIOS is stored in ROM Chip or Read-only Memory Chip, Non-volatile
+
+UEFI: Unified Extensible Firmware Interface
+
+Steps in computer startup:
+
+BIOS -->> POST (Power-on Self Test) -->> Load Hardware
+
+BIOS Settings:
+
+    - CMOS Chip or Battery:
+        - Stores basic data about booting the computer such as
+            - date, time, and how it should startup
+
+
+Operating Systems:
+
+ - THe whole package that manages our computer's resources sand lets us interact with it.
+ - parts include:
+    - User Space :> applications
+    - Kernel Space:> Talks to our hardware and manages our system resources
+        > Process Manager
+        > Memory Manager
+        > File Manager
+        > I/O Manager
+    - OS = User Space + Kernel Space
+ - Linux OSes developed by companies are called distributions
+
+ Kernel:
+    - File management:
+        - Components of file handling include:
+            -- Data
+            -- Meatdata:>   File Owner
+                            Permissions
+                            File Size
+                            Date Modified
+                            Date Created
+            -- File System
+
+ - Process Management:
+        -- Process: A process that's executing, like our internet browser or test editor.
+        -- Program: An application that we can run, like Chrome
+
+ - Time slice
+        -- A very short interval of time that gets allocated to a process for CPU execution
+ - Kernel:
+        -- Creates processes, efficiently schedules them, and manages how processes are terminated.
+
+ - Memory Management:
+        -- Virtual Memory:>
+            -- The combination of hard drive space and RAM that acts like memory that our
+                processes can use.
+            
+            -- Pogram execution structure:
+
+                                                       |----------|
+                                                       |Pages     |
+                                             |++++++++>|----------|
+                        |------------|       |
+                        | Program    |+++++++>++++++++>|----------|
+                        |------------|       |         | Pages    |++++++++++++| 
+                                             |         |----------|            |
+                                             |                                 |
+                                             |++++++++>|----------|            |
+                                                       | Pages    |            |
+                                                       |----------|            |
+                                                                               |
+                                                                        |------------|
+                                                                        | Pages      |
+                                                                        |------------|
+                                                                               |
+                                                                               |
+                                                                               |
+                                                                               v
+                                                                    |-------------------------|
+                                                                    |     Virtual Memory      |
+                                                                    ||-------|    |----------||
+                                                                    ||  RAM  |    |Hard Drive||
+                                                                    ||-------|    |Space     ||
+                                                                    |             |----------||
+                                                                    |-------------------------|
+
+ - When virtual memory is stored on the hard drive it is called swap space
+
+ - I/O Management:
+        -- mice, keyboards, display, 
+
+ - Interacting with the OS:
+    -- methods for interaction:
+        -- GUI
+        -- shell
+            -- Some use GUI as a shell
+            -- A prgram that interprets text commands and sends them to the OS to execute
+
+ - Booting:
+    -- Power On ++> BIOS/UEFI runs POST +++> Select Boot device ++> Get the Bootloader ++> Load OS ++> Load kernel ++> System Processes & User Space
+
+ - Installing an Operating Systems:
+        
+ - Virtual Machines
+
+What is Networking?
+====================
+
+Nerworking
+ - The interconnection of computers is called a network.
+ - The physical connection of computers and wires around the world is called the Internet.
+ - The Web is the information on the Internet. We use the World Wide Web (WWW) to access the internet, and other applications such as
+    emial, chat and file-sharing programs.
+
+ - Building, managing and desgining networks is known as Networking.
+ 
+Basics of Networking:
+
+    - Structure of the internet:
+                         
+                                     |--------> Network Already setup
+                                     |
+        Internet <---> Servers <--> ISPs <---> Clients 
+
+    - To connect to the internet your need an IP address
+    - Devices that connect to the internet have both IP and MAC Address
+    - Data is moved in packets that get reassembled at the destination
+
+Networking Hardware:
+    - Ways to connect a computer to the internet:
+        -- ethernet cable
+        -- wifi network
+        -- fiber optic cables 
+
+    - Router:
+        -- Connects lots of different devices together and helps route network traffic
+        -- 
+    - Hub:
+        -- sends data to everyone
+    - Switches:
+        -- Help data travel to right destination
+
+    - Network Stack:
+        -- A set of hardware or software that provides the infrastructure for a computer.
+
+Language of The Internet:
+    - TCP: Transmission Control Protocol, ensures safe delivery of data from one network to another.
+    - IP: Internet Protocol, ensures that data reaches the right destination in a network.
+
+The Web:
+    - www.reddit.com
+       |    |     |
+       |    |     v
+            v  tells you what type of webpage the address belongs to    
+        domain name
+    - DNS: domain name system: translate computer IP to human readable form
+
+
+Limitations of the Internet:
+    - History of Internet
+    - Limitations of the Internet:
+        -- IPv4: 32bits into 4 groups e.g. 221.34.22.33
+        -- IPv6: 128bits 
+    - Network Address Translation (NAT):
+        -- Lets organisations use one public IP address and many private IP addresses within the network
+
+    Impact of the Internet:
+        - 
+
+Introduction to Software:
+    - Coding: Change one language to another
+    - SCripting: is coding in a scripting language, usually used to perform a single- or limited-range task. 
+    - Programming: coding in a programming language
+
+Types of software:
+    - Application: Created to fulfill a specific need, like a text editor, web browser, or graphic editor.
+    - System software: used to kepp our core system running. like operating system tools and utilities.
+    - Firmware: permanently stored on a computer component.
+    - Software versions:
+        -- alpha, beta, release 
+
+Revisiting Abstraction:
+
+    - Makes complex system simple
+
+Recipe for Computer:
+    - Assembler:> change to machine code
+    - Compiler:> change to machine code
+    - Interpreter:> interpret and run
+
+Interacting with Software:
+
+Troubleshooting Best Practices:
+    - Ask questions
+    - isolate the problem 
+    - 

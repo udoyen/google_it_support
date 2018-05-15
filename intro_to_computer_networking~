@@ -1,0 +1,48 @@
+Course Intro:
+    - Protocol:
+        -- a defined set of standards that computers must follow in order to communicate properly.
+    - Computer networking:
+        -- the name we've given to the full scope of how computers communicate with each other.
+    - TCP/IP 5 layer communication model:
+
+             ===================================================================================================
+             | #   |  Layer Name       |     Protocol          |         Protocol Data  |     Addressing       |
+             |     |                   |                       |           Unit         |                      |
+             |-----|-------------------|-----------------------|------------------------|----------------------|
+             | 5   | Application       |   HTTP, SMTP, etc..   |         Messages       |         n/a          |
+             |-----|-------------------|-----------------------|------------------------|----------------------|
+             | 4   |  Transport        |   TCP/UDP             |         Segment        |       Port #'s       |
+             |-----|-------------------|-----------------------|------------------------|----------------------|
+             | 3   |   Network         |        IP             |         Datagram       |      IP address      |
+             |-----|-------------------|-----------------------|------------------------|----------------------|
+             | 2   |  Data Link        |  Ethernet, Wi-Fi      |          Frames        |      MAC Address     |
+             |-----|-------------------|-----------------------|------------------------|----------------------|
+             | 1   |  Physical         |  10 Base T, 802,11    |          Bits          |        n/a           |
+             ===================================================================================================    
+
+
+    - Layers:
+        -- Physical layer:
+            -- Represents the physical devices that interconnect computers:
+                -- specifications for the networking cables
+                -- connectors that connect devices
+                -- specifications on how signal are sent over this cables
+        -- Data Link layer ( network interface or the network access layer):
+                -- introduce protocols
+                -- defines the way signals are interpreted using protocols so computers understand
+                -- protocol example protocol is the Ethernet
+                    -- defines the protocol standards responsible for getting data to nodes on the same network or link.
+        -- Network Layer (internet layer):
+                -- Allows different networks to communicate with each other through devices known as routers.
+                -- Note: A collection of networks connected together through routers are known as Internetwork, the most 
+                    famous of these being the Internet.
+                -- responsible for getting data delivered across a collection of networks.
+                -- Most common protocol here is the IP.
+        -- Transport Layer:
+                -- Sorts out which client and server programs are supposed to get that data from the network layer
+                -- TCP/UDP; (User Datagram Protocol)
+        -- Application Layer:
+                -- This receives and send the data.
+
+
+

@@ -1,0 +1,169 @@
+Course Intro:
+    - Protocol:
+        -- a defined set of standards that computers must follow in order to communicate properly.
+    - Computer networking:
+        -- the name we've given to the full scope of how computers communicate with each other.
+    - TCP/IP 5 layer communication model:
+
+             ===================================================================================================
+             | #   |  Layer Name       |     Protocol          |         Protocol Data  |     Addressing       |
+             |     |                   |                       |           Unit         |                      |
+             |-----|-------------------|-----------------------|------------------------|----------------------|
+             | 5   | Application       |   HTTP, SMTP, etc..   |         Messages       |         n/a          |
+             |-----|-------------------|-----------------------|------------------------|----------------------|
+             | 4   |  Transport        |   TCP/UDP             |         Segment        |       Port #'s       |
+             |-----|-------------------|-----------------------|------------------------|----------------------|
+             | 3   |   Network         |        IP             |         Datagram       |      IP address      |
+             |-----|-------------------|-----------------------|------------------------|----------------------|
+             | 2   |  Data Link        |  Ethernet, Wi-Fi      |          Frames        |      MAC Address     |
+             |-----|-------------------|-----------------------|------------------------|----------------------|
+             | 1   |  Physical         |  10 Base T, 802,11    |          Bits          |        n/a           |
+             ===================================================================================================    
+
+
+    - Layers:
+        -- Physical layer:
+            -- Represents the physical devices that interconnect computers:
+                -- specifications for the networking cables
+                -- connectors that connect devices
+                -- specifications on how signal are sent over this cables
+        -- Data Link layer ( network interface or the network access layer):
+                -- introduce protocols
+                -- defines the way signals are interpreted using protocols so computers understand
+                -- protocol example protocol is the Ethernet
+                    -- defines the protocol standards responsible for getting data to nodes on the same network or link.
+        -- Network Layer (internet layer):
+                -- Allows different networks to communicate with each other through devices known as routers.
+                -- Note: A collection of networks connected together through routers are known as Internetwork, the most 
+                    famous of these being the Internet.
+                -- responsible for getting data delivered across a collection of networks.
+                -- Most common protocol here is the IP.
+        -- Transport Layer:
+                -- Sorts out which client and server programs are supposed to get that data from the network layer
+                -- TCP/UDP; (User Datagram Protocol)
+        -- Application Layer:
+                -- This receives and send the data.
+
+
+    -- NOTE:
+        In addition to the five layer model we are working with, it\u2019s important to note that other models exist. The traditional TCP/IP Model only has four layers, as it doesn\u2019t differentiate between the physical layer and the data link layer, but is otherwise very similar to the one we\u2019ll be working with. The most well known other model is the OSI model. It\u2019s the model taught by many other networking certificate programs, like Net+ and Cisco\u2019s many networking certifications. The primary difference between our five layer model and the seven layer OSI model is that the OSI model abstracts the application layer into three layers total.
+    Help link: https://en.wikipedia.org/wiki/OSI_model#Comparison_with_TCP/IP_model
+
+The Basics of Networking Devices:
+    - Cables:
+        -- Connect different devices to each other, allowing data to be transmitted over them.
+        -- Types: Copper and fiber
+            -- Copper Cable:
+                - types include: Cat5, Cat5e, and Cat6 cabbles
+        -- Crosstalk:
+            -- this is when an electrical pulse on one wire is accidentally detected on another wire.
+            -- Fiber cables:
+                -- Contain individual optical fibers, which are tiny tubes made out of glass about the width of human hair.
+    - Hubs and Switches:
+        The primary devices used to connect computers on a single network, usually referred to as a LAN, 
+        or local area network.
+        -- Hubs:
+            - Belongs to Physical Layer
+            - A physical layer device that allows for connections from many computers at once
+            - produces much noice creating Collison Domain
+                - Collision Domain:
+                    - A network segment where only one device can communicate at a time. 
+        -- Switch or Network Switch:
+            - Belongs to the Data Link layer
+            - An improvement on hubs
+            - inspects ethernet data to determine where each packet should go
+            
+    - Routers:
+        -- A device that knows how to forward data between independent networks
+        -- Belongs to Layer 3
+        -- inspects IP addresses and determine where each packet should go.
+        -- Use routing table to determine where things are sent.
+        - Core Router:
+            -- used by ISPs to connect networks over a huge area.
+            -- Use the Border Gateway Protocol (BGP) to share data with each other, which lets them learn about the 
+                most optimal paths to forward traffic.
+
+    - Servers and Clients:
+
+The Physical Layer:
+    - Consists of devices and means of transmitting bits across computer networks
+    - Line Coding === Modulation === Varying electrical signals passing through a coper cable during signal transmission
+    - Twisted Pair Cabling and Duplex
+        - helps prevent cross-talk and electromagnetic interference
+        - Composition:
+            -- Cat6 wire == 8 wires in twisted 4 pairs in on jacket
+        - enablee duplex communication: which makes it possible to have data flow in both directions
+    - NOTE: 
+        -> Simple communication is unidirectional
+        -> A full two way communication is called Full-duplex
+        -> Half-duplex: here only one device can communicate at a time
+    - Ethernet over twisted pair technologies are the communications protocols that determine how much data can be sent over a twisted pair cable, how quickly that data can be sent, and how long a network cable can be before the data quality begins to degrade.
+            help link: https://en.wikipedia.org/wiki/Ethernet_over_twisted_pair
+
+    - Network ports and patch panel:
+        -- Most common plug used to expose network wires is: RJ45 (Registered Jack 45) which has a corresponding port on the device
+        -- Diagram of a RJ45 port:
+
+                            --------------------------------------
+                            ||------|  ----------------  |------||
+         Link LED           ||      |  |              |  |      ||   Activity LED
+                            ||------||--              --||------||
+                            |        |                  |        |
+                            ||--------                  --------||
+                            ||                                  ||
+                            ||                                  ||
+                            ||                                  ||
+                            ||                                  ||
+                            ||                                  ||
+                            ||    __   __   __   __   __   __   ||
+                            ||   |  | |  | |  | |  | |  | |  |  ||
+                            --------------------------------------
+
+    - Device connection setup:
+        -- Device ==> Network Ports ==> Patch Panels ===> routers / switches (provides network access to the devices at the other end)
+
+The Data Link Layer:
+    - The ethernet protocol is used to send data across individual links
+    - CSMA/CD: Carrier Sense Multiple Access with Collision Detection, is used by ethernet to detect collision and prevent it. Use to determine when communication channels are clear, and when a device is free to transmit data.
+    - Media Access Controll Address or MAC Address:
+        -- it's a 48-bit number normally represented by six groupings of two hexadecimal numbers.
+            -- Hexadecimal ( or Base 16) numbers are: 0 1 2 3 4 5 6 7 8 9 A B C D E F, 
+            -- an example would be 12:ED:34:78:FA:AD
+    - Another way to represent MAC addresses is using Octet which are any number that can be represented by 8 bits.
+    - MAC Address composition:
+        -- The first three octets of a MAC address is known as the Organizationally Unique Identifier (OUI), used to identify the organization that owns the MAC device
+        -- 
+
+Assigned to manufacturer by     ======================== ============================
+IEEE: Institute of Electronics  | Organizational Unique| | Vendor Assigned          | <++++++ Assigned by manufacturer
+Electrical Engineers   ++++++>> | Identifier           | | (NIC Cards, Interfaces   |
+                                |                      | |                          |
+                                ======================== ============================
+   
+            Size, in bits       | <===   24 bits    ==> | <==      24 bits      ==> |
+            Size in hex digits  | <==  6 Hex Digits ==> | <==    6 Hex Digits   ==> |
+            Example             | <==    00 60 2F   ==> | <==     3A 07 BC      ==> |
+            Structure           | <==    Cisco      ==> | <== Particular Device ==> |
+
+    - NOTE: Ethernet uses MAC addresses to ensure that data it sends has both an address for the machine that sent the transmission, 
+            as well as the one the transmission was intended for.
+
+    - Unicast, Multicast, and Broadcast:
+        -- Unicast:
+            -- Transmission of data from one device to just another one device
+            -- Transmission is always meant for just one receiving address
+            -- Determined by the rule that says:
+                ::if the least significant bit in the first octet of a destination address is set to zero, 
+                    it means that ethernet frame is intended foronly the destination address.
+        -- Multicast:
+            -- Determined by the rule that says:
+                :: if the least significant bit in the first octet os a destination address is set to one, 
+                    it means you're dealing with a multicast frame
+        -- Broadcast:
+            -- Determined using a special address:
+                :: The address is FF:FF:FF:FF:FF:FF
+
+    - Dissectin An Ethernet Frame:
+        -- 
+
+            
