@@ -17,7 +17,7 @@ Course Intro:
              |-----|-------------------|-----------------------|------------------------|----------------------|
              | 2   |  Data Link        |  Ethernet, Wi-Fi      |          Frames        |      MAC Address     |Switch
              |-----|-------------------|-----------------------|------------------------|----------------------|
-             | 1   |  Physical         |  10 Base T, 802,11    |          Bits          |        n/a           |Ethernet Cable
+             | 1   |  Physical         |  10 Base T, 802.11    |          Bits          |        n/a           |Ethernet Cable
              ===================================================================================================    
 
 
@@ -198,3 +198,229 @@ Electrical Engineers   ++++++>> | Identifier           | | (NIC Cards, Interface
                 - A 4 byte ( or 32 bit) number that represents a checksum value for the entire frame
                 - This checksum value is calculated by performing what's known as a cyclical redundancy check against the frame.
                 - CRC (Cyclical Redundancy Check) is an important concept used for data integrity, and is used all over computing, not just network transmissions. 
+
+The Network Layer:
+    - IP Datagram and Encapsulation:
+        -- Here packets are known as IP datagram
+        -- IP Datagram: This is a highly structured series of fields that are strictly defined.
+
+    
+            0        4                8                               16                                        19                                                             31
+            |        |                |                                |                                        |                                                               |
+            ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            |Version |  Header Length |         Service Type           |                                 Total  Length                                                          |
+            |        |                |                                |                                                                                                        |
+            |________|________________|________________________________|________________________________________________________________________________________________________|
+            _____________________________________________________________________________________________________________________________________________________________________
+            |                                                          |                                        |                                                               |
+            |                  Identification                          |           Flags                        |                            Fragment Offset                    |
+            |__________________________________________________________|________________________________________|_______________________________________________________________|
+            _____________________________________________________________________________________________________________________________________________________________________
+            |                         |                                |                                                                                                        |
+            |         TTL             |        Protocol                |                                Header Checksum                                                         |
+            |_________________________|________________________________|________________________________________________________________________________________________________|
+            _____________________________________________________________________________________________________________________________________________________________________
+            |                                                                                                                                                                   |
+            |                                                                    Source IP Address                                                                              |
+            |___________________________________________________________________________________________________________________________________________________________________|
+            ____________________________________________________________________________________________________________________________________________________________________
+            |                                                                                                                                                                   |
+            |                                                                 Destination IP Address                                                                            |
+            |___________________________________________________________________________________________________________________________________________________________________|
+            _____________________________________________________________________________________________________________________________________________________________________
+            |                                                                                                            |                                                      |
+            |                        Options                                                                             |                        Padding                       |
+            |____________________________________________________________________________________________________________|______________________________________________________|
+
+        NOTE: THIS SECTIO IS THE PAYLOAD SECTION IN THE ETHERNET FRAME
+
+
+        -- Sections of the IP Datagram:
+            -- Version: indicates the version of the ip protocol being e.g. IPv4
+            -- Header: 4 bit, declares how long the field is. 20 bytes in length when dealing with IPv4
+            -- Service Type: 8 bits, used to specify details about quality of service, or QoS, technologies
+            -- Total Length Field: 16 bits, indicates the total length of the IP datagram it's attached to.
+            -- Identification field: 16-bit number that's used to group messages together
+                    Note:-- The maximum size of a single datagram is the largest number you can represent with
+                            16 bits: 65,535. If the total amount of data that needs to be sent is larger than what can fit in a
+                            single datagram, the IP layer needs to split this data up into many individual packets.
+                -- Used to identify packets from the same transmission as each will have value in this field
+
+            -- Flags:
+                -- Similar to the fragment Offset field, used ot indicate is a datagram is allowed to be fragmented, or to indicate that 
+                    the datgram has already been fragmented. 
+                -- NOTE: Fragmentation: Is the process of taking a single IP datagram and splitting it up into several smaller datagram.
+            -- Fragment Offset:
+                -- used by the receving end to put back fragmented datagram together.
+            -- TTL:
+                -- Time to Live(TTL): an 8-bit field that indicates how many router hops a datagram can transverse before it's
+                    thrown away. Here routers will decrement this field value till it reaches zero then further transmissions of the datagram is stopped.
+            -- Protocol:
+                -- 8-bit field that contains data about what transport layer protocol is being used such as TCP or UDP
+            -- Header Checksum:
+                -- An checksum of the contents of the entire IP datagram header
+            -- Source IP Address:
+                -- 32 bits long
+            -- Destination IP Address:
+                -- 32 bits long
+            -- Options:
+                -- An optional field and is used to set special characteristics for datagram primarily used
+                    for testing purposes.
+            -- Padding:
+                -- A series of zeros used to ensure the header is the correct total size.
+        
+        - Relationship between the different TCP/IP Communication Model:
+                
+
+                                                                                       __________________
+                                                                                       |                |
+                                                                                       |     Message    |   
+                                                                                       |                |             Application
+                                                                                       |________________| _______________________
+
+                                                                                       |                |             
+                                                                                       ------------------    
+                                                                                                |
+                                                                                                v
+                                                                        _________________________________
+                                                                        |TCP or        |                | 
+                                                                        | UDP          |   Message      |
+                                                                        | Header       |                |               Transport
+                                                                        |______________|________________|________________________
+
+                                                                                       |                |
+                                                                                       ------------------
+                                                                                               |
+                                                                                               V
+                                                             ____________________________________________
+                                                             | IP       |                               |
+                                                             | header   |  TCP segment or UDP datagram  |
+                                                             |          |                               |                  Network
+                                                             |__________|_______________________________|_________________________
+                                                 
+                                                                        |                               |
+                                                                        --------------------------------- 
+                                                                                               |
+                                                                                               V
+                                                 _________________________________________________________________
+                                                 |           |                                          |        |
+                                                 |           |            IP datagram                   |        |
+                                                 |           |                                          |        |        Data-link
+                                                 |___________|__________________________________________|________|  _______________
+
+
+    - IP Address Classes:
+        -- Are split into two sections: network ID and host ID
+        -- Chracteristics of an IP address:: 
+
+                    |------------------> network ID
+                   |-|
+                    9.100.100.100
+                      |----------|
+                           |----------------> host ID
+        -- Address class system:
+            -- A way of defining how the global IP address space is split up.
+        -- Types of address:
+            -- Class A: 1st Octet == network ID, last three for host ID
+            -- Class B: first two octet == network ID, and last two for host ID
+            -- Class C: first three == network ID and last one for host ID
+            --
+                                    IP address classes
+
+            -------------------------------------------------------------------------------------
+            | Class          |               Range              |          Max Hosts            |
+            -------------------------------------------------------------------------------------
+                   A                         0-126                       16 Million                24 bits of host id space
+            
+                   B                        128-191                      64,000                  
+                                     
+                   C                        192-223                       256                       8 bits of host id space
+
+                   D                        224-239                       N/A
+ 
+                   E                        240-255                       N/A
+
+           -----------------------------------------------------------------------------------
+            Class	        1st Octet Decimal Range	            1st Octet High Order Bits
+           -----------------------------------------------------------------------------------
+            A	                1 - 126*	                    0
+            B	                128 - 191	                    10
+            C	                192 -  223	                    110
+            D	                224 -  239	                    1110
+
+
+        -- Indentifying IP Class IP addresses based on the value of the first octet:
+            -- 0 > class  A
+            -- 10 > class B
+            -- 110 > class C
+            -- 1110 > class D Used for Multicasting
+            -- 11110 > class E Used for testing and has been replaced with CIDR (Claassless inter-domain routing)
+
+
+    - Address Resolution Protocol:
+        --  The relationship between ip addresses and MAC address can be shown via ARP (Address Resolution Protocol)
+        --  ARP: A protocol ued to discover tje hardware address of a node with a certain IP address
+        -- ARP Table:
+            -  A list of IP addresses and MAC addresses associated with them.
+            - all connected devices to the networl have a local ARP table to help it access or get the MAC address of any node device
+                that the packet is intended for
+
+        -- Unknown computer transmission steps:
+            
+
+                Source [ MAC Address of computer unknown ] Sends an Braodcast ARP Message with MAC address of FF:FF:FF:FF:FF:FF ====> All systems receive this broadcast ===> Target Computer
+                / \                                          to the IP Address.                                                                                                |
+                 |                                                                                                                                                             |
+                 |  <=== MAC Address of target machine received by source machine                                                                               Responds with a ARP Response
+                 |                                                                                                                                                             |
+                 |                                                                                                                                                             |
+                 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        -- NOTE: ARP table entries generally expire after a short amount of time to ensure changes in the network are accounted for.
+
+
+    - Subnetting:
+        -- THe process of taking a large network and splitting it up into many individual and smaller subnetworks, or subnets.
+        -- 
+    - Subnet Masks
+        -- Core Routers only care about the network ID
+        -- Gateway Routers use the host ID to send the received packets to the right machine
+        -- Subnet Masks are used to identify machines on a subnet
+            -- Subnet masks: are 32-bit numbers that are normally written out as four octets in decimal
+            -- A subnet mask defines which chunk of an IP address is the host ID and which portion is the subnet network ID. 
+               This trick is accomplished using a subnet mask, another 32-bit number. A subnet mask works like a filter with 
+               the mask identifying the IP address bits that represent the network ID with a 1, and the bits that represent the host ID with a 0. 
+               The more host bits you have, the more devices that can connect to your subnet at the expense of the total number of sub networks you can set up, and visa-versa.
+            --  Subnet Masking example using a 20-bit subnet mask
+
+                                        144  .    28  .    16  .   17
+                        IP address:  10010000 00011100 00010000 00010001
+                        Subnet mask: 11111111 11111111 11110000 00000000
+                        Network ID:  10010000 00011100 00010000 00000000
+                                        144  .    28  .    16  .    0
+
+            -- NOTE: The function of a subnet mask is to extract the network ID portion of an IP destination address and determine 
+               whether an IP address exists on the local network or whether it must be routed outside the local network. 
+               If the extracted network ID matches the local network ID, the destination is located on the local network. 
+               However, if they don\u2019t match, the message must be routed outside the local network. The process used to apply 
+               the subnet mask involves Boolean algebra to filter out nonmatching bits. 
+
+        -- The purpose of the Subnet mask is to tell the router what part of the IP Address is the Subnet ID.
+            -- The numbers in the remaining octet that have a corresponding '1' is the subnet ID, and the ones with corresponding '0' is the host ID.
+
+        -- Subnet Mask example:
+            -- 
+
+                    255    .    255   .    255   .   224
+                  11111111   11111111   1111111     11100000 >> Has only 5 bits of host id space OR 32 addresses
+
+                    Hence the IP address 9.100.100.100 can translated into 9.100.100.100/27 with the above subnet mask
+
+        -- Number Ranges:
+            8  bit 2^8 = 256 0-255
+            4  bit 2^4 = 16  0-16
+            16 bit 2^16 = 65536
+
+    -- CIDR:
+        -- Classless inter-domain Routing:
+            -- 
