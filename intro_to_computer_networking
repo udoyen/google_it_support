@@ -302,11 +302,11 @@ The Network Layer:
                                                                         --------------------------------- 
                                                                                                |
                                                                                                V
-                                                 _________________________________________________________________
-                                                 |           |                                          |        |
-                                                 |           |            IP datagram                   |        |
-                                                 |           |                                          |        |        Data-link
-                                                 |___________|__________________________________________|________|  _______________
+                                                 ____________________________________________________________________
+                                                 | Ethernet  |                                          | Ethernet  |
+                                                 | header    |            IP datagram                   |  footer   |
+                                                 |           |                                          |           |        Data-link
+                                                 |___________|__________________________________________|___________|  _______________
 
 
     - IP Address Classes:
@@ -421,6 +421,265 @@ The Network Layer:
             4  bit 2^4 = 16  0-16
             16 bit 2^16 = 65536
 
-    -- CIDR:
+        -- CIDR:
         -- Classless inter-domain Routing:
+            -- Example address using CIDR:> 3.33.123.1/24
+
+   - Routing:
+        -- Basic Routing Concepts:
+
+
+                            Exaines destination IP(2)
+                                     / \ 
+                                      |                  
+            (1) Receive data packet ----->> Router ------>> Forwars traffic to destination (4)
+                                                      |
+                                                      V
+                                       Looks up IP destination network in routing table
+        -- NOTE: IP addresses belong to networks not individual nodes on the network
+
+    - Routing Tables:
+        -- Components:
+            -- 4 Columns
+            -- Destination Network:
+                    -- e.g.
+                            IP:192.168.1.1
+                            Subnet Mask: 255.255.255.0
+                            CIDR: 192.168.1.1/24
+            -- Next Hop: The next IP address of the next router that should receive data for next destination network, or 
+                        could just state that no further hops are need and that current network is the destination network
+            -- Total Hops: Total number of routers between the current route and the packet destination
+            -- Interface: Needs to know which of its interface it should forward traffic to to get to the data destination.
+
+    -- Interior Gateway Protocols:
+            -- Routers use routing protocols to speak to each other
+            -- Routing protocols fall into two categories: interior gateway protocol an dexterior gateway protocol
+            -- Interior Gateway Protocol:
+                -- This is divided into two:
+                    -- Link state routing protocol and distance-vector protocols
+                -- This is used by routers to share information within a single autonomous system
+                -- Autonomous System:
+                    -- A collection of networks that all fall under the control of a single network operator.
+                -- Distance-vector protocols:
+                    -- here the router uses the information of how far each network (in terms of hops) is and share this with all the routers on the network.
+                    -- list in computer science are called vectors.
+                -- Link state routing protocol:
+                    -- here each router advertises the state of each of it's interface to every router on the autonomous system
+
+    -- Exterior Gateway Protocols:
+            -- this is used to share information between routers at the edge of autonomous systems
+            -- used to share information beteween organisations
+            -- Interior Assigned Numbers Authority (IANA):
+                -- A non-profit organisation that helps manage things like IP address allocation
+                -- also responsible for ASN, or Autonomous System Number allocation.
+                -- ASN: this are numbers assigned to individual autonomous systems, represented as sigle decimal number of 32 bit size.
+    -- NOTE:        
+        -- W've covered a few different routing protocol types, but we haven\u2019t discussed the details of how the actual implementation of these protocols might matter.The most common distance vector protocols are RIP, or Routing Information Protocol, and EIGRP, or Enhanced Interior Gateway Routing Protocol. The most common link state protocol is OSPF, or Open Shortest Path First.
+        -- In terms of exterior gateway protocols, there is only one in use today. The entire Internet needs to agree on how to exchange this sort of information, so a single standard has emerged. This standard is known as BGP, or Border Gateway Protocol.
+
+    -- Wiki information:
+        -- BGP may be used for routing within an autonomous system. In this application it is referred to as Interior Border Gateway Protocol, Internal BGP, or iBGP. In contrast, the Internet application of the protocol may be referred to as Exterior Border Gateway Protocol, External BGP, or eBGP. Link: https://en.wikipedia.org/wiki/Border_Gateway_Protocol
+
+    -- Non-Routable Address Space:
+        -- RFCs (Request for Comments): started in 1996
+        -- these are a range of IP addresses that are set aside for those that cannot be reached by routing
+        -- computers connected via this protocol will communicate with other computers on the same network but no gateway router will try to send internet traffic to this devices.
+        -- Range of IP addresses that are for all to use and non-assignable are:
+            --- 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16
+            --- Note: that interior gateway routers will route these spaces.
+
+Transport Layer:
+    -- Responsible for:
+        -- multiplesxing and demultiplexing
+        -- establishing long running connections
+        -- ensuring data integrity via error checking and data verification.
+    -- the ability to multiplex and demultiplex sets the teansport layer apart from all other layers.
+
+
+               ________     ________    ________   ________
+               |      |     |      |    |      |   |      |
+               |      |     |   Processes      |   |      |
+               |______|     |______|    |______|   |______|
+ 
+                 |              |           |          |
+                 |              |           |          | 
+                 v              v           v          v
+
+               _____________________________________________
+               \                                           /
+                \                Multiplexer              /
+                 \_______________________________________/
+
+                                       |
+                                       |
+                                       v
+                  _______________________________________
+                  |                                     |
+                  |               IP                    |
+                  |_____________________________________|
+
+
+             -----------------------------------------------------------
+               ________     ________    ________   ________
+               |      |     |      |    |      |   |      |
+               |      |     |   Processes      |   |      |
+               |______|     |______|    |______|   |______|
+
+                / \            / \         / \        / \ 
+                 |              |           |          |
+                 |              |           |          | 
+
+                     ________________________________
+                    /                                \
+                   /           Demultiplxer           \
+                  /____________________________________\
+                                   / \
+                                    |
+                                    |        
+                  _______________________________________
+                  |                                     |
+                  |               IP                    |
+                  |_____________________________________|
+
+
+        -- the transport layler handles both multiplexing and demultiplexing via ports.
+        -- Port: A 16-bit number that's used to direct traffic to specific services running on a networked computer.
+        -- 10.0.0.100:80 is called  Socket Address or Socket number
+
+    -- Dissection of a TCP Segment:
+        -- Ethernet Frame [ IP datagram ] ==> Ethernet payload
+        -- IP Segment [ TCP Segment ] ==> IP Segment payload
+        -- TCP Segment is composed of:
+            -- TCP Header
+            -- Data Section
+            -- TCP Header
+
+                             Bit 0                                               Bit 15  Bit 16                                          Bit 31
+                             __________________________________________________________  _____________________________________________________
+                             |                                                         | |                                                    |
+                             |                    Source Port (16)                     | |                 Destination port (16)              |
+                             |_________________________________________________________| |____________________________________________________|
+                             __________________________________________________________________________________________________________________
+                             |                                                                                                                |
+                             |                                                  Sequence Number (32)                                          |
+                             |________________________________________________________________________________________________________________|
+                             __________________________________________________________________________________________________________________
+                             |                                                                                                                |
+                             |                                                Acknowledgement Number (32)                                     |
+                             |________________________________________________________________________________________________________________|
+                             __________________ ___________________ _____________________ _____________________________________________________
+                             |                | |                 | |                   | |                                                   |
+                             |Header length(6)| |Empty (6)        | | Control flags (6) | |                     Window (16)                   |
+                             |________________| |_________________| |___________________| |___________________________________________________|                     
+                             ___________________________________________________________ ______________________________________________________
+                             |                                                         | |                                                    |
+                             |                 Checksum (16)                           | |                 Urgent (16)                        |
+                             |_________________________________________________________| |____________________________________________________|
+                             ___________________________________________________________ ______________________________________________________
+                             |                                                         | |                                                    |
+                             |                  Options (0 or 16 if any)               | |                      Padding                       |
+                             |_________________________________________________________| |____________________________________________________|
+                             __________________________________________________________________________________________________________________
+                             |                                                                                                                |
+                             |                                                  Data payload (varies)                                         |
+                             |________________________________________________________________________________________________________________|
+
+                
+                    
+        -- Destination port:    
+            -- this is the port the traffic is intended for
+        -- Source port:
+            -- A high-nunbered port chosen from a special section of portd known as ephemeral ports.
+        -- Sequence number:
+            -- A 32-bit number that's used to keep track of where in a sequence of TCP segments this one is expected to be.
+        -- Acknowledgement number:
+            -- The number of the next expected segment.
+        -- Data offset field:
+            -- A 4-bit number that communicates how long the TCP header for this segment is.
+        -- Control flags:
+            -- reserved for the TCP control flags
             -- 
+        -- TCP Window:
+            -- Specifies the range of sequence numbers that might be sent before an acknowledgment is reguired.
+            -- 
+        -- TCP checksum:
+            -- Operates just like the checksum fields at the IP and ethernet level.
+        -- Urgen Pointer fields:
+            -- Used in conjunction with one of the TCP control flags to point out particular segments that might be more important than others.
+        -- Options field:
+            -- It is sometimes used for more complicated flow control protocols.
+        -- Padding: sequence of zeros and ones used to make sure the payload starts at the expected location.
+
+    -- TCP Control Flags and Connections Protocols:
+        -- As a protocol, TCP establishes connections used to send long chains of segments of data. You can contrast this with the protocols that are lower in the networking model. 
+           These include IP and Ethernet, which just send individual packets of data. As an IT support specialist, you need to understand exactly how that works, so you can troubleshoot issues, 
+            where network traffic may not be behaving in the expected manner. The way TCP establishes a connection, is through the use of different TCP control flags, used in a very specific order. 
+            Before we cover how connections are established and closed, let's first define the six TCP control flags. We'll look at them in the order that they appear in a TCP header. Heads up. 
+            This isn't necessarily in the same order of how frequently they're set, or how important they are. 
+                -- The first flag is known as URG, this is short for Urgent. 
+                    A value of one here indicates that the segment is considered urgent and that the urgent pointer field has more data about this. Like we mentioned in the last video, 
+                    this feature of TCP has never really had wide spreaded option and isn't normally seen. 
+                -- The second flag is ACK, short for acknowledge. A value of one in this field means that the acknowledgment number field should be examined. 
+                -- The third flag is PSH, which is short for Push. This means, that the transmitting device wants the receiving device to push currently- 
+            buffered data to the application on the receiving end as soon as possible. A buffer is a computing technique, where a certain amount of data is held somewhere, before being sent somewhere else. 
+            This has lots of practical applications. In terms of TCP, it's used to send large chunks of data more efficiently. By keeping some amount of data in a buffer, TCP can deliver more meaningful 
+            chunks of data to the program waiting for it. But in some cases, you might be sending a very small amount of information, that you need the listening program to respond to immediately. This is what the push flag does. 
+                -- The Fourth flag is RST, short for Reset. This means, that one of the sides in a TCP connection hasn't been able to properly recover from a series of missing or malformed segments. It's a way for one                       of the partners in a TCP connection to basically say, "Wait, I can't put together what you mean, let's start over from scratch." 
+                -- The fifth flag is SYN, which stands for Synchronize. It's used when first establishing a TCP connection and make sure the receiving end knows to examine the sequence number field. 
+                    And finally, our six flag is FIN, which is short for Finish. When this flag is set to one, it means the transmitting computer doesn't have any more data to send and the connection can be closed. 
+                    For a good example of how TCP control flags are used, let's check out how a TCP connection is established. 
+                    Computer A will be our transmitting computer and computer B will be our receiving computer. To start the process off, 
+            computer A, sends a TCP segment to computer B with this SYN flag set. This is computer A's way of saying, "Let's establish a connection and look at my sequence number field, so we know where this 
+            conversation starts." Computer B then responds with a TCP segment, where both the SYN and ACK flags are set. This is computer B's way of saying, "Sure, let's establish a connection and I acknowledge 
+            your sequence number." Then computer A responds again with just the ACK flag set, which is just saying, "I acknowledge your acknowledgement. Let's start sending data." 
+            I love how polite they are to each other. 
+                This exchange involving segments that have SYN, SYN/ACK and ACK sets, happens every single time a TCP connection is established anywhere. 
+            And is so famous that it has a nickname. The three way handshake. A handshake is a way for two devices to ensure that they're speaking the same protocol and will be able to understand each other. 
+            Once the three way handshake is complete, the TCP connection is established. Now, computer A is free to send whatever data it wants to computer B and vice versa. 
+            Since both sides have now sent SYN/ACK pairs to each other, a TCP connection in this state is operating in full duplex. Each segment sent in either direction should be responded to by TCP segment with 
+            the ACK field set. This way, the other side always knows what has been received. 
+                Once one of the devices involved with the TCP connection is ready to close the connection, something known as a four way handshake happens. 
+            The computer ready to close the connection, sends a FIN flag, which the other computer acknowledges with an ACK flag. 
+            Then, if this computer is also ready to close the connection, which will almost always be the case. It will send a FIN flag. This is again responded to by an ACK flag. 
+            Hypothetically, a TCP connection can stay open in simplex mode with only one side closing the connection. But this isn't something you'll run into very often. 
+            Up next, I'll sock it to you, with information on TCP socket states. So many networking puns. Okay. See you there.
+
+        -- Three way hand shake:
+
+              Computer A     SYN  ============o===============>>        Computer B
+                              <<++++++++++++++++++++o+o++++ SYN/ACK
+                            ACK   ============o===============>>
+
+        -- Four way hand shake:
+ 
+             Computer A   <<+++++++++++++++++++++++o++++ FIN     Computer B
+                           ACK ===============o===========>>
+                           FIN ===============o===========>>
+                          <<+++++++++++++++++o++++++++++++++ ACK
+
+
+        -- TCP Socket states:
+            -- The instantiation of an end-point in a potential TCP connection.
+            -- The instantiation is the implementation of something defined else where.
+            -- TCP sockets require actual programes to instantiate them.
+
+    -- TCP Socket states:
+
+                    
+
+                    Server         LISTEN [ TCP socket is ready and listening for incoming connections ]
+
+                                   SYN_SENT [ A synchronization request has been sent, but the connection hasn't been established yet. ]   Client
+
+                    Server         SYN-RECIVED [ A socket previously in a LISTEN state has received a synchronization request and sent a SYN/ACK back.]
+
+                    Server         ESTABLISHED [ The TCP connection is in working order and both sides are free to send each other data.]   Client
+
+        -- Other states:
+            -- FIN_WAIT: A FIN has been sent, but the corresponding ACK from the other end hasn't been received yet.
+            -- CLOSE_WAIT: The connection has been closed at the TCP layer, but that the application that opened the socket hasn't released its hold on the socket yet.
+            -- CLOSED: The connection has been fully terminated and that no further communication is possible.
+
+    -- Connection-oriented and Connectionless Protocols:
+            -- Connection-oriented protocol:
+                -- Establishes a connection, and uses this to ensure that all data has been properly transmitted.
