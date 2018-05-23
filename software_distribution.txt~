@@ -1,0 +1,663 @@
+Software Distribution:
+    -- Windows: Software Packages:
+        
+            -- Have you ever wondered how we get software,
+         like the apps in the App Store,
+         or packages on the Internet to install on our devices? Wonder no more.
+         Developers and organizations that make the software we use,
+         generally package them up nicely for us.
+         In most cases, all we need to do is click install and the package gets installed for us.
+         Packaging comes in all sorts of shapes and sizes.
+         It's just like how you'd package a gift for someone.
+         You could put it in a box or a bag,
+         but the contents are what really matter.
+         Developers have different ways to package software using software compiling tools.
+         But at the end result is a package.
+         In the next few videos we'll discuss some of
+         the most common package types you'll see when you work in IT support.
+         In Windows, software is usually packaged as a dot exe or executable file.
+         Executable files contain instructions for a computer to execute when they're run,
+         like copy this file from here to here,
+         install this program, or more generically, perform this operation.
+         The concept of an executable file isn't unique to Windows,
+         but Windows has its own special implementation of them in the form of the exe's.
+         They're created according to Microsoft's portable executable or PE format.
+         Although we won't get into the details of the PE format,
+         it's good to know that exe files don't just
+         contain instructions for the computer to perform.
+         They also include things like text or computer code,
+         images that the program might use,
+         and potentially something called an msi file.
+         A Microsoft install package or msi is used
+         to guide a program called the Windows Installer in the installation,
+         maintenance, and removal of programs on the Windows operating system.
+         Besides using the GUI setup wizard to guide the user in installing the program,
+         the Windows installer also uses
+         the msi file to create instructions on how to remove the program,
+         if the user wants to uninstall it.
+         Windows executable files are usually used as
+         starting points to bootstrap the Windows installer.
+         In this case, they might just contain
+         an msi file and some instructions to start the Windows installer and read it.
+         Alternatively, executables can be used as stand-alone,
+         custom installers, with no msi file or usage of the Windows installer.
+         If they're packaged this way,
+         the exe file will need to contain
+         all the instructions that operating system needs to install the program.
+         So, when would you use an msi file and the Windows installer?
+         And when would you use an executable with
+         a custom installer packaged in something like setup.exe?
+         Great questions. If you want
+         precise granular control over the actions Windows takes when installing your software,
+         you might go the custom installer route.
+         This can be tricky though,
+         especially when managing things like code dependencies,
+         which we'll talk about later.
+         On the flip side, using the Windows installer guided by
+         an msi file takes care of a lot of the bookkeeping and set up for you,
+         but it has some pretty strict rules about how the software gets installed.
+         As of Windows 8, Microsoft has introduced
+         a platform to distribute programs called the Windows Store.
+         The Windows Store is an application repository or warehouse,
+         where you can download and install universal Windows platform apps.
+         Those are the applications that can run on
+         any compatible Windows devices like desktop PCs, or tablets.
+         These programs use a format called appx to
+         package their contents and act like a unit of distribution.
+         We won't go into detail about appx packages,
+         but it's good to know they're out there giving you another option for packaging software.
+         Feel free to read more about appx packages and how to make
+         them in the supplemental readings I've included after this video.
+         We learned how to install exe packages in an earlier course.
+         To install an exe from the GUI,
+         all we need to do is double click on
+         the executable then go through the installation process provided,
+         either by the executable itself or the Windows installer.
+         That's pretty straightforward, but what about installing software from the command line?
+         And why would you need to do this in the first place?
+         Hold onto your desktops because you're about to find out.
+         Installing executables from the command line can be handy in lots of
+         IT support scenarios, including automatic installations.
+         You might want to write a script or use a configuration management tool to install
+         some software automatically without needing a
+         human to click buttons in an installation wizard.
+         So, how can you install an executable from the command line?
+         The answer, it depends.
+         Pretty unsatisfying, I know.
+         Running exe files from the command line is pretty simple.
+         You open up a Command Prompt or PowerShell,
+         change in to directory where the executable is,
+         and type in its name.
+         
+        You could also just type the absolute path of
+         the exe from wherever you are in the file system, like this,
+         C:\users\cindy\desktop\hello.exe.
+         Running from an installer from the command line is similar,
+         but will potentially have more options for installation.
+         Depending on the installer,
+         you might have flags for things like a silent installation,
+         where nothing shows up on the screen and the package is installed quietly,
+         or you might get an argument to have
+         the computer reboot automatically after the package is installed.
+         You can check out the options for packages created by using
+         the Microsoft Self-Extractor in
+         the supplemental reading for a better idea of what we are talking about.
+         A given installer might have these kinds of options for installing from the command line,
+         but they vary from vendor to vendor.
+         The options available for a Microsoft package
+         might differ from the options for a Mozilla package.
+         Pro tip, try using the slash question mark parameter when running
+         a package from the command line to see
+         what kinds of sub commands the package might support.
+         If the package doesn't have any help related options,
+         your best bet is to check out the vendor's documentation
+         for what kinds of installations their software packages support.
+ 
+
+
+    - Supplemental Reading for the Linux Tar Command:
+        -- 
+	
+        The tar (i.e., tape archive) command is used to convert a group of files into an archive.
+
+        An archive is a single file that contains any number of individual files plus information to allow them to be restored to their original form by one or more extraction programs. Archives are convenient for storing files as well as for for transmitting data and distributing programs. Moreover, they are very easy to work with, often much more so than dealing with large numbers of individual files.
+
+        Although tar was originally designed for backups on magnetic tape, it can now be used to create archive files anywhere on a filesystem. Archives that have been created with tar are commonly referred to as tarballs.
+
+        Unlike some other archiving programs, and consistent with the Unix philosophy that each individual program should be designed to do only one thing but do it well, tar does not perform compression. However, it is very easy to compress archives created with tar by using specialized compression utilities.
+
+        tar's basic syntax is
+
+        tar option(s) archive_name file_name(s)
+
+        tar has numerous options, many of which are not frequently used. Unlike many commands, tar requires the use of at least one option, and usually two or more are necessary.
+
+        tar files are created by using both the -c and -f options. The former instructs tar to create an archive and the latter indicates that the next argument (i.e., piece of input data in a command) will be the name of the new archive file. Thus, for example, the following would create an archive file called file.tar from the three files named file1, file2 and file3 that are located in the current directory (i.e., the directory in which the user is currently working):
+
+        tar -cf file.tar file1 file2 file3
+
+        It it not absolutely necessary that the new file have the .tar extension; however, the use of this extension can be is very convenient because it allows the type of file to be visually identified. It is necessary, however, that the -f option be the final option in a sequence of contiguous, single-letter options; otherwise, the system will become confused as to the desired name for the new file and will use the next option in the sequence as the name.
+
+        The -v (i.e., verbose) option is commonly used together with the -c and -f options in order to display a list of the files that are included in the archive. In such case, the above example would become
+
+        tar -cvf file.tar file1 file2 file3
+
+        tar can also be used to make archives from the contents of one or more directories. The result is recursive; that is, it includes all objects (e.g., directories and files) within each level of directories. For example, the contents of two directories named dir1 and dir2 could be archived into a file named dir.tar with the following:
+
+        tar -cvf dir.tar dir1 dir2
+
+        It is often convenient to use tar with a wildcard (i.e., a character which can represent some specific class of characters or sequence of characters). The following example uses the star wildcard (i.e., an asterisk), which represents any character or sequence of characters, to create an archive of every object in the current directory:
+
+        tar -cf *
+
+        By default, tar creates an archive of copies of the original files and/or directories, and the originals are retained. However, they can be removed when using tar by adding the --remove-files option.
+
+        As it has no compression and decompression capabilities of its own, tar is commonly used in combination with an external compression utility. A very handy feature of the GNU version (which is standard on Linux) is the availability of options that will cause standard compression programs to compress a new archive file as soon as it has been created. They are -j (for bzip2), -z (for gzip) and -Z (for compress). Thus, for example, the following would create an archive named files.tar.bz2 of the files file4, file5 and file6 that is compressed using bzip2:
+
+        tar -cvjf files.tar.bz2 file4 file5 file6
+
+        tar can also be used for unpacking tar files. However, before doing this, there are several steps that should be taken. One is to confirm that sufficient space is available on the hard disk drive (HDD). Another is to move to an empty directory (which usually involves creating one with an appropriate name) to prevent the reconstituted files from cluttering up the current directory and overwriting any files or directories with same names that are in it. In addition, if the archive has been compressed, it must first be decompressed using the appropriate decompression program (which can usually be determined by the filename extension).
+
+        In order to unpack a tar file, the -x (for extract) and -f options are required. It is also common to add the -v option to provide a running listing of the files being unpacked. Thus, for example, to unpack the archive file.tar created in a previous example the following would be used:
+
+        tar -xvf file.tar
+
+        Just as options are available to allow three compression programs to automatically compress newly created tar files, the same options can be used to have the compression programs automatically decompress tar files prior to extraction. Thus, for instance, the following would decompress and extract the contents of the compressed archive files.tar.bz2 that was created in an above example:
+
+        tar -xjvf files.tar.bz2
+
+        Files can be added to an existing archive using the -r option. As is always the case with tar, it is also necessary to use the -f option to indicate that the following string (i.e., sequence of characters) is the name of the archive. For example, the following would append a file named file7 to file.tar:
+
+        tar -rf file.tar file7
+
+        The --delete option allows specified files to be completely removed from a tar file (except when the tar file is on magnetic tape). However, this is different from an extraction, as copies of the removed files are not made and placed in the current directory. Thus, for example, the files file1 and file2 can be removed from file.tar with the following:
+
+        tar -f file.tar --delete file1 file2
+
+        The -t option tells tar to list the contents of an uncompressed archive without performing an extraction. Thus, the following would list the contents of file.tar:
+
+        tar -tf file.tar
+
+        One of the very few options that can be used alone with tar is --help, which provides a relatively compact listing of the numerous options that are available. Another is --version, which shows the version number for the installed tar program as well as its copyright information.
+
+    - Windows: Package Dependencies:
+        -- Packages of software usually rely on other pieces of code in order to work.
+         Let's say you're installing a game on your Windows computer.
+         The program might need to do some calculations to make the physics of the game work properly and
+         render the results in the form of graphics on the screen.
+         To perform these tasks, the game might have a dependency on a physics engine to do the calculations and a rendering library to show the sweet graphics on the screen.
+         In order for the game to work, you'll have to have all that software available to the game.
+         Counting on other pieces of software to make an application work is called having dependencies since one bit of code depends on another in order to work.
+         In our example, the game depends on both the physics engine and a rendering library to run.
+         But wait, what do we mean when we refer to a library?
+         You can think of the library as a way to package a bunch of useful code that someone else wrote.
+         This code is bundled together into a single unit.
+         Programs that want to use the functionality that the code provides can tap into it if they need to.
+         In Windows, these shared libraries are called dynamic-link libraries, or DLL for short.
+         You can find out more details about dynamic link libraries in the next reading.
+         
+        One super useful feature of a DLL is that the same DLL can be used by lots of different programs.
+         This means all that shared code doesn't need to be loaded into memory for each application that wants to use it, so less memory overall is used.
+         Windows applications typically have many dependencies all located together in a single installation package.
+         Along with something called an MSI file that tells the Windows Installer how to put it all together.
+         
+        This means that a given installation package will have all the resources and dependencies like DLLs, right there in the package.
+         The Windows Installer will also handle managing those dependencies and make sure they are available to the program.
+         In the old days, things weren't always so great.
+         Imagine this scenario.
+         A video player you've been using to play movies on your computer uses a graphics DLL to display films on your screen.
+         A new game just came out that you want to play, so you install that too.
+         
+        The game comes along with a new version of that graphics library.
+         So the game installer updates the existing version with the new DLL.
+         All of a sudden, your video player stops working.
+         It turns out the video player doesn't know how to use the new version of the DLL, which is a pretty big bummer.
+         On modern Windows Operating Systems though, DLL hell is a problem of the past.
+         To fix it, most shared libraries and resources in Windows are managed by something called side-by-side assemblies or SxS.
+         
+        Most of these shared libraries are stored in a folder at C:\Windows\WinSxS.
+         If an application needs to use a shared library to perform a task, that library will be specified in something called a Manifest.
+         This tells Windows to load the appropriate library from the SxS folder.
+         The SxS system also supports access to multiple versions of the same shared library automatically.
+         So when you install software, you don't pull the rug out from underneath the programs you've already got.
+         In addition to manifest, the SSX system and installers bundling dependencies together in their installation packages.
+         You can use a Windows Package Manager to help install and maintain the libraries and other dependencies that your installed software needs to use.
+         We'll talk about this in more detail in our lesson on Windows package managers.
+         We'll give you preview using the Windows package management feature for PowerShell.
+         Using a Windows package management cmdlet called Find-Package, you can locate software, along with its dependencies right from the command line.
+         
+        By the way, a cmdlet is basically the name we give to Windows PowerShell commands that use the verb-noun format.
+         We've already used lots of cmdlets such as get-help, select-string etc.
+         There are hundreds of cmdlets built into Windows and you can even write your own.
+         Okay, back to my task at hand.
+         Let's say you wanted to install the Sysinternals package.
+         Which is a set of tools released by Microsoft that can help you troubleshoot all sorts of problems on your Windows computers.
+         
+        You could download the Sysinternals package from the Microsoft Website or you could use the package management feature.
+         
+        First we'll need to open up a PowerShell terminal by typing in PowerShell from the start menu.
+         
+        Then we can try to locate the sysinternals package by executing this command.
+         Find-Package sysinternals-IncludeDependencies.
+         
+        An error.
+         No match found.
+         What's that all about?
+         
+        This exception was generated because the default source of packages in PowerShell is the PowerShell gallery, which doesn't contain the Sysinternals package.
+         
+        Luckily, all we need to do is tell PowerShell about a place where it can find the Sysinternals package.
+         And that's a package repository called Chocolatey.
+         We'll dip into more about Chocolatey in the package manager video.
+         But for now, just know it's a place where all kinds of windows software packages live.
+         So, before we can install any packages, we need to add a package source that tells our computer where it can find the packages we want to install.
+         Since we want to use Chocolatey to find our packages, we need to add it as a package source.
+         We're going to do that with the PowerShell command Register-PackageSource.
+         Let's go and type Register-PackageSource-Name chocolatey-ProviderName Chocolatey-Location,.org/api/v2.
+         
+        We can verify both sources of software are now good to go
+         with the Get-PackageSource command.
+         
+        And then, try to locate our package and
+         its dependencies again with Find-Package, sysinternals-includeDependencies.
+         Sweet!
+         Now that we know that's the package we want, we can use a cmdlt called Install-Package to actually install Sysinternals and its corresponding dependencies.
+         We'll do that in a later lesson. Now it's time for snack break. All this Chocolatey talk made me hungry.
+
+Package Managers:
+    - Windows: Package Manager:
+        -- Now that we know a bit about installing software and
+         dependencies from individual executables or package files,
+         let's take a look at a different way to manage
+         software installations using tools called package managers.
+         You've actually already seen a package manager in action.
+         Remember the apt or advanced package tool we talked about in earlier video?
+         Well, the advanced package tool is
+         actually a package manager for the Ubuntu operating system.
+         We'll talk about apt in a little bit.
+         But you might be curious about what options you have for Windows package management.
+         A package manager makes sure that the process of software installation,
+         removal, update, and dependency management is as easy and automatic as possible.
+         Think about the normal way you might install a new program on your Windows computer.
+         You might search for it in a search engine,
+         go to the program's website,
+         download the installer, then run it.
+         If you wanted to update the software,
+         you might open up the program and use
+         whatever mechanism it provides for you to install the new version.
+         Lots of programs give you a way to perform automatic updates and
+         Microsoft takes care of the ones it writes through Windows update.
+         But you might even need to go back to the website you downloaded the software
+         from originally to grab another installer for the new version.
+         Finally, if you wanted to remove the software,
+         you might use the windows Add/Remove programs utility.
+         Or maybe run a custom uninstaller if it provides you with one.
+         Some installation technologies like
+         the Windows installer can take care of dependency management.
+         But they don't do much to help you install software from
+         a central catalog of programs or perform automatic updates.
+         This is where a package manager like Chocolatey can come in handy.
+         Chocolatey is a third party package manager for Windows.
+         This means it's not written by Microsoft.
+         It lets you install Windows applications from the command line.
+         Chocolatey is built on some existing Windows technologies like PowerShell,
+         and lets you install any package or software that
+         exists in the public Chocolatey repository.
+         I've included links to both in the next reading.
+         You can add any software that might be missing to the public repository.
+         You can even create your own private repository if you need to
+         package something like an internal company application.
+         Configuration management tools like SCCM and Puppet,
+         even integrate with Choclatey.
+         That helps make managing deployments of software to
+         the Windows computers in your company, automatic and simple.
+         We've talked about a few ways we can install packages in earlier videos.
+         Let's add Chocolatey to the mix,
+         which supports several methods of software installation itself.
+         First, you can install the Choclatey command line tool
+         and run it directly from your PowerShell CLI.
+         Or you can use the package management feature that was recently released for PowerShell.
+         Just specify that the source of the package should be the Choclatey repository.
+         Remember this from our talk about installing software?
+         We use this command to locate
+         the Windows Sysinternals package after adding Choclatey as a software source.
+         Just a refresher, the command was Find-package sysinternals include dependencies.
+         That's all well and good.
+         But how do we actually go about installing this package?
+         Well, that's where the Install-Package command-let comes into play.
+         We can use this tool to install a piece of software and its dependencies.
+         Let's get installing that sysinternals package we found earlier shot.
+         I'm just going to go install, package-name sysinternals.
+         Yep, I'm just going to confirm.
+         And just like that, we've got our package.
+         We can verify it's in place with the Get-Package command-let.
+         Get-Package -name sysinternals.
+         You can also uninstall a package using the Uninstall-Package -Name sysinternals.
+
+What's Happening in the background:
+    - Windows: Underneath the Hood:
+        -- We've talked a lot about the practical aspects of installing software,
+         which has been abstracted for us in the form of package managers.
+         But as someone who might be working in IT,
+         it's also important for you to understand what happens underneath the hood,
+         when installing or removing software.
+         In other words, what really happens with
+         the underlying technology when you perform this action.
+         You might come across a situation where a package you install,
+         modifies a configuration file that it's not supposed to,
+         and then starts causing issues for you.
+         So how does software installation work underneath the hood?
+         Let's take a look at how an EXE gets installed in Windows.
+         When you click on an installation executable,
+         what happens next depends on how the developer of
+         the program has set their application app to be installed.
+         If the EXE contains code for
+         a custom installation that doesn't use the Windows installer system,
+         then the details of what happens under the hood will be mostly unclear.
+         This is because most Windows software is distributed in closed source packages.
+         Meaning you can't look at the source code to see what the program is doing.
+         In this case though, although you can't read the instructions the developer has written,
+         you can use certain tools to check out the actions the installer is taking.
+         One way to do this, will be to use
+         the process monitoring program provided by the Microsoft CIS internals toolkit.
+         This will show you any activity the installation executable is taking,
+         like the files it writes and any process activity it performs.
+         You can read more about the Microsoft CIS internals toolkit
+         in the next supplemental reading.
+         So what about MSI file,
+         or an executable wrapping an MSI?
+         Again, the application itself will be closed source,
+         so you won't be able to peek at the source code to see what it does.
+         But, installation packages that use
+         the MSI format have a set of rules and standards they need to conform to,
+         so that the Windows installer system can understand
+         their instructions and perform the installation.
+         There are more to MSI files than it might seem at first.
+         In fact, they aren't simple files at all.
+         They're actually a combination of databases that contain
+         installation instructions in different tables along with all the files,
+         objects, shortcuts, resources and libraries the program will need all grouped together.
+         The Windows installer uses the information stored on the tables in the MSI database,
+         to guide how the installation should be performed.
+         They'll know where files and application data should go,
+         and any other things that should happen to successfully install the program.
+         The Windows installer will keep track of all the actions it
+         takes and create a separate set of instructions to undo them.
+         This is how it lets users uninstall the program.
+         If you're curious about the details of what goes into an MSI file,
+         or want to create a Windows installer package yourself,
+         check out the orca.exe tool that Microsoft provides.
+         It's a good way to satisfy your curiosity.
+         Orca, is part of the Windows SDK or software development kit,
+         but you don't need to be a programmer to use it.
+         Orca can help you edit,
+         or create Windows installer packages.
+         So, feel free to explore what it can do.
+         We've provided a link to the tool in the supplementary reading right after this video.
+         Wow, there's a lot going on underneath the hood in a Windows installation,
+         and it's all kicked off by a couple of clicks.
+         So what about LIX?
+         Glad you asked, that's up next.
+         
+                         
+Device Software Management:
+    - Windows: Devices and Drivers:
+        -- An important piece of software that we've talked about, but
+         haven't really seen in action, is a driver.
+         Remember that a driver is used to help our hardware devices interact with
+         our operating system.
+         In this lesson, we're going to talk about device drivers and how to manage them.
+         First, let's talk about how to manage the devices that our computer sees, and
+         then we'll go over how we install drivers for them.
+         In Windows, Microsoft groups all of the devices and drivers on the computer
+         together in a single Microsoft management console called the Device Manager.
+         You can get to the Device Manager in a couple of different ways.
+         You can open up the Run dialog box and type in devmgmt.msc.
+         Or you can right-click on This PC, select Manage, and
+         click on the Device Manager option in the left-hand navigation menu.
+         I'm just going to open it up from here.
+         
+        Most devices you've got on your computer will be grouped together according to some
+         broad categories by Windows.
+         So any displays you might be using with your computer would show up under
+         the Monitors section in the Device Manager.
+         
+        Like so.
+         This grouping usually happens automatically when you plug in a new
+         device.
+         It's part of the plug and play system
+         that Windows uses to automatically detect new hardware plugged into your computer.
+         It then recognizes and installs the appropriate software to manage it.
+         
+        If you're interested,
+         you can read more about the PnP system in the supplementary reading.
+         We'll give you an overview of how this works too, so you can get a feel for it.
+         When you plug a new device, like a mouse or keyboard, into your computer,
+         the Windows operating system will go through a few steps to try and
+         get it working.
+         Most vendors or computer hardware manufacturers will assign a special string
+         of characters to their devices called a hardware ID.
+         
+        When Windows notices that a new device has been connected, the first thing it'll do
+         is ask the device that's been plugged in for its hardware ID.
+         
+        Once Windows has the new device's hardware ID, the OS uses it to search for
+         the right driver for the device.
+         It looks for it in a few places, starting with a local list of well-known drivers.
+         Then it goes on to Windows Update or
+         the driver store if it needs to expand the search.
+         Sometimes the device will come with an installation disk,
+         which contains custom driver software and you can tell Windows to look there too.
+         Finally, Windows will take the driver software it found and
+         install it so you can use your new device.
+         Although this process mostly happens automatically and
+         behind the scenes, you can interact directly with the Windows drivers through
+         the Device Manager console we mentioned earlier.
+         You can expand any of the categories in the Device Manager to view the devices
+         inside them, like so.
+         
+        You can also use the all-powerful Windows right-click to open up a menu with options
+         to work with them.
+         
+        You can uninstall, disable, and update a device driver from this menu.
+         You can also tell Windows to look for
+         hardware changes like a newly plugged in device.
+         
+        Finally, if you choose Properties from the right-click menu,
+         you can see some details about the device and its driver.
+         
+        Like its manufacturer and the driver version being used.
+         
+        If you're interested in accessing drivers through Windows CLI,
+         check out the following reading for more info.
+    - Supplementary Reading Windows Devices and Drivers:
+        -- 
+
+    - Windows: Operating System:
+        -- You've made it to the last lesson in this module where we're going to cover
+         the most important software, the operating system.
+         We've already looked at how to install and
+         maintain applications like a word processor, graphical editor, etc.
+         Then we looked at how to install device driver software too.
+         Now we're going to look at the core operating system updates.
+         Spoiler alert, they work just the same way as every other software we've installed.
+         
+        It's important to keep your operating system up to date for
+         lots of different reasons.
+         You want the newest features that your operating system has, and
+         you want the security updates that your operating system needs.
+         When your operating system manufacturer discovers a security hole in the OS,
+         they do their best to create a patch for this hole.
+         
+        A security patch is software that's meant to fix up a security hole.
+         When you have an operating system update with security patches it's
+         vital that you install those patches right away.
+         The longer you wait the more prone you are to being effected by a security hole.
+         
+        As an IT support specialist, it's very common to routinely install
+         operating system updates to keep your system up to date and secure.
+         
+        Windows usually does a great job of telling you when there are updates
+         to install.
+         The Windows Update Client service runs in the background on your computer to
+         download and install updates, and patches for your operating system.
+         It does this by checking in with the Windows Update servers at Microsoft
+         every so often, you can learn more in the next reading.
+         If it finds updates that should be applied to your computer it'll download them,
+         if you decided to allow it to, more on that later.
+         Once the download has completed, depending on your Windows Update settings,
+         the Windows Update Client will ask you if it's okay to install the updates or
+         just go ahead and install them automatically.
+         This process usually requires a restart of your computer,
+         which the Client performs after requesting permission.
+         In versions of Windows before Windows 10,
+         you can tell Windows to manage your updates in a few different ways.
+         You could have the Windows Update Client install updates and patches that Microsoft
+         releases automatically or can let Windows Update know that you want
+         to decide whether or not you'd like to download and install them.
+         You can even turn off updating entirely,
+         but that's probably not a good idea for the security reasons we talked about.
+         You can configure Windows Update by searching updates in the search box and
+         going to Windows Update setting.
+         
+        From there, you can tell the Windows Update Client to check for new updates,
+         look at the history of updates installed, or change the way that it'll download and
+         apply patches by clicking into the settings section.
+         
+        From there, you can tell the Update Client how you want to manage your updates and
+         even set a time when you want them installed.
+         
+        Windows 10 does things differently, instead of
+         downloading a handful of independent updates that you can choose to apply or
+         not apply to your computer, updates are cumulative.
+         This means that every month a package of updates and
+         patches is released that supersedes the previous month's updates.
+         
+        The idea behind this is that computers will need to download less stuff
+         in order to be up to date.
+         As an example of how this might be beneficial,
+         think about a Windows machine that's been turned off for a while.
+         When it boots up again after a long period of inactivity,
+         it'll need to download all of the updates that it's missed and apply them.
+         If it's been off for a really long time, this could mean it'll need to download and
+         apply hundreds of updates.
+         With the cumulative update model, a computer like that
+         would only need to download the latest cumulative update, then be good to go.
+         
+        One downside to this is that in Windows 10,
+         installing updates is no longer optional.
+         You also can't pick and choose the updates you want to apply,
+         since they're all rolled into one monthly release.
+         
+        Microsoft has announced that the update model in Windows 7 and
+         8 will also be moving in this cumulative package direction.
+         So, Windows 10 users won't be alone.
+
+Filesystem Types:
+    - Review Filesystems:
+        -- You may remember that we introduced the concept of a filesystem in the Technical Support Fundamentals course. Here's a refresher. A filesystem is used to keep track of files and file storage on a disk. Without a filesystem, the operating system wouldn't know how to organize files. So when you have a brand new disk or any type of storage device, like a USB drive, you need to add a filesystem to it. 
+
+There are lots of file systems out there, but the two that we'll talk about in this course are recommended as default filesystems for Windows and Linux. For Windows, we use the NTFS filesystem, and for Linux, it's recommended to use ext4. Filesystems have different compatibilities with different OSes. Most of the time, cross operating system support is minimal at best. Let's say you have a USB drive that's using an NTFS filesystem. Both Windows and Linux's Ubuntu can read and write to the USB drive. But if you have an ext4 USB drive, it'll only work on Ubuntu and not on Windows, at least without the help of third party tools. 
+
+It's pretty likely that you'll encounter this situation in an IT support role. Let's say you have some important files on that same USB drive that you want to copy over to your Windows, Linux, and Mac OSes, what would you do then? 
+
+This is a pretty common situation. You'd have to reformat or wipe the USB drive and add a filesystem that's compatible with all three operating systems. 
+filesystems like FAT32 that support reading and writing data to all three major operating systems. FAT32 has some shortcomings though. It doesn't support files larger than 4 gigabytes, and the size of the filesystem can't be larger than 32 gigabytes. This might be enough for a small USB drive, but it's not really great for anything else. 
+
+You can learn more about FAT32 in the next supplemental reading. This still begs the question, what if you wanted to be able to share files between multiple OSes and don't want to deal with filesystem limitations? Don't worry, we've got you covered. In the next course on system administration and IT infrastructure services, we'll discuss another filesystem type called network filesystems that solves this exact problem. 
+
+All right, now that you've got a quick refresher on filesystems, let's spend the next few lessons discussing how you actually set them up. 
+
+    - Supplementary Reading for FAT32 File System:
+        -- https://support.microsoft.com/en-us/help/154997/description-of-the-fat32-file-system
+    - Disk Anatomy:
+        -- Before we start adding a filesystem to a disk, let's do a rundown of the components of the disk that allow you to store and retrieve files. A storage disk can be divided into something called partitions. A partition is just a piece of the disk that you can manage. 
+
+        When you create multiple partitions, it gives you the illusion that you're physically dividing a disk into separate disks. 
+
+        To add a filesystem to a disk, first you need to create a partition. Usually, we just have a single partition for our OS, but it's not uncommon to have multiple partitions for different uses. Let's say you want to have two partitions on a disk, one for a Windows OS and one for a Linux OS. Instead of using two machines to use both operating systems, you can just use one machine and switch between the two OSs on boot-up. You can also add different filesystems on different partitions of the same disk. Partitions essentially act as their own separate sub-disks, but they all use the same physical disk. One thing to call out is that, when you format a filesystem on a partition, it becomes a volume. Volume and partition are sometimes mistakenly used synonymously, but we want to make sure that you understand this distinction. 
+
+        The other component of a disk is a partition table. A partition table tells the OS how the disk is partitioned. The table will tell you which partitions you can boot from, how much space is allocated to partition, etc. There are two main partition table schemes that are used, MBR, or Master Boot Record, and GPT, or GUID Partition Table. 
+
+        These schemes decide how to structure the information on partitions. MBR is a traditional partition table, and it's mostly used in the Windows OS. MBR only lets you have volume sizes of 2 terabytes or less. It also uses something called primary partitions. You can only have four primary partitions on a disk. If you want to add more, you have to take a primary partition and make it into something known as an extended partition. Inside the extended partition, you can then make something called a logical partition. It's a little odd to get at first, but that's just how the partition table was created. 
+
+        MBR is an old standard, and it's slowly being faded out by the next partition table scheme we'll talk about, GPT. GPT is becoming the new standard for disks. You can have a volume size greater than 2 terabytes, and it only has one type of partition. You can make as many of them as you want in a disk. In an earlier lesson, we learned about a new BIOS standard called UEFI that's become the default BIOS for newer systems. To use UEFI booting, your disk has to use the GUID Partition Table. 
+
+        Now that you know what you need to do to make a partition, let's partition an actual disk. In the next few lessons, we're going to learn how to partition and format a USB drive for each respective OS.
+
+    - Windows: Disk Partitioning and Formatting a Filesystem:
+        -- Now that we've got a little theory under our belts, how can we actually partition a disk and format a file system in Windows? Although a quick web search will turn up all kinds of third party disk partitioning programs other people have written, Windows actually ships with a great need of tool called the Disk Management Utility. Like most things in Windows, there are a few ways to get to disk management. We'll launch it by right clicking this PC, selecting the "Manage" option then clicking the "Disk Management" console underneath the storage grouping. We should see a display of both the disks and disk partitions along with information about what type of file system they're formatted with. There are all kinds of good things to know here too. Like the free and total capacity of disks and partitions. One super-cool property of the disk management console is that from here, you can also make modifications to the disk and partitions on your computer. Messing with the partition or the Windows operating system is installed probably isn't the best way to demonstrate the partitioning and formatting abilities of the disk management console. So let's use a USB drive instead. Once the drive has been inserted and the plug and play service does the work of installing the driver for it, you should see it show up in the disk management as an additional disk. The USB drive is currently formatted using the FAT32 file system. Let's go ahead and reformat partition using NTFS instead. To do this, we right click on the partition and choose format. 
+
+        From this window, we can choose the volume label or name we'd like to give the disk. Let's just stick with USB drive. You can also specify the file system which will change to NTFS. That's pretty straightforward, but there are also some other options that might not be so clear. Like what's that allocation unit size thing? Well, the allocation unit size is the block size that will be used when you format the partition in NTFS. In other words, this is the size of the chunks that the partition will be chopped into. Data that needs to be saved will spread out across those chunks. This means that if you store lots of small files, you'll waste less space with small block sizes. If you store large files, larger block sizes will mean you'll need to read less blocks to assemble the file. We'll pick the default, which is fine in most cases. You'll also see the option to perform a quick format is available. The difference between a quick format and a full format is that in a full format, Windows will do a little extra work to scan the disk or USB drive in our case, for errors or bad sectors. This extra work will make the formatting process a little longer, so we'll just stick to quick for now. We're on our own, we don't want anything to slow us down. The last option on the format screen is whether or not to enable file or folder compression. The decision to enable or disable compression comes with a trade-off. If you enable compression, your files and folders will take up less space on the disk, but compressed files will need to be expanded when you open them, which means the computer's processor will need to do some extra work. We are particularly concerned with squeezing out every last bit of disk space, so we'll leave this box unchecked. Finally, we can hit "okay" to proceed with the format. Windows will warn us first that formatting the volume will erase any data that might be on it. Once we let it know that it's okay it'll start the formatting process. After a little bit of processing, we should see the label on the partition turn to healthy. Using the GUI is pretty intuitive, but there's also a command line way to accomplish the same task. This can come in handy if you need to automate disk partitioning. To do disk manipulation from the CLI we'll dive into a tool called Diskpart. Diskpart is a terminal based tool built for managing disks right from the command line. Let's format our thumb drive again but using Diskpart instead of the GUI. First of we'll plug in our thumb drive, then to launch Diskpart all we need to do is open up a command prompt, in this case command.exe and type Diskpart into it. 
+
+        This will open up another terminal window where the prompt should read Diskpart. You can list the current discs on the system by typing "list disk". Next, we identify the disk we want to format. A good signal is the size of the disk, which will be much smaller for a USB drive. Then we can select it with select disk and then disk one, now we'll wipe the disk using the "Clean command" which will remove any and all partition or volume formatting from the disk. With the disk wiped, we now need to create a partition in it. This can be done with the create partition primary command, which will create a blank partition for our file system. 
+
+        Then let's select the partition with select partition one. That's the number of our freshly created partition and now we'll mark it as active by simply typing active. If you guess that the next step is to format the disk with the NTFS file system, you're right? We can do this by running this command at the Diskpart prompt format FS for file system NTFS and the the label. I'm just going to call it "my thumb drive". And then the formatting type, we'll want to make it quick. This command will format the thumb drive with NTFS in quick mode, which we talked about earlier and we just gave it the name "My thumb drive". Congratulations, you've just formatted a USB drive from the command line. If you want to learn more about the options and tasks you can accomplish with Diskpart, check out the Diskpart link in the supplementary reading I've included right after this video. And there you have it, that's how you form a disk with the NTFS file system in the Windows operating system using both the command line and the GUI. If you want a refresher, feel free to watch this lesson again before heading to the next one.
+
+
+
+    - Supplementary Reading for Disk Partitioning and Formatting in Windows:
+        -- https://support.microsoft.com/en-us/help/140365/default-cluster-size-for-ntfs-fat-and-exfat
+        -- https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-vista/cc766465(v=ws.10)
+    - Windows: Mounting and Unmounting a Filesystem:
+        -- Now that you've formatted your new file system, there's one more step left. You have to mount your file system to a drive. In IT, when we refer to mounting something like a file system or a hard disk, it means that we're making something accessible to the computer. In this case, we want to make our USB drive accessible so we mount the file system to a drive. Windows does this for us automatically. You might have noticed this if you plug in a USB drive, it'll show up on your list of drives and you can start using it right away. When you're done using the drive, you'll just have to safely eject or essentially unmount the drive by right clicking and selecting eject. We'll talk about why this is important in a later lesson. 
+
+    - Linux: Disk Partitioning and Formatting a Filesystem:
+        -- In Linux, there are a few different partitioning command line tools we can use. One that supports both MBR and GPT partitioning is the parted tool. Parted can be used in two modes. The first is interactive, meaning we're launched into a separate program, like when we use the less command. The second is command line, meaning you just run commands while still in your shell. We're going to be using the interactive mode for most of this lesson. Before we do that let's run a command to show what disks are connected to the computer using the command line mode. We can do this by running the parted - l command. So sudo parted - l. This lists out the disks that are connected to our computer. We can see that the disk /dev/sda is 128 gigabytes. I've also plugged in a USB drive and you can see that, /dev /sdb is around 8 gigabytes. Let's quickly go through what this output says. Here we can see the partition table is listed as gpt. The number field corresponds to the number of partitions on the disk. We can see that there are three partitions. Since this disk is /dev/sta, the first partition will correspond to /dev/sta 1 and the second will correspond to /dev/sta 2 et cetera. The start field is where the partition starts on the disk. For this first partition we can see that it starts at 1,049 kilobytes and ends at 538 megabytes. The field after that shows us how large the partition size is. The next field tells us what file system is on the partition. Then, we have the name and finally, we can see some flags that are associated with this partition. You can see here that /dev /sdb doesn't currently have any partitions, we'll fix that in a minute. Let's select our /dev/sdb disk and start partitioning it. We want to be super careful that we select the correct disk when partitioning something so we don't accidentally partition the wrong disk. We're going to use the interactive mode of parted by running sudo parted /dev/sdb. Now we're in the parted tool. From here, we can run more commands. If we want to get out of this tool and go back to the shell then we just use the quick command. I'm going to run print just to see this disk one more time. It says we have an unrecognized disk label. We'll need to set a disk label with the mklabel command. Since we want to use the gpt partition table let's use this command. Mklabel gpt. Let's look at the status of our disk again to do that we can use a print command. Here we can see the disk information for the selected /dev/sdb disk. Now it says we have the partition table gpt. All right. Let's start making modifications to the disk. We want to partition the /dev/sdb disk into two partitions. Inside the parted tool we're going to use the mkpart command. The mkpart command needs to have the following information, what type partition we want to make, what file system we want to format, and the start of the disk and the end of the disk like this. 
+3:47
+        The partition type is only meaningful for mbr partition tables. Remember, the mbr uses primary, extended, and logical partitions. Since we are formatting this using gpt, we're just going to use primary as the partition type. The start point here is one mebibyte and the endpoint is five gibibytes. So our partition is essentially five gibibytes. Remember from the earlier course, that data sizes have long been referred to in two different ways, using the exact data measurement and the estimated data measurement. Remember that one kibibyte is actually 1,024 bytes while one kilobyte is 1,000 bytes. We haven't really had to care about this distinction before. Some operating systems sometimes measure one kilobyte as 1,024 bytes which is confusing, but when dealing with data storage we want to make sure we're using the precise measurements so we don't waste precious storage space. Let's opt to use mebibyte and gibibyte in our partition. Next, we're going to format the partition with the file system using mkfs. So I'm just going to quick, sudo mkfs type is ext4. And I want to format the partition, so sdb1. We also left the rest of the disk unpartitioned because we're going to use it for something else later. With that, we've created a partition and formatted a file system on a USB drive. Remember to always be careful when using the parted tool. It's very powerful and if you modify the wrong disk on here it could cause a pretty big mess. Even though we've partitioned our disk and formatted a file system on here, we're not actually able to start reading and writing files to it just yet. There's one last step to get a usable disk in Linux. We have to mount the file system to a directory so that we can access it from the shell. Spoiler alert, you'll learn how to do that in the next video. 
+
+
+    - Linux: Mounting and Unmounting a Filesystem:
+        -- To begin interacting with the disk, we need to mount the file system to the directory. 
+
+        You might be thinking, why can't we just cd into /dev/sdb? That's the disk device, isn't it? 
+
+        It is, but if we try to cd into /dev/sdb like this 
+
+        We'd get an error saying the device is not a directory, which is true. To resolve this, we need to create a directory on our computer and then mount the file system of our USB drive to this directory. 
+
+        Let's pull up where our partition is with sudo parted -l. Okay, I can see that partition that we want to access is /dev/sdb1. I've created a directory already under root called my_usb. So let's give this a try. So sudo mount /dev/sdb1 /my_usb/. Now if we go to my_usb, we can start reading and writing to the new file system. 
+
+        We actually don't need to explicitly mount a file system using the mount command. Most operating systems actually do this for us automatically, when we plug in a device like a USB drive. 
+
+        File systems have to be mounted one way or the other, because we need to tell the OS how to interact with the device. We can also unmount the file system in a similar way using the umount command. Unmounting is the opposite of mounting a disk. So now let's unmount the file system. I can either use sudo umount /my_usb, or sudo umount /dev/sdb1. Both will work to unmount a file system. When you shut down your computer, disks that were mounted manually are automatically unmounted. In some cases, like if we were using a USB drive, we just want to unmount the file system for the USB drive without shutting down. 
+
+        Always be sure to unmount a file system of a drive before physically disconnecting the drive. In the case of the USB drive, we can run into some interesting file system errors if we don't do this. We'll talk more about this in the upcoming lesson. Also, keep in mind that we when we use the mount command to mount a file system to a directory, once we shut off the computer, the mount point disappears. 
+
+        We can permanently mount a disk though if we needed to automatically load up when the computer boots. 
+
+        To do this, we need to modify a file called /etc/fstab. If we open this up now, you'll see a list of unique device IDs, their mount points, what type of file system they are, plus a little more information. 
+
+        If we want to automatically mount file systems when the computer boots, just add an entry similar to what's listed here. 
+
+        Let's go ahead and do that really quickly. 
+
+        The first field that we need to add for /etc/fstab is the UUID or universally Unique ID of our USB Drive. To get the UUID of our devices we can use this command, sudo blkid. This will show us the UUID for block device IDs, aka storage device IDs, and that's it. We've covered a lot of essential disk management tasks. So far we've partitioned a disk, added a file system, and mounted it for use. If you're curious and want to learn more about the /etc/fstab file and its options, check out the next supplemental reading. Otherwise, let's move on 
+
+    - Supplementary Reading Mounting and UNmounting a Filesystem in Linux:
+        -- https://en.wikipedia.org/wiki/Fstab
+
+    - Windows swap:
+        -- One term you might have heard in relation to disks and partitions, is swap space. Before we talk about swap space, let's talk about the concept of virtual memory. Virtual memory is how our OS provides the physical memory available in our computer (like RAM) to the applications that run on the computer. It does this by creating a mapping, a virtual to physical addresses. This makes life easier for the program, which needs to access memory since it doesn't have to worry about what portions of memory other programs might be using. It also doesn't have to keep track of where the data it's using is located in RAM. Virtual memory also gives us the ability for our computer to use more memory than we physically have installed. To do this, it dedicates an area of the hard drive to use a storage base for blocks of data called pages. When a particular page of data isn't being used by an application, it gets evicted. Which means it gets copied out of memory onto the hard drive. This is because accessing data on RAM is fast, much faster than the hard drive where space is at a premium. Because of this, the operating system wants to keep the most commonly accessed data pages in RAM. It then puts stuff that hasn't been used in a while on the disk. This way, if a program needs a page that's not accessed a lot, the operating system can still get to it. But it has to read it from the comparatively slow hard drive and put it back into memory. Almost all operating systems use some kind of virtual memory management scheme and paging mechanism. So how does it work on windows? The Windows OS uses a program called The Memory manager to handle virtual memory. Its job is to take care of that mapping of virtual to physical memory for our programs and to manage paging. In Windows, pages saved to disk are stored in a special hidden file on the root partition of a volume called page file dot sis. Windows automatically creates page files and it uses the memory manager to copy pages of memory to be read as needed. The operating system does a pretty good job of managing the page file automatically. Even so, windows provides a way to modify the size, number and location of paging files through a control panel applet called System Properties. You can get to the system properties applet by opening up the control panel. 
+
+        Going to the system and security setting, and clicking on system. Once in the system pane, you can open up the advanced system settings on the left hand menu. 
+
+        Pick the advanced tab, then click on the settings button in the performance section. One last time, click on the advance tab and you should see a section called virtual memory which displays the paging file size. If you click the change button, you can override the defaults Windows provides, so you can set the size of the paging file, and add paging files to other drives on the computer. Microsoft has some guidelines for setting the page in file size that you can follow. For example, on 64 bit Windows 7, the minimum paging file size should be set to 1x, the amount of RAM in the machine. Unless you have a specific reason to change it, it's generally fine to let windows automatically manage the paging file size itself
+
+    - Supplementary Ready for Windows Paging:
+        -- 
+    - Linux: Swap:
+        --
+    - SupplementaryReading for Linux Sap:
+        --
+    - Windows: Files:
+        --
+    - Supplementary Reading on NTFS File Systems:
+        -- 
+    - Linux: FIles:
+        --
+    - Windows: Disk Usage:
+        -- 
+    - 
+

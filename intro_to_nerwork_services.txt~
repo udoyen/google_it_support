@@ -1,0 +1,367 @@
+Name Resolution:
+    Why do we need DNS:
+        - DNS: Domain Name System. 
+            A global and highly distributed network service that resolves strings of letters into IP addresses for you.
+        - Domain Name:
+            - The term we use for something that can be resolved by DNS. Example www.itsite.com
+    The many steps of name resolution
+        -  The process of turning a domain name into an IP address is called name resolution.
+        - Standard Modern Network configuration:
+            -- IP Address
+            -- Subnet mask
+            -- Gateway for a host
+            -- DNS Server
+        - Types of DNS Servers:
+            -- Caching name servers
+            -- Recursive name servers
+            -- Root name servers
+            -- TLD name servers
+            -- Authoritaive name servers
+                -- Caching and recursive name servers:
+                    - provided by IP service providers or local network, and their main purpose is to store domian name lookups for a certain amount of time.
+                    - Time to live(TTL):
+                        -- A value, in seconds, that can be configured by the owner of a domain name for how long a name server is allowed to cache
+                            an entry before it should discard it and perform a full resolution again.
+                -- Recursive name servers:
+                    - perform full DNS resolution requests.
+                    - 
+
+                                                                                                                                            -----------------
+                                                                                                                                            |               |
+                                                                                                                                        < 1 |               | Tells the querying computer the TLD name server that should be queried.
+                                                                                                                                            |               |
+                                                                                                                                            |               |
+                                                                                                                                            -----------------
+
+                                                                                                                                                13 Root Servers
+
+ 
+
+                                                                                                 ________________                                                                                                                                                                              _________________________                    |              |                           ------------------
+                                                    |                       |                    |              | < 3                  < 3  |                |   Tells the querying computer what authoritative name server to contact
+                                                    |                       |                    |              |                           |                |
+                                                    |           User        |==================> |              | < 1                       |                |
+                                                    |_______________________|                    |              | 2 >                  2 >  |                |
+                                                                                                 |              |                           ------------------
+                                                                                                 |              | 4 >
+                                                                                                 |              |                            TLD  Name Servers
+                                                                                                 |______________| < 5                        Top-level Domain, e.g. '.com', '.net'
+                                                                                          
+                                                                                                  Caching/Recursive
+                                                                                                    Name Server
+                                                                                                                                            ------------------
+                                                                                                                                            |                |
+                                                                                                                                        4 > |                |  Authoritative name server
+                                                                                                                                            |                |
+                                                                                                                                        < 5 |                |  Returns IP Address of domain name of interest
+                                                                                                                                            ------------------
+
+                                                                                                                                             Thousands of name servers
+
+                    - Anycast:
+                        -- A technique that's used to route traffic to different destinations depending on factors like location, congestion, or link health.
+                -- Root names servers:                                                        
+                    -  
+                -- TLD names servers:
+                    - Tells the querying computer what authoritative name server to contact
+                -- Authoritative name servers:
+                    - 
+
+
+        - DNS and UDP:
+            -- UDP is the best to use for DNS queries.
+            -- DNS port is 53
+
+
+Name Resolution in Practice:
+    - Resource Record Types:
+        -- A Record:
+            - Used to point a certain domain name at a certain IPv4 IP address
+            - single doamin name can have multiple A Records or IP addresses
+            - DNS Round Robin:
+                -- Used to loop over IP Addresses or A Records in a shuffled way
+        -- CNAME:
+            - Canonical Name
+            - Use to redirect traffic from one domain name to another. Say microsoft.com to www.microsoft.com
+        -- AAAA, Quad A:
+            - This returns a IPv6 address
+        -- MX Record:
+            - Mail Exchange, used ti deliver email to the correct server
+        -- SRV Records:
+            - service records:
+                -- used to define the location of very specific services
+        -- TXT Records:
+            - Text Record type, used to leave notes and information for humans.
+    - Anatomy of A Domain Name:
+        --  ICANN: The Internet Corporation for Assigned Names and Nunbers.
+        -- Domains:
+            -- Used to demarcate where control moves from a TLD name server to an authoritative name server.
+        -- wwww: this is the subdomain or called the host if assigned to only one host.
+        -- The combination of "www.google.com" is called the FQDN (Fully qualified domain name)
+        -- DNS can techinically support up to 127 levels of domain in total for a single fully qualified domain name.
+        -- Each section of a domain name can hold max of 63 character long
+        -- A complete FQDN can only be 255 character long.
+
+    - DNS Zones:
+        -- 
+
+
+Dynamic Host Configuration Protocol:
+
+    - Overview of DHCP:
+        -- An application layer protocol that automates the configuration process of hosts on a network.
+        -- computers will automatically get the network configuration when connected to a dhcp server on connecting to the network
+        -- dhcp helps to configure many computers thereby helping the admin
+        -- DNS Servers use static IP addresses
+        -- Types of dhcp configurations:
+            -- Automatic:
+                -- A range of IP addresses is set aside for assignment purposes. And will keep track of the assigned IP address and re-assign them to the same machine in 
+                    the future.
+            -- Dynamic:
+                -- A range of IP addresses is set aside for client devices and one of these IPs is issued to these devices when they request one.
+            -- Fixed:
+                -- Requires a manually specified list of MAC address and their corresponding IPs.
+        -- DHCP is also used to assign IP addresses to NTP servers which are used to keep all computers on network synchronized in time
+
+    - DHCP in Action:
+        -- The process by which a client configured to use DHCP attempts to get network configuration information is known as DHCP discovery.
+            The DHCP discovery process has four steps.
+            -- Steps include: Called a DHCPLEASE
+                -- Server Discovery, sends a DHCPDISCOVER via a UDP Datagram inside an IP Datagram
+
+                                    Source: 0.0.0.0:68       =================>  Destination: 255.255.255.255:67
+                                    Client machine                                DHCP Server
+
+                -- 2nd Step: DHCPOFFER from DHCP Server with the MAC address of the original sender of the DHCPDISCOVER message
+
+                                    Destination: 255.255.255.255:68 <================= Source: 192.168.1.1:67
+                                     Client                                               DHCP Server
+
+                -- 3rd Step: DHCPREQUEST message 
+
+                                    Source: 0.0.0.0:68       =================>  Destination: 255.255.255.255:67
+                                    Client machine                                DHCP Server
+
+                -- 4th Step: DHCACK Message along with the MAC address of the client machine 
+
+                                    Destination: 255.255.255.255:68 <================= Source: 192.168.1.1:67
+                                     Client                                               DHCP Server
+
+Network Address Translation:
+
+    - Basics of NAT:
+        -- Welcome back. Ready to dive right in. So unlike protocols like DNS and DHCP, network address translation or NAT is a technique instead of a defined standard.
+            This means that some of what we'll discuss in this lesson might be more high level than some of our other topics.  Different operating systems and
+             different network hardware vendors have implemented the details of NAT in different ways. But the concepts of what it accomplishes are pretty constant.
+             Network address translation does pretty much what it sounds like. It takes one IP address and translates into another. There are lots of reasons why you would want to do this.
+             They range from security safeguards, to preserving the limited amounts of available IPV4 space. We'll discuss the implications of NAT and the
+             IP before address space later in this lesson. But for now let's just focus on how NAT itself works and how it can provide additional security measures to a network.
+             At its most basic level NAT, is a technology that allows a gateway usually a router or a firewall to rewrite the source IP of an outgoing IP datagram,
+             while retaining the original IP in order to rewrite it into the response,   to explain this better, let's look at a simple NAT example.
+             Let's say we have two networks, network A consists of the 10.1 1.0/24 address space, and network B consists of the 192. 1 6 8.1.0/24 address space.
+             Sitting between these networks is a router that has an interface on network A with an IP of 10.1.1.1 and an interface on Network B of 192.168. 1.1
+             Now let's put two computers on these networks. Computer one is on network A, and has an IP of 10.1.1.100 and computer two is on network B and has an IP of 192.168.1.100.
+             Computer one wants to communicate with a web server on computer two. So it crafts the appropriate packet at all layers and sends this to its primary gateway.
+             The router sitting between the two networks,    so far this is a lot like many of our earlier examples, but in this instance the router is configured to perform NAT for any outbound packets.
+             Normally a router will inspect the contents of an IP datagram, decrement the TTL by one, recalculate the checksum and forward the rest of the data at the network layer without touching it.
+             But with NAT the router will also rewrite the source IP address, which in this instance becomes the routers IP on Network B or 192. 168. 1.1. When the datagram gets to computer two,
+             it will look like it originated from the router not from computer one. Now computer two crafts its response and sends it back to the router. The router knowing that this traffic is actually intended for computer one,
+             rewrites the destination IP field before forwarding it along.   What NAT is doing in this example is hiding the IP of computer one from computer two. This is known as IP masquerading.
+             IP masquerading is an important security concept. The most basic concept at play here, is that no one can establish a connection to your computer if they don't know what IP address it has.
+             By using NAT in the way we've just described, we could actually have hundreds of computers on network A, all of their IPs being translated by the router to its own.
+             To the outside world, the entire address space of network A is protected and invisible. This is known as one to many NAT, and you'll see it in use on lots of LANs today.
+ 
+    - NAT and the Network Layer:
+        -- NAT at the network layer is pretty easy to follow. One IP address is translated to another by a device usually a router. But at the transport layer things get a little bit more complicated and
+             several additional techniques come into play to make sure everything works properly. With one to many NAT, we've talked about how hundreds even thousands of computers can all have
+             their outbound traffic translated via NAT to a single IP. This is pretty easy to understand when the traffic is outbound, but a little more complicated once return traffic is involved.
+             We now have potentially hundreds of responses all directed at the same IP and the router at this IP needs to figure out which responses go to which computer. The simplest way to do this,
+             is through port preservation. Port preservation is a technique where the source port chosen by a client, is the same port used by the router. Remember that outbound connections choose a source port at random,
+             from the ephemeral ports or the ports in the range 49,152 through 65, 535. In the simplest setup, a router setup to NAT outbound traffic, will just keep track of what this source port is,
+             and use that to direct traffic back to the right computer. Let's imagine a device with an IP of 10.1.1.100. It wants to establish an outbound connection and the networking stack of
+             the operating system chooses port 51,300 for this connection. Once this outbound connection gets to the router, it performs network address translation and places its own IP in the source address field of the IP datagram,
+             but it leaves the source port in the TCP datagram the same and stores this data internally in a table. Now, when traffic returns to the router and port 51,300, 
+             it knows that this traffic needs to be forwarded back to the IP 10.1.1.100.
+             Even with how large the set of ephemeral ports is, it's still possible for two different computers on a network to both choose the same source port around the same time.
+             When this happens, the router normally selects an unused port at random to use instead. Another important concept about NAT and the transport layer, is port forwarding. Port forwarding is a technique where
+             a specific destination ports can be configured to always be delivered to specific nodes. This technique allows for complete IP masquerading, while still having services that can respond to incoming traffic.
+             Let's use our network 10.1.1.0 \24 again to demonstrate this. Let's say there's a web server configured with an IP of 10.1.1.5. With port forwarding, no one would even have to know this IP. 
+             Prospective web clients would only have to know about the external IP of the router. Let's say it's 192.168.1.1. Any traffic directed at port 80 on 192.168.1.1, would get automatically forwarded to 10.1.1.5. 
+             Response traffic would have the source IP
+             rewritten to look like the external IP of the router. This technique not only allows for IP masquerading, it also simplifies how external users might interact with lots of services all run by the same organization. 
+             Let's imagine a company with both a web server and mail server,
+             both need to be accessible to the outside world but they run on different servers with different IPs. Again, let's say the web server has an IP of 10.1.1.5, and the mail server has an IP of 10.1.1.6. 
+             With port forwarding, traffic for either of these services could be aimed at the same external IP and therefore the same DNS name, but it would get delivered to entirely different internal servers due to their different destination ports.
+ 
+    - NAT, Non-ROutable Address Space and the Limits of IPv4:
+
+        -   The IANA has been in charge of distributing IP addresses since 1988. Since that time, the internet has expanded at an incredible rate. The 4.2 billion possible IPv4 addresses have been predicted to run out for
+            a long time and they almost have. For some time now, the IANA has primarily been responsible with assigning address blocks to the five regional internet registries or RIRs. 
+            The five RIRs are AFRINIC, which serves the continent of Africa,
+            ARIN which serves the United States, Canada and parts of the Caribbean. APNIC, which is responsible for most of Asia, Australia and New Zealand and Pacific Island nations. 
+            LACNIC which covers Central and South America and any parts of the Caribbean not covered by ARIN.
+            And finally RIPE, which serves Europe, Russia and the Middle East and portions of Central Asia. These five RIRs have been responsible for assigning IP address blocks to organizations 
+            within their geographic areas and most have already run out. The IANA assigned the last unallocated slash eight network blocks to various RIRs on February 3rd, 2011. Then in April 2011, 
+            APNIC ran out of addresses. RIPE was next, in September of 2012. LACNIC ran out of addresses to assign in June 2014.
+            And ARIN did the same in September 2015. Only AFNIC has some IPs left, but those are predicted to be depleted by 2018. Wikipedia has a great article all about IPv4 exhaustion and the timelines involved. 
+            I've added a link to it in the reading just after this video. This is of course, a major crisis for the internet. IPv6 will eventually resolve these problems and we'll covered in more detail later in this course. 
+            But implementing IPv6 worldwide is going to take some time. For now, we wanted to continue to grow and we want more people and devices to connect to it but without IP addresses to assign, a workaround is needed. 
+            Spoiler alert, you already know about the major components of this workaround. NAT and non-routable address space. Remember that non-routable address space was defined in RFC1918 and 
+            consists of several different IP ranges that anyone can use. And unlimited number of networks can use non-routable address space internally because internet routers won't forward traffic to it.
+            This means there's never any global collision of IP addresses when people use those address spaces. Non-routable address space is largely usable today because of technologies like NAT. 
+            With NAT, you can have hundreds even thousands of machines using non-routable address space.
+            Yet, with just a single public IP, all those computers can still send traffic to and receive traffic from the internet. All you need is one single IPv4 address and via NAT, a router with that IP can represent 
+            lots and lots of computers behind it.
+            It's not a perfect solution, but until IPv6 becomes more globally available, non-routable address space and NAT will have to do 
+
+
+VPN and Proxies:
+    - Virtual Private Networks:
+        -- Businesses have lots of reasons to want to keep their network secure.
+            And they do this by using some of the technologies we've already discussed.
+            Firewalls, NAT, the use of non-routable address space, things like that.
+            Organizations often have proprietary information that needs to remain secure.
+            Network services that are only intended for employees to access, and other things.
+            One of the easiest ways to keep networks secure is to use various securing technologies,
+            so only devices physically connected to their local area network,
+            can access these resources.
+            But, employees aren't always in the office.
+            They might be working from home,
+            or on a business trip,
+            and they might still need access to these resources in order to get their work done.
+            That's where VPNs come in.
+            Virtual Private Networks or VPNs,
+            are a technology that allows for the extension of a private or local network,
+            to a host that might not work on that same local network.
+            VPNs come in many flavors and accomplish lots of different things.
+            But the most common example of how VPNs are used,
+            is for employees to access their businesses network when they're not in the office.
+            VPNs are a tunneling protocol.
+            Which means, they provision access to something not locally available.
+            When establishing a VPN connection,
+            you might also say that a VPN tunnel has been established.
+            Let's go back to the example of an employee who needs to
+            access company resources while not in the office.
+            The employee could use a VPN client to establish a VPN tunnel to their company network.
+            This would provision their computer with what's known as a virtual interface,
+            with an IP that matches
+            the address space of the network that established a VPN connection to.
+            By sending data out of this virtual interface,
+            the computer could access internal resources
+            just like if it was physically connected to the private network.
+             Most VPNs work by using the payload section of the transport layer to
+            carry an encrypted payload that actually contains an entire second set of packets.
+            The network, the transport,
+            and the application layers of a packet intended to traverse the remote network.
+            Basically, this payload is carried to the VPNs endpoint,
+            where all the other layers are stripped away and discarded.
+            Then, the payload is unencrypted,
+            leaving the VPN server with the top three layers of a new packet.
+            This gets encapsulated with the proper data link layer information,
+            and sent out across the network.
+            This process is completed in the inverse,
+            in the opposite direction.
+            VPNs, usually requires strict authentication procedures in order to ensure that
+            they can only be connected to by computers and users authorized to do so.
+            In fact, VPNs were one of
+            the first technologies where two-factor authentication became common.
+            Two-factor authentication is a technique where
+            more than just a username and password are required to authenticate.
+            Usually, a short-lived numerical token is
+            generated by the user through a specialized piece of hardware or software.
+            VPNs can also be used to establish site-to-site connectivity.
+            Conceptually, there isn't much difference between
+            how this works compared to a remote employee situation.
+            It's just that the router,
+            or sometimes a specialized VPN device on one network,
+            establishes the VPN tunnel to the router or VPN device on another network.
+            This way, two physically separated offices might be able to
+            act as one network and access network resources across the tunnel.
+            It's important to call out that just like NAT,
+            VPNs a general technology concept,
+            not a strictly defined protocol.
+            There are lots of unique implementations of VPNs.
+            And the details of how they all work can differ a ton.
+            The most important takeaway is that VPNs are a technology that use
+            encrypted tunnels to allow for a remote computer or network,
+            to act as if it's connected to a network that it's not actually physically connected to.
+
+    - Proxy Services:
+        -- A proxy service is a server that acts on behalf of a client in order to
+ access another service.
+ Proxies sit between clients and
+ other servers, providing some additional benefit, anonymity,
+ security, content filtering, increased performance, a couple other things.
+ If any part of this sounds familiar, that's good.
+ We've already covered some specific examples of proxies, like gateway routers.
+ You don't hear them referred to this way, but
+ a gateway definitely meets the definition of what a proxy is and how it works.
+ The concept of a proxy is just that, a concept or an abstraction.
+ It doesn't refer to any specific implementation.
+ Proxies exist at almost every layer of our networking model.
+ There are dozens and dozens of examples of proxies you might run into during your
+ career, but we'll cover just a few of the most common ones here.
+ 
+Most often, you'll hear the term, proxy, used to refer to web proxies.
+ As you might guess, these are proxies specifically built for web traffic.
+ A web proxy can serve lots of purposes.
+ Many years ago, when most Internet connections were much slower than they
+ are today, lots of organizations used web proxies for increased performance.
+ Using a web proxy,
+ an organization would direct all web traffic through it, allowing the proxy
+ server itself to actually retrieve the webpage data from the Internet.
+ It would then cache this data.
+ This way, if someone else requested the same webpage, it could just return
+ the cached data instead of having to retrieve the fresh copy every time.
+ 
+This kind of proxy is pretty old and you wont often find them in use today, why?
+ Well, for one thing, most organizations now have connections
+ fast enough that caching individual webpages doesn't provide much benefit.
+ Also, the Web has become much more dynamic.
+ Going to www.twitter.com is going to look different to every person with their
+ own Twitter account, so caching this data wouldn't do much good.
+ 
+A more common use of a web proxy today
+ might be to prevent someone from accessing sites, like Twitter, entirely.
+ A company might decide that accessing Twitter during work hours
+ reduces productivity.
+ By using a web proxy, they can direct all web traffic to it,
+ allow the proxy to inspect what data is being requested, and then allow or
+ deny this request, depending on what site is being accessed.
+ Another example of a proxy is a reverse proxy.
+ A reverse proxy is a service that might appear to be a single server
+ to external clients, but actually represents many servers living behind it.
+ A good example of this is how lots of popular websites are architected today.
+ Very popular websites, like Twitter, receive so much traffic that there's no
+ way a single web server could possibly handle all of it.
+ A website that popular might need many,
+ many web servers in order to keep up with processing all incoming requests.
+ 
+A reverse proxy, in this situation, could act as a single front-end for
+ many web servers living behind it.
+ From the clients' perspective,
+ it looks like they're all connected to the same server.
+ But behind the scenes, this reverse proxy server is actually
+ distributing these incoming requests to lots of different physical servers.
+ Much like the concept of DNS Round Robin, this is a form of load balancing.
+ 
+Another way that reverse proxies are commonly used by popular websites
+ is to deal with decryption.
+ More than half of all traffic on the Web is now encrypted, and encrypting and
+ decrypting data is a process that can take a lot of processing power.
+ You'll learn a lot more about encryption and
+ how it works in another course in this program.
+ 
+Reverse proxies are now implemented in order to use hardware
+ built specifically for cryptography, to perform the enryption and decryption work.
+ So that the web servers are free to just serve content.
+ 
+Proxies come in many other flavors, way too many for us to cover them all here.
+ But the most important takeaway is that proxies are any server that
+ act as a intermediary between a client and another server.
+ Good job, we covered a lot.
+ Take a break for a bit before you move on to the quiz and
+ project we've cooked up for you.
+ Once you're done with these, take another break, and then meet me back here for
+ the next module where we'll cover the history of Internet connections.
+

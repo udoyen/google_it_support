@@ -1,0 +1,685 @@
+Users and Groups:
+    -- Users, Administrator, and Groups:
+        --- Welcome back. Now that we've learned how to
+         navigate around the Windows and Linux operating systems,
+         let's start setting up our computer for use by other people.
+         As an IT support specialist,
+         you'll be responsible for other people's machines.
+         People will depend on you to help set up their machines,
+         troubleshooting their issues, and so on.
+         In this lesson, you'll learn how to manage multiple accounts on one machine.
+         You'll also learn about the different permissions and access types,
+         how to add and remove users,
+         and the best practices to use when managing multiple users.
+         It's common for a computer to have multiple users.
+         On your home computer, you might have your parents,
+         siblings, or children using the same computer.
+         Your town, library, school,
+         or other public places might also have computers with multiple users.
+         Even though these machines have multiple user accounts on them,
+         all users on a computer are isolated from others.
+         This means that Kevin can't see Victor's files and folders, and vice versa.
+         There are two different types of users,
+         standard users and administrators.
+         A standard user is one who is given access to a machine,
+         but has restricted access to do things like install software or change certain settings.
+         An administrator or admin is a user that has complete control over a machine.
+         They can view anyone's account,
+         change and remove anyone on the computer,
+         and view every single file.
+         You can have multiple administrators on a machine as well.
+         On your personal machine,
+         you're the default administrator because this
+         gives you complete control over your system.
+         After all, it is your machine.
+         But on a public computer,
+         the administrator is someone who actually runs and maintains the machine,
+         like an IT support specialist,
+         they can grant access for other users,
+         install software, change restricted system settings,
+         and perform other actions they deem appropriate.
+         How terrible would it be if anyone who is
+         using a public computer could just install software?
+         The computers would be bloated,
+         things would be out of place,
+         and worst of all, they could be infected with malicious software.
+         Users are put together in groups according to levels of
+         access and permissions to carry out certain tasks.
+         These tasks depend on what the computer's administrator considers appropriate.
+         An administrator could give different access and
+         settings based on the type of group a user is in.
+         Let's say you're an administrator for your home computer,
+         which everyone in the house uses.
+         You put your parents in a group called Parents,
+         and your kids in a group called Children.
+         You don't want either of them to be able to install software,
+         but you also want to add child safety restrictions on the children group.
+         As the administrator, you're able to specify
+         different permissions for both of these groups.
+         So how do you differentiate what type of user you are,
+         and what groups you're in on Windows and Linux?
+         Well hopefully, you'd know this if you are an administrator of a computer.
+         But if you don't, computers do a pretty good job of telling you.
+         In the next few lessons,
+         we'll see how we can view user and group information in Windows and Linux
+
+    - Windows: View User and Group Information:
+        -- To view user and group information in windows,
+         we're going to use the computer management tool if
+         we search computer management in our application search and open it up,
+         we'll see a window that gives us a lot of information.
+         
+        We'll be using this application a lot throughout this course,
+         so let's take some time to go over it.
+         At the top of the sidebar,
+         you'll see it says computer management local.
+         This means we're managing a single machine locally.
+         In an enterprise environment,
+         you can manage multiple machines in something called a domain.
+         A Windows domain is a network of computers,
+         users, files, et cetera,
+         that are added to a central database.
+         If you're an admin of that domain,
+         you can view those accounts and computers from any machine in the domain.
+         We'll learn more about domains and how to manage them in our next course on
+         system administration and IT infrastructure services.
+         Underneath this menu, we have system tools.
+         Let's do a run down of each of these sub menus.
+         Task Scheduler: This lets you schedule programs and tasks to run at certain times,
+         like automatically shutting off the computer at 11:00 pm every night.
+         
+        Event Viewer: This is where our system stores its system logs.
+         We'll do a deep dive on this tool in an upcoming lesson.
+         
+        Shared folders: This shows the folders
+         that different users on the machine share with each other.
+         Remember how he said that other users can't view anyone else's files?
+         That's not exactly true.
+         If users store files on a shared folder,
+         anyone who has access to that folder can view it.
+         Local Users and Groups: This is where we'll be doing our user and group management.
+         Performance: This shows monitoring for the resources of our machine like CPU and RAM.
+         
+        Device Manager: This is where we go to manage
+         devices to our computer like our network cards,
+         sound cards, monitors, and more.
+         
+        Under the storage menu,
+         we have a sub menu for disk management.
+         We use this when we talk about discs in a later lesson.
+         
+        Finally, the services and applications menu
+         shows us the programs and services that we have available on the system.
+         We can choose to enable or disable services like DNS here.
+         All the essential settings that we as
+         administrators need to change are found in the computer management tool.
+         If you're a power user it's more efficient to use
+         this than it is to go through the default settings application.
+         Okay, let's get back to the task at hand.
+         Let's see what kind of user account we have and what groups we're a part of.
+         Let's go back to the local users and groups.
+         Under users, we can see a few built in Windows accounts like guest and administrator.
+         
+        The local administrator account lets you log in using
+         the administrator username and whatever the administrator password is on the computer.
+         This account is disabled by default.
+         Since this account has unfettered access on the computer,
+         it can be dangerous to be logged into it at all times.
+         For now, let's look at the account I'm in.
+         Cindy, let's double click on this to see more information.
+         Okay, let's do a rundown here.
+         Under the tab general,
+         we can see some basic information about the user along with some options.
+         User must change password at next logon.
+         Since I'm an admin, I can force other users to change their password.
+         This is useful if I'm managing someone's account and their password was compromised.
+         We don't want to risk someone else logging into their account,
+         so we force them to change their password.
+         User cannot change password.
+         Password never expires.
+         Account is disabled.
+         Enabling or disabling an account means making it active or inactive.
+         Account is locked out.
+         This means a user account will not be able to log in.
+         Maybe a disgruntled employee is looking to do malicious things.
+         We can make it so that they won't be able to log into their computer.
+         Under the member of tab,
+         we can see which groups we're part of.
+         I can see that I'm in the administrators group.
+         Heads up that instead of being logged into a local administrator account all the time,
+         you can be logged into your own account and use administrative powers when you need to.
+         This is thanks to the help of UAC or user access control.
+         This is a feature in Windows that prevents unauthorized changes to a system.
+         These changes have to be approved by the administrator instead.
+         Since I'm an administrator,
+         I would do is enter in my password to confirm that I want to make a change.
+         Finally, on the last tab,
+         profile, you can change settings about your user profile,
+         like where you want your home folder to be.
+         This isn't terribly important on a local account,
+         but it comes in handy when you're managing many users on a domain.
+         Now if we go to the groups menu on the sidebar,
+         it should look familiar.
+         
+        Just like the member tab,
+         we can view which groups are available and who their members are.
+         And that's how you view user and group information using the Windows GUI.
+         Next, let's take a look at how to do the exact same thing using Windows-
+
+    - Windows: View User and Group Information using CLI:
+        -- We talked about using the CLI in-depth in the last module.
+         We've seen how it can make our tests quicker when we modify files and folders.
+         Now, we're going to start using commands to help us with other tasks on our system.
+         Imagine you're working as an I.T.
+         support specialist at a company and your boss asks
+         you to check all the user information on 10 machines,
+         to make sure that the local administrator account is not enabled.
+         Sure you could search computer management in the search bar,
+         click computer management local,
+         look under system tools,
+         click on local users and groups,
+         then double click on the username of the computer to
+         ensure that their local administrator account is enabled.
+         Now, you just have to do that nine more times.
+         There's a much faster way.
+         You can just use the CLI to quickly see the list of users on
+         the computer using the command Get-LocalUser.
+         
+        As you can see, it lists my user account,
+         a few other users and a couple of other default accounts that are part of Windows.
+         Here you can see that my local administrator account isn't enabled.
+         That's way easier.
+         What about groups?
+         I bet you can guess,
+         Get-LocalGroup will list the groups on the local machine.
+         There are a whole bunch of groups but don't worry,
+         these are all built-in groups.
+         Each of them are important,
+         but we aren't likely to make changes to most of them.
+         One that we will make changes to is the administrators group.
+         Remember, this group controls who has administrative access to the machine.
+         It's important to know who's in this group since anyone in
+         this group can make any change they want to the machine.
+         We just saw in the GUI that we're in this group,
+         but I wonder who else is?
+         Let's see who's in this group with Get-LocalGroupMember,
+         and I want to check the administrators group.
+         We can see that the administrator user and my user are in
+         the administrators group but no one else. Looks good to me.
+         One last note, these local user and group PowerShell
+         commands require that your running PowerShell 5.1 or newer.
+         You may have noticed that I keep saying local accounts and local users.
+         If your organization has a lot of Windows machines,
+         it's very common to use active directory to manage
+         user accounts in a central directory service.
+         We'll learn more about active Directory accounts in
+         our next course on system administration and I.T.
+         infrastructure services.
+         But let's focus on local accounts for now.
+
+    - Windows: Passwords:
+        -- link: https://msdn.microsoft.com/en-us/library/cc875839.aspx
+         
+                 
+    - Windows: Add and Remove User:
+        -- Okay. Now that you know how to view information
+         about users and the hierarchy of user permissions,
+         let's learn how to add and remove users on a machine.
+         To add a user, we're going to go back to our computer management tool.
+         
+        Under local users and groups,
+         we're going to right click and select New User.
+         
+        From here, it asks us to set a username,
+         a full name, and a password.
+         Remember, that in order to use good password setting practices,
+         we set a default password and then make the user change that password when they log in.
+         So, we're going to go ahead and set a default password,
+         and make sure the box for,
+         "user must change password at next log on" is checked, and then click Create.
+         So I'm just going to make a new user account for Elizabeth and have the password,
+         and then just make sure that's checked, and hit Create.
+         And that's how you create a new local user.
+         To remove a user,
+         we simply right click and select Delete.
+         This gives us a warning message that says,
+         user names are unique,
+         and even if you delete the user and give them the exact same username,
+         they won't be able to access their old resources.
+         Once you confirm that you want to do that,
+         just go ahead and click delete it.
+         And that's how you remove a local user account.
+         Adding and removing local user accounts from the CLI,
+         is going to use the same net command that we use to change passwords,
+         just with different parameters.
+         Like before, there's a native power shell command,
+         new dash local user,
+         that requires a little bit of scripting to use.
+         If you want to use new dash local user,
+         check out the supplemental reading.
+         Now, back to net.
+         To add a new local user,
+         we simply use the slash add parameter.
+         If we add the slash add parameter to the same command we used before,
+         it instructs net to create the account.
+         We can still use the asterisk for the password to be prompted to enter a password.
+         Let's test this out and create a new account for Andrea.
+         So, net user andrea * / add.
+         Now, let's list the user accounts to be sure it worked.
+         So, Get-LocalUser.
+         Sweet. There it is.
+         Now, there's a small problem which you saw in the earlier lesson on passwords.
+         This account is for Andrea,
+         but we know what the password is.
+         We don't want to know what the password is because that means we can log in as Andrea.
+         We want to make sure that Andrea changes her password to something that we don't know.
+         So, we're going to flag her account as requiring a password change
+         using the slash log on password change yes parameter.
+         So, net user andrea / logonpasswordchg:yes.
+         Now you all know what a password is.
+         You can actually combine these two commands that we ran to
+         create a new account that requires a password change at first login.
+         Let's create an account for Cesar.
+         So, net user cesar password
+         / add / logonpasswordchg:yes.
+         Now, when we run the Get-LocalUser,
+         we should see both of our new accounts.
+         Sweet. And there it is.
+         Cesar's new account has a password that you know and you can give it to him,
+         but he'll have to change the password the first time he logs in. All right.
+         Now let's remove these accounts that we just created.
+         I'm going to show you how to do this using net, and using Remove-LocalUser.
+         Both of these commands will do the exact same thing.
+         So let's delete Andrea's account,
+         net user andrea /del.
+         This will delete Andrea's account.
+         And using the Remove-LocalUser cesar,
+         we can remove Cesar's account.
+         Sweet, now it's gone. See how each of these options follows a pattern.
+         The net user example,
+         looks just like it did to create a new user account,
+         except instead of adding an account,
+         we deleted the account.
+         In the second example, instead of getting,
+         setting, or creating a new dash local user,
+         we removed the account.
+         As you continue to learn new CLI commands,
+         you'll start to notice these sorts of patterns.
+         Being able to identify these patterns will help you discover new things that you can do,
+         and remember how to do things you haven't done in a while.
+
+Permissions:
+    - Windows: File Permissions:
+        -- File permissions are an important concept in computer security.
+         We only want to give access to certain files and directories to those who need it.
+         While we think about how we want users to access files and folders,
+         we should also think about how the concept of
+         permissions carries over to other areas of your life.
+         Maybe you've locked down your social media post to only people you trust,
+         or giving a copy of your house key to a relative in case of an emergency.
+         You'll learn more about security principles in the last course of this program.
+         For now, we're going to focus on one small building block, file permissions.
+         In Windows, files and directory permissions are
+         assigned using Access Control Lists or ACLs.
+         Specifically, we're going to work with Discretionary Access Control Lists or DACLs.
+         Windows files and folders can also have
+         System Access Control Lists or SACLs assigned to them.
+         SACLs are used to tell windows that it should use an event log to make
+         a note of every time someone accesses a file or folder.
+         This is a more advanced topic which you can read up on in the next supplementary reading.
+         You can think of a DACL as a note about who can
+         use a file and what they're allowed to do with it.
+         Each file or folder will have an owner and one or more DACLs.
+         Let's take a look at an example.
+         In windows explorer, I have opened up my home directory.
+         If we right click on desktop and select properties,
+         we can see the properties dialog for our desktop directory.
+         And if we go to a security tab,
+         we can see the permissions window here.
+         The top box contains a list of users and groups.
+         And the bottom box has a list of the permissions that each user group has been assigned.
+         What do each of these permissions do?
+         It changes a bit depending on whether
+         the permission is assigned to a file or a directory.
+         Don't worry, it all makes sense soon.
+         Let's do a rundown of these permissions.
+         Read, the Read permission lets you see that a file exists,
+         and allows you to read its contents.
+         It also lets you read the files and directories in a directory.
+         Read and Execute, the Read and Execute permission lets you read files,
+         and if the file is an executable,
+         you can run the file.
+         Read and Execute includes Read,
+         so if you select Read and Execute,
+         Read will automatically be selected.
+         List folder contents, List
+         folder contents is an alias for Read and Execute on a directory.
+         Checking one will check the other.
+         It means that you can read and execute files in that directory.
+         Write, the Write permission lets you make changes to a file.
+         It might be surprising to you,
+         but you can have write access to a file without having read permission to that file.
+         The write permission also lets you create
+         sub directories and write two files in the directory.
+         Modify, the Modify permission is
+         an umbrella permission that include read, execute and write.
+         Full control, a user or group with full control can do anything they want to the file.
+         It includes all of the permissions of Modify,
+         and adds the ability to take ownership of a file and change its ACLs.
+         Now, when we click on my username,
+         we can see the permissions for Cindy,
+         which show that I'm allowed all of these access permissions.
+         If we want to see which ACLs are assigned to a file,
+         we can use a utility designed to view and change ACLs
+         called ICACLs or Improved Change ACLs.
+         
+        Let's take a look at my desktop first.
+         ICACLs, Desktop.
+         Well, that looks useful.
+         But what does it mean?
+         I can see the user accounts that have access to my desktop,
+         and I can see that my account is one of them.
+         But what about the rest of this stuff?
+         These letters represent each of the permissions that we talked about before.
+         Let's take a look at the Help for ICACLs,
+         I bet that'll explain things.
+         So ICACLs, slash, question.
+         All right. There's a description of what each one of these letters means.
+         The F shows that I have full control of my desktop folder.
+         ICACLs causes full access,
+         and we saw this in the GUI earlier as full control.
+         These are the same permission.
+         What are these other letters mean?
+         NTFS permissions can be inherited as we saw from the ICACLs help.
+         OI means Object Inherit,
+         and CI means Container Inherit.
+         If I create new files or objects inside my Desktop folder,
+         they'll inherit this DACL.
+         If I create new directories or containers in my desktop,
+         they'll also inherit this DACL.
+         If you'd like to understand more about ACL inheritance and NTFS,
+         check out the next supplemental reading.
+
+    - Supplementary Reading for Windows:
+        -- https://msdn.microsoft.com/en-us/library/windows/desktop/aa374872(v=vs.85).aspx
+                -- An access control list (ACL) is a list of access control entries (ACE). Each ACE in an ACL identifies a trustee and specifies the access rights allowed, denied, or audited for that trustee. 
+                    The security descriptor for a securable object can contain two types of ACLs: a DACL and a SACL.
+
+                A discretionary access control list (DACL) identifies the trustees that are allowed or denied access to a securable object. When a process tries to access a securable object, the system checks the ACEs in the object's DACL to determine whether to grant access to it. If the object does not have a DACL, the system grants full access to everyone. If the object's DACL has no ACEs, the system denies all attempts to access the object because the DACL does not allow any access rights. The system checks the ACEs in sequence until it finds one or more ACEs that allow all the requested access rights, or until any of the requested access rights are denied. For more information, see How DACLs Control Access to an Object. For information about how to properly create a DACL, see Creating a DACL.
+
+                A system access control list (SACL) enables administrators to log attempts to access a secured object. Each ACE specifies the types of access attempts by a specified trustee that cause the system to generate a record in the security event log. An ACE in a SACL can generate audit records when an access attempt fails, when it succeeds, or both. For more information about SACLs, see Audit Generation and SACL Access Right.
+
+                Do not try to work directly with the contents of an ACL. To ensure that ACLs are semantically correct, use the appropriate functions to create and manipulate ACLs. For more information, see Getting Information from an ACL and Creating or Modifying an ACL.
+
+                ACLs also provide access control to Microsoft Active Directory directory service objects. Active Directory Service Interfaces (ADSI) include routines to create and modify the contents of these ACLs. For more information, see Controlling Access to Active Directory Objects.
+
+    - Windows: Modifying Permissions:
+        -- Now that we can read permissions,
+         let's take it a step further and learn how to change permissions in windows.
+         Let's say we want to give access to another person in my family to view
+         a folder with family pictures on the computer. How do I do that?
+         On my Local Disk C, I have a folder called
+         Vacation Pictures that I want to share with another user on my machine, Devan.
+         To do that, I'm going to right click on this folder
+         and go to Properties, then the Security tab.
+         
+        Now I can see an option to Edit file permissions. I'm going to click on that.
+         From here, I can see that I can add a group or usernames to this icals.
+         I'm going to go ahead and click Add.
+         From here, it asked me to enter the username of the person I want to add on this ical.
+         I'm going to enter devan and then click Check Names to verify that I typed it in right.
+         
+        After it's been verified,
+         I'm going to click OK. Once devan's added to the ical,
+         I can click on his username,
+         then check the allow boxes for the permissions I want to give him.
+         Let's give Devan modify access,
+         so you can add pictures to this folder too.
+         
+        That's it. We've kind of been glossing over this other checkbox here Deny.
+         You might have already guess that Deny doesn't allow you to have a certain permission.
+         But it's special because it generally takes precedence over the allow permissions.
+         Let's say Devan is in a group that has access to this folder.
+         If we explicitly check the deny box for Devan's username,
+         even if the group has access to the folder Devan won't.
+         Sorry, Devan.
+         If you want to learn more bout permission precedence,
+         you can check out the supplemental reading.
+         To modify a permission in the CLI,
+         we're going to return to the icacls command.
+         In the examples I'm going to show you,
+         will be running icacls from PowerShell.
+         The icacls command was designed for the command prompt before PowerShell.
+         And its parameters use special characters that confuse PowerShell.
+         By surrounding icacls parameters with single quotes,
+         I'm telling PowerShell not to try and interpret the parameter as code.
+         If you run these commands in command.exe,
+         you'll need to remove the single quotes for them to work.
+         So let's look at this side by side with PowerShell.exe and command.exe.
+         In PowerShell, the command would be icacls
+         'C:\'Vacation Pictures\' /grant' with single quotes,
+         'Everyone: (OI)(CI)(R).
+         In command prompt, the command would be icacls with double quotes
+         "C\Vacation Pictures"/grant Everyone:(IO)(CI)(R).
+         We're going to see with this command does in just a moment.
+         For now, let's take a look at the difference in the quotes.
+         In the PowerShell example,
+         we add single quotes to make PowerShell ignore
+         the parentheses and because there's a space in the path.
+         In the command.exe example,
+         we have to use double quotes for the path.
+         And we don't need the single quotes anymore to hide the parentheses.
+         Got it?Great.
+         Now, let's take a look at the permissions that we just gave to Devan with icacls.
+         Cool.
+         I see there's a new decal attach to the vacation pictures directory for Devan,
+         that gives him modify access.
+         We can see that any new files or folders that
+         get created in vacation pictures will be inherited.
+         So let's say we want anyone with
+         permission to use this computer to be able to see these pictures.
+         We don't want them to add or remove photos though.
+         What permissions do we want to give them? That's right.
+         We want to give them read permission to the Vacation's Picture folder.
+         Let's use the special group Everyone to give read permissions to the directory.
+         So icacls 'C:\ Vacation Pictures' /grant Everyone:(OI)(CI)(R).
+         Success.
+         The Everyone group includes,
+         well, Everyone and includes local user accounts like Cindy and Devan.
+         Guest users: This is a special type
+         of user that's allowed to use the computer without a password.
+         Guest users are disabled by default.
+         You might enable them in very specific situations.
+         Now anyone who can use this computer can
+         browse the photos that Devan and I have put together.
+         Actually, maybe I didn't really want everyone to look at my vacation photos.
+         Maybe I just want the people that have passwords on the computer to be able to see them.
+         In that case, I want to use authenticated users group.
+         That group doesn't include guest users.
+         So first, let's add a new decal.
+         icacls 'C:\Vacation Pictures' /grant' Authenticated Users:(OI)(CI)(R).
+         Success. Now, let's remove the permissions for the Everyone group.
+         icacls 'C:\Vaction Pictures' /remove Everyone.
+         Success.
+         Now, let's use icacls to verify that the permissions are set away we intended.
+         icacls 'C:\Vacation Pictures'.
+         Sweet. We can see the Authenticated Users were added and Everyone is removed.
+         Next, let's take a look at modifying permissions in Linux.
+    - Windows: Special Permission:
+        -- You might have noticed that we were looking at permissions in the GUI before.
+         There's a check box in the permission list for special permissions.
+         The permissions that we've been looking at and setting so
+         far are called simple permissions.
+         Simple permissions are actually sets of special, or specific permissions.
+         
+        For example, when you set the re-permission on a file,
+         you're actually setting multiple special permissions.
+         Let's take a look at the list of special permissions available.
+         I'm going to click on the advanced tab under my permissions setting.
+         
+        When I click on a username, and then go to Advanced Permissions,
+         I can see a list of all the special permissions enabled on that file.
+         
+        When we select a basic permission like Read,
+         we're actually enabling the special permissions List folder / read data.
+         Read attributes, read extended attributes, read permissions, and
+         synchronize, which are just fine-tuned permissions.
+         You can modify these permissions like you would any other basic permission.
+         
+        Feel free to read more about the different types of special permissions
+         in the supplemental reading I included after this video.
+         
+        In most cases, the simple permissions are going to be all that you need.
+         But sometimes, you need to create a file or
+         folder that doesn't quite follow a simple pattern.
+         Let's take a look at an example in this CLI.
+         To view special permissions on a file in the CLI,
+         we will simply use the icacls command as before.
+         
+        Let's take a look at a more interesting example than my desktop folder, icacls
+         C:/Windows/Temp.
+         This directory is used to hold temporary files for all users in the system.
+         
+        We would like for everyone in the system to be able to create files and
+         folders here.
+         
+        You might think that we should use modify or full control for this, but
+         we don't want users to be able to delete each others files.
+         
+        Let's take a look at some of the DACLs assigned to this folder and
+         figure out how to do this.
+         First, local administrators and the operating systems computer account have
+         full permissions over this folder, and all files and folders within it.
+         We see a new descriptor, IO, which indicates that this DACL is inherit only.
+         That means that it will be inherited, but
+         it is not applied to this container C:\Windows\Temp.
+         The users group includes all user accounts on the local machine.
+         We're going to let users WD, or create files like data, AD,
+         create folders and append data, and S for synchronize.
+         
+        You can see in the next supplemental reading that these special permissions
+         are included in the modified simple permission.
+         
+        Unlike the modify a simple permission,
+         we are not granting users the ability to delete files or folders.
+         We do want users to be able to delete their own files and folders, though, so
+         how do we do that?
+         
+        So, if you see creator owner, creator owner is a special user
+         that represents the owner of whichever file the DACL applies to.
+         In this directory, and all subdirectories, whoever owns a file or
+         folder has full control of it.
+         Nice, so I'm going to create a folder and
+         file in C:\windows\temp and
+         see what DACLs are applied.
+         
+        Let's use what we learned about output redirection to record
+         the output of the icacls in this file, so icacls.
+         
+        Example for c:/Windows/Temp/example.
+         Then we're going to use our redirector output to give us icacls.txt.
+         Okay, now let's look at the file we created to view the output of icacls.
+         
+        Cool, I created the files, so I have full control of them.
+         And all of the other DACLs that we saw in c:/windows/Temp have been inherited.
+         You can see that using the specials permissions in NTFS DACLs can be
+         complicated, but it can also let you create really powerful sets of permissions
+         customized to your exact needs.
+    - Supplementary Reading for Special Permissions in Windows:
+        -- https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732880(v=ws.11)
+    - Linux: SetUID, SetGID, Sticky bit:
+        -- In Linux, we also have special permissions.
+         What if I want a user to be able to do something that requires root privileges
+         but I don't want to give them these privileges.
+         What's the use case for this?
+         Glad you asked.
+         There are certain commands that need to change files that are owned by root.
+         Normally, if you need to change a file owned by root you would have to
+         use SUDO.
+         But we want to be able to have normal users change these files without
+         giving them root access.
+         Let's check out an example.
+         Let's say I want to change my password.
+         I would use the password command like we've learned.
+         
+        Pretty simple, right?
+         Now I just enter in my new password and my password is changed.
+         We know that the password command secretly scrambles up our passwords.
+         Then adds them to this etsy shadow file.
+         Let's dive a little deeper into this file.
+         
+        It's says this file is owned by root.
+         How are we able to write our scrambled passwords in this file if it's
+         owned by root?
+         Well thanks to a special permission bit known as setuid,
+         we can enable files to be run by the permissions of the owner of the file.
+         In this case when you run the password command it's being run as a root.
+         Let's verify this.
+         
+We see the permissions on this file look a little odd,
+ there's an S here with the X should be.
+ The S stands for Set UID When the S is substituted where a regular bit would be
+ it allows us to run the file with the permissions of the owner of the file.
+ 
+To enable the setUID bit you can do it symbolically or numerically.
+ The symbolic format uses an S while the numerical format uses a 4,
+ which you pre-pin to the rest of the permissions like this.
+ 
+Similar to setuid,
+ you can run a file using
+ group permissions
+ with setgid, or
+ set group id.
+ This allows you to run a file as a member of the file group.
+ 
+Aha, under our group permissions, we can see that the setGID bit was enabled,
+ meaning that when this program is run, it's run as the group, tty.
+ 
+To enable the setGID bit, you can do something similar to setUID,
+ The only difference is the numerical format uses a 2.
+ So I can do something like this.
+ 
+Or something like this.
+ 
+There's one last special permission that
+ we should cover, and that's the sticky bit.
+ This bit sticks a file or folder down, and makes it so anyone can write to a file or
+ folder, but they can't actually delete anything.
+ 
+Only the owner or root can delete anything.
+ 
+Let's look at permissions for a /temp directory,
+ where a lot of programs write temporary files to and you'll see what I mean.
+ 
+I added the D flag to show information just for the directory, and
+ not the contents.
+ But as you can see, there's a special permission that at the end here,
+ t, this means that everyone can add and modify vowels in the \temp directory.
+ But only root or the owner can delete the /temp directory.
+ You can also enable the sticky bit using a numerical or symbolic format.
+ The symbolic bit is a t and the numerical bit is a 1.
+ So sudo chmod + t my_folder or
+ sudo chmod 1755 my_folder/
+ works, so let's verify.
+ Whew, that was a lot of
+ information on special bits.
+ You usually won't have to deal with these permission bits in a practical day
+ to day manner.
+ But it's important to know they exist in case you ever want to allow users to
+ either share folders, or even run commands with escalated privileges.
+ User access, group access, passwords, and
+ permissions are all core concepts in security.
+ Right now, you're only working with permissions and
+ access on a single-computer scale.
+ Eventually, you'll learn about access on multi-user levels across
+ different networks and more.
+ In the next course on systems administration and
+ IT infrastructure services.
+ For now, congratulations, you've just taken your first step
+ toward building a foundation of computer security knowledge.
+ In the next module, we're going to switch gears and talk about our OS and
+ how it manages software.
+ 
+Next we've got two assessments for you covering Windows and Bash permissions.
+ Once you're finished, you're granted permission
+ to take a break before we hit the ground running in the next module.

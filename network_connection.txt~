@@ -1,0 +1,123 @@
+Problem Description:
+    Explain or decribe what happens at every step of a network model, when a node(computer) on one network establishes a TCP (Transmission Control Protocol) connection with a node on 
+    another network. Assuming that the two networks are both connected on the same router.
+
+Keywords and Terms:
+    - Physical Layer
+    - Data Link Layer
+    - Network Layer
+    - Transport Layer
+    - MAC Address
+    - IP Address
+    - TCP port
+    - Checksum Table
+    - TTL
+
+Topology:                                                                
+
+        Computer 1 or Node 1 IP Address: 10.1.1.100 ====> Network A: 10.1.1.0/24 ===> 10.1.1.1: Router A 192.168.1.100 <====== Network B: 192.168.0.24 <==== Computer B or Node B IP Address: 192.168.1.200
+
+
+Network Communication Steps:
+
+ Application Layer and Transport Layers
+
+    1. User launches browser and enters address of Node 2 which is 192.168.1.200:80 (port 80)
+
+    2. Browser starts to establish a TCP connection with the local networking stack which is responsible for handling networking functions on the local operating system.
+    
+    3. Node 1 tells the networking stack that its needs to establish a TCP connection to 192.168.1.200 on port 80.
+
+    4. The local networking stack will examine its own subnet to determine if the destination address is on its own network but in this case sees that the destination is on another network.
+
+    5. Since the destination is off the current network where computer A is, it sends the data to its own configures gateway with address "10.1.1.1".
+
+    6. Computer 1 checks its ARP Table to see what the MAC Address is for the network address of 10.1.1.1, and if it finds no such entry it sends out an ARP Broadcast to the address "FF:FF:FF:FF:
+       FF:FF" with the IP Address of 10.1.1.1.
+
+    7. Router A receives the broadcast as do all other devices on that network. Seeing that it is the owner of that IP Address it equally sends out an ARP message which also includes its MAC Address 
+       of say 00:11:22:33:44:55.
+
+    8. Computer A receives the ARP Mesage and is now aware of the MAC Address of the its gateway, and begins to craft the outbound data packet.
+
+    9. Since computer A needs to send out data its requests from the network stack an "ephemeral" port (used to send outbound data). The network stack instantiates a socket on the port, say 50000, 
+       connecting the browser.
+
+    10. The network stack seeing that this is a TCP connection it needs to establish a connection to transmit data.
+
+    11. The networking stack creates a TCP Segment with the following information already known or gathered:
+    
+        - Source port: 50000
+        - Destination port: 80
+        - Header information
+        - Sequence number is chosen ad entered
+        - Control flag of SYN is added
+        - Checksum is calcualted and entered for the entire segment
+
+    NOTE: This entire segment represents a TCP Datagram
+
+    12. The above created TCP Segment is passed anong to the IP Layer of the networking stack.
+
+ IP Layer or Nerwork Layer:
+    
+    1. IP Header is constructed
+    
+    2. The Source IP (10.1.1.100), Destination IP(192.169.1.200) and the TTL (Time To Live) are all added to the IP Header
+
+    3. TCP Segment is inserted as the data payload for the IP Datagram in this layer (Network Layer)
+
+    4. Checksum is calculated for the whole IP Datagram an added to the Header Checksum.
+
+ Data Link Layer:
+
+    1. Here Computer A creates an Ethernet Frame using the Source MAC Address of Computer A, and the Destination MAC Address of the gateway device.
+
+    2. The IP Datagram from the previous layer (Network Layer) is added as the data payload for the created Ethernet Frame or Datagram.
+
+    3. Another checksum is calculated and added.
+
+    4. With this this the computer has successfully created an Ethernet Frame that will be sent via the Physical Layer to Router A
+
+ Physical Layer:
+    1. The network interface connected to Computer A sends this binary data (Ethernet Frame) as a modulation of the current running across the Cat 6 cable connected between it and a switch.
+
+    2. The network switch setermines the destination of the data using the MAC address of Gateway Router (Router A).
+    
+    3. Using the MAC Address of the router the switch sends the data across the cable connected to that interface (Router A)
+
+    4. Router A confirms that the received frame is for it by inspecting the destination MAC Address, and once confirmed proceeds to carryout the following steps on the received data:
+
+        -- Calculates the checksum for the frame
+        -- Comapres the calculated checksum with the checksum sent in the frame.
+    5. If the checksums match it strips away the Ethernet Frame leaving only the IP Datagram
+    
+    6. Calculates the checksum of the entire IP Datagram and compares it to the one in its header
+
+    7. If the checksum matches it proceeds to inspect the Destination IP Address (192.168.1.200) and performs a "lookup" in its Routing Table.
+
+
+Router A determines that the destination IP Address is on a locally connected network to it so it proceeds to:
+        -- decrement the TTL
+        -- calculates a new checksum
+        -- calculate a new IP Datagram
+    Router A then passes the data to the Data Link Layer in the network B via the encapsulation of the IP Datagram in an Ethernet Frame with the MAC Source Address of Router A and MAC Destination Address of Computer 2, it
+    the calculates a new checksum. The data is sent to switch in network B which uses the destination MAC address to send it to Computer 2 via the correctly connected interface.
+
+Network Layer on Network B:
+
+    1. Computer 2 identifies itself as the recepient of the packet based on the destination MAC address, it then proceeds to strip away the Ethernet Frame leaving only the IP Datagram.
+
+    2. It performs a CRC (Cyclical Redundancy Check) to ensure the data is complete or intact.
+    
+    3. It then examines the Destination IP Address and sees it as its own (192.168.1.200).
+
+Transport Layer on Network B:
+
+    1. It then strips away the IP Datagram leaving just the TCP Segment which is sen tto the Transport Layer in Network B.
+
+    2. It examines the checksum with the calculated one to see if they match
+
+    3. It now examines the destination port (80) and the network stack on computer B checks to see if that port is open and in the listening state
+
+    4. Computer 2 sees that the packet has the SYN flag set, hence it examines the sequence number and stores it as this will be used in the acknowledgement (ACK) response when its crafted.
+    

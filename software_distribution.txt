@@ -1,0 +1,556 @@
+Software Distribution:
+    -- Windows: Software Packages:
+        
+            -- Have you ever wondered how we get software,
+         like the apps in the App Store,
+         or packages on the Internet to install on our devices? Wonder no more.
+         Developers and organizations that make the software we use,
+         generally package them up nicely for us.
+         In most cases, all we need to do is click install and the package gets installed for us.
+         Packaging comes in all sorts of shapes and sizes.
+         It's just like how you'd package a gift for someone.
+         You could put it in a box or a bag,
+         but the contents are what really matter.
+         Developers have different ways to package software using software compiling tools.
+         But at the end result is a package.
+         In the next few videos we'll discuss some of
+         the most common package types you'll see when you work in IT support.
+         In Windows, software is usually packaged as a dot exe or executable file.
+         Executable files contain instructions for a computer to execute when they're run,
+         like copy this file from here to here,
+         install this program, or more generically, perform this operation.
+         The concept of an executable file isn't unique to Windows,
+         but Windows has its own special implementation of them in the form of the exe's.
+         They're created according to Microsoft's portable executable or PE format.
+         Although we won't get into the details of the PE format,
+         it's good to know that exe files don't just
+         contain instructions for the computer to perform.
+         They also include things like text or computer code,
+         images that the program might use,
+         and potentially something called an msi file.
+         A Microsoft install package or msi is used
+         to guide a program called the Windows Installer in the installation,
+         maintenance, and removal of programs on the Windows operating system.
+         Besides using the GUI setup wizard to guide the user in installing the program,
+         the Windows installer also uses
+         the msi file to create instructions on how to remove the program,
+         if the user wants to uninstall it.
+         Windows executable files are usually used as
+         starting points to bootstrap the Windows installer.
+         In this case, they might just contain
+         an msi file and some instructions to start the Windows installer and read it.
+         Alternatively, executables can be used as stand-alone,
+         custom installers, with no msi file or usage of the Windows installer.
+         If they're packaged this way,
+         the exe file will need to contain
+         all the instructions that operating system needs to install the program.
+         So, when would you use an msi file and the Windows installer?
+         And when would you use an executable with
+         a custom installer packaged in something like setup.exe?
+         Great questions. If you want
+         precise granular control over the actions Windows takes when installing your software,
+         you might go the custom installer route.
+         This can be tricky though,
+         especially when managing things like code dependencies,
+         which we'll talk about later.
+         On the flip side, using the Windows installer guided by
+         an msi file takes care of a lot of the bookkeeping and set up for you,
+         but it has some pretty strict rules about how the software gets installed.
+         As of Windows 8, Microsoft has introduced
+         a platform to distribute programs called the Windows Store.
+         The Windows Store is an application repository or warehouse,
+         where you can download and install universal Windows platform apps.
+         Those are the applications that can run on
+         any compatible Windows devices like desktop PCs, or tablets.
+         These programs use a format called appx to
+         package their contents and act like a unit of distribution.
+         We won't go into detail about appx packages,
+         but it's good to know they're out there giving you another option for packaging software.
+         Feel free to read more about appx packages and how to make
+         them in the supplemental readings I've included after this video.
+         We learned how to install exe packages in an earlier course.
+         To install an exe from the GUI,
+         all we need to do is double click on
+         the executable then go through the installation process provided,
+         either by the executable itself or the Windows installer.
+         That's pretty straightforward, but what about installing software from the command line?
+         And why would you need to do this in the first place?
+         Hold onto your desktops because you're about to find out.
+         Installing executables from the command line can be handy in lots of
+         IT support scenarios, including automatic installations.
+         You might want to write a script or use a configuration management tool to install
+         some software automatically without needing a
+         human to click buttons in an installation wizard.
+         So, how can you install an executable from the command line?
+         The answer, it depends.
+         Pretty unsatisfying, I know.
+         Running exe files from the command line is pretty simple.
+         You open up a Command Prompt or PowerShell,
+         change in to directory where the executable is,
+         and type in its name.
+         
+        You could also just type the absolute path of
+         the exe from wherever you are in the file system, like this,
+         C:\users\cindy\desktop\hello.exe.
+         Running from an installer from the command line is similar,
+         but will potentially have more options for installation.
+         Depending on the installer,
+         you might have flags for things like a silent installation,
+         where nothing shows up on the screen and the package is installed quietly,
+         or you might get an argument to have
+         the computer reboot automatically after the package is installed.
+         You can check out the options for packages created by using
+         the Microsoft Self-Extractor in
+         the supplemental reading for a better idea of what we are talking about.
+         A given installer might have these kinds of options for installing from the command line,
+         but they vary from vendor to vendor.
+         The options available for a Microsoft package
+         might differ from the options for a Mozilla package.
+         Pro tip, try using the slash question mark parameter when running
+         a package from the command line to see
+         what kinds of sub commands the package might support.
+         If the package doesn't have any help related options,
+         your best bet is to check out the vendor's documentation
+         for what kinds of installations their software packages support.
+ 
+
+
+    - Supplemental Reading for the Linux Tar Command:
+        -- 
+	
+        The tar (i.e., tape archive) command is used to convert a group of files into an archive.
+
+        An archive is a single file that contains any number of individual files plus information to allow them to be restored to their original form by one or more extraction programs. Archives are convenient for storing files as well as for for transmitting data and distributing programs. Moreover, they are very easy to work with, often much more so than dealing with large numbers of individual files.
+
+        Although tar was originally designed for backups on magnetic tape, it can now be used to create archive files anywhere on a filesystem. Archives that have been created with tar are commonly referred to as tarballs.
+
+        Unlike some other archiving programs, and consistent with the Unix philosophy that each individual program should be designed to do only one thing but do it well, tar does not perform compression. However, it is very easy to compress archives created with tar by using specialized compression utilities.
+
+        tar's basic syntax is
+
+        tar option(s) archive_name file_name(s)
+
+        tar has numerous options, many of which are not frequently used. Unlike many commands, tar requires the use of at least one option, and usually two or more are necessary.
+
+        tar files are created by using both the -c and -f options. The former instructs tar to create an archive and the latter indicates that the next argument (i.e., piece of input data in a command) will be the name of the new archive file. Thus, for example, the following would create an archive file called file.tar from the three files named file1, file2 and file3 that are located in the current directory (i.e., the directory in which the user is currently working):
+
+        tar -cf file.tar file1 file2 file3
+
+        It it not absolutely necessary that the new file have the .tar extension; however, the use of this extension can be is very convenient because it allows the type of file to be visually identified. It is necessary, however, that the -f option be the final option in a sequence of contiguous, single-letter options; otherwise, the system will become confused as to the desired name for the new file and will use the next option in the sequence as the name.
+
+        The -v (i.e., verbose) option is commonly used together with the -c and -f options in order to display a list of the files that are included in the archive. In such case, the above example would become
+
+        tar -cvf file.tar file1 file2 file3
+
+        tar can also be used to make archives from the contents of one or more directories. The result is recursive; that is, it includes all objects (e.g., directories and files) within each level of directories. For example, the contents of two directories named dir1 and dir2 could be archived into a file named dir.tar with the following:
+
+        tar -cvf dir.tar dir1 dir2
+
+        It is often convenient to use tar with a wildcard (i.e., a character which can represent some specific class of characters or sequence of characters). The following example uses the star wildcard (i.e., an asterisk), which represents any character or sequence of characters, to create an archive of every object in the current directory:
+
+        tar -cf *
+
+        By default, tar creates an archive of copies of the original files and/or directories, and the originals are retained. However, they can be removed when using tar by adding the --remove-files option.
+
+        As it has no compression and decompression capabilities of its own, tar is commonly used in combination with an external compression utility. A very handy feature of the GNU version (which is standard on Linux) is the availability of options that will cause standard compression programs to compress a new archive file as soon as it has been created. They are -j (for bzip2), -z (for gzip) and -Z (for compress). Thus, for example, the following would create an archive named files.tar.bz2 of the files file4, file5 and file6 that is compressed using bzip2:
+
+        tar -cvjf files.tar.bz2 file4 file5 file6
+
+        tar can also be used for unpacking tar files. However, before doing this, there are several steps that should be taken. One is to confirm that sufficient space is available on the hard disk drive (HDD). Another is to move to an empty directory (which usually involves creating one with an appropriate name) to prevent the reconstituted files from cluttering up the current directory and overwriting any files or directories with same names that are in it. In addition, if the archive has been compressed, it must first be decompressed using the appropriate decompression program (which can usually be determined by the filename extension).
+
+        In order to unpack a tar file, the -x (for extract) and -f options are required. It is also common to add the -v option to provide a running listing of the files being unpacked. Thus, for example, to unpack the archive file.tar created in a previous example the following would be used:
+
+        tar -xvf file.tar
+
+        Just as options are available to allow three compression programs to automatically compress newly created tar files, the same options can be used to have the compression programs automatically decompress tar files prior to extraction. Thus, for instance, the following would decompress and extract the contents of the compressed archive files.tar.bz2 that was created in an above example:
+
+        tar -xjvf files.tar.bz2
+
+        Files can be added to an existing archive using the -r option. As is always the case with tar, it is also necessary to use the -f option to indicate that the following string (i.e., sequence of characters) is the name of the archive. For example, the following would append a file named file7 to file.tar:
+
+        tar -rf file.tar file7
+
+        The --delete option allows specified files to be completely removed from a tar file (except when the tar file is on magnetic tape). However, this is different from an extraction, as copies of the removed files are not made and placed in the current directory. Thus, for example, the files file1 and file2 can be removed from file.tar with the following:
+
+        tar -f file.tar --delete file1 file2
+
+        The -t option tells tar to list the contents of an uncompressed archive without performing an extraction. Thus, the following would list the contents of file.tar:
+
+        tar -tf file.tar
+
+        One of the very few options that can be used alone with tar is --help, which provides a relatively compact listing of the numerous options that are available. Another is --version, which shows the version number for the installed tar program as well as its copyright information.
+
+    - Windows: Package Dependencies:
+        -- Packages of software usually rely on other pieces of code in order to work.
+         Let's say you're installing a game on your Windows computer.
+         The program might need to do some calculations to make the physics of the game work properly and
+         render the results in the form of graphics on the screen.
+         To perform these tasks, the game might have a dependency on a physics engine to do the calculations and a rendering library to show the sweet graphics on the screen.
+         In order for the game to work, you'll have to have all that software available to the game.
+         Counting on other pieces of software to make an application work is called having dependencies since one bit of code depends on another in order to work.
+         In our example, the game depends on both the physics engine and a rendering library to run.
+         But wait, what do we mean when we refer to a library?
+         You can think of the library as a way to package a bunch of useful code that someone else wrote.
+         This code is bundled together into a single unit.
+         Programs that want to use the functionality that the code provides can tap into it if they need to.
+         In Windows, these shared libraries are called dynamic-link libraries, or DLL for short.
+         You can find out more details about dynamic link libraries in the next reading.
+         
+        One super useful feature of a DLL is that the same DLL can be used by lots of different programs.
+         This means all that shared code doesn't need to be loaded into memory for each application that wants to use it, so less memory overall is used.
+         Windows applications typically have many dependencies all located together in a single installation package.
+         Along with something called an MSI file that tells the Windows Installer how to put it all together.
+         
+        This means that a given installation package will have all the resources and dependencies like DLLs, right there in the package.
+         The Windows Installer will also handle managing those dependencies and make sure they are available to the program.
+         In the old days, things weren't always so great.
+         Imagine this scenario.
+         A video player you've been using to play movies on your computer uses a graphics DLL to display films on your screen.
+         A new game just came out that you want to play, so you install that too.
+         
+        The game comes along with a new version of that graphics library.
+         So the game installer updates the existing version with the new DLL.
+         All of a sudden, your video player stops working.
+         It turns out the video player doesn't know how to use the new version of the DLL, which is a pretty big bummer.
+         On modern Windows Operating Systems though, DLL hell is a problem of the past.
+         To fix it, most shared libraries and resources in Windows are managed by something called side-by-side assemblies or SxS.
+         
+        Most of these shared libraries are stored in a folder at C:\Windows\WinSxS.
+         If an application needs to use a shared library to perform a task, that library will be specified in something called a Manifest.
+         This tells Windows to load the appropriate library from the SxS folder.
+         The SxS system also supports access to multiple versions of the same shared library automatically.
+         So when you install software, you don't pull the rug out from underneath the programs you've already got.
+         In addition to manifest, the SSX system and installers bundling dependencies together in their installation packages.
+         You can use a Windows Package Manager to help install and maintain the libraries and other dependencies that your installed software needs to use.
+         We'll talk about this in more detail in our lesson on Windows package managers.
+         We'll give you preview using the Windows package management feature for PowerShell.
+         Using a Windows package management cmdlet called Find-Package, you can locate software, along with its dependencies right from the command line.
+         
+        By the way, a cmdlet is basically the name we give to Windows PowerShell commands that use the verb-noun format.
+         We've already used lots of cmdlets such as get-help, select-string etc.
+         There are hundreds of cmdlets built into Windows and you can even write your own.
+         Okay, back to my task at hand.
+         Let's say you wanted to install the Sysinternals package.
+         Which is a set of tools released by Microsoft that can help you troubleshoot all sorts of problems on your Windows computers.
+         
+        You could download the Sysinternals package from the Microsoft Website or you could use the package management feature.
+         
+        First we'll need to open up a PowerShell terminal by typing in PowerShell from the start menu.
+         
+        Then we can try to locate the sysinternals package by executing this command.
+         Find-Package sysinternals-IncludeDependencies.
+         
+        An error.
+         No match found.
+         What's that all about?
+         
+        This exception was generated because the default source of packages in PowerShell is the PowerShell gallery, which doesn't contain the Sysinternals package.
+         
+        Luckily, all we need to do is tell PowerShell about a place where it can find the Sysinternals package.
+         And that's a package repository called Chocolatey.
+         We'll dip into more about Chocolatey in the package manager video.
+         But for now, just know it's a place where all kinds of windows software packages live.
+         So, before we can install any packages, we need to add a package source that tells our computer where it can find the packages we want to install.
+         Since we want to use Chocolatey to find our packages, we need to add it as a package source.
+         We're going to do that with the PowerShell command Register-PackageSource.
+         Let's go and type Register-PackageSource-Name chocolatey-ProviderName Chocolatey-Location,.org/api/v2.
+         
+        We can verify both sources of software are now good to go
+         with the Get-PackageSource command.
+         
+        And then, try to locate our package and
+         its dependencies again with Find-Package, sysinternals-includeDependencies.
+         Sweet!
+         Now that we know that's the package we want, we can use a cmdlt called Install-Package to actually install Sysinternals and its corresponding dependencies.
+         We'll do that in a later lesson. Now it's time for snack break. All this Chocolatey talk made me hungry.
+
+Package Managers:
+    - Windows: Package Manager:
+        -- Now that we know a bit about installing software and
+         dependencies from individual executables or package files,
+         let's take a look at a different way to manage
+         software installations using tools called package managers.
+         You've actually already seen a package manager in action.
+         Remember the apt or advanced package tool we talked about in earlier video?
+         Well, the advanced package tool is
+         actually a package manager for the Ubuntu operating system.
+         We'll talk about apt in a little bit.
+         But you might be curious about what options you have for Windows package management.
+         A package manager makes sure that the process of software installation,
+         removal, update, and dependency management is as easy and automatic as possible.
+         Think about the normal way you might install a new program on your Windows computer.
+         You might search for it in a search engine,
+         go to the program's website,
+         download the installer, then run it.
+         If you wanted to update the software,
+         you might open up the program and use
+         whatever mechanism it provides for you to install the new version.
+         Lots of programs give you a way to perform automatic updates and
+         Microsoft takes care of the ones it writes through Windows update.
+         But you might even need to go back to the website you downloaded the software
+         from originally to grab another installer for the new version.
+         Finally, if you wanted to remove the software,
+         you might use the windows Add/Remove programs utility.
+         Or maybe run a custom uninstaller if it provides you with one.
+         Some installation technologies like
+         the Windows installer can take care of dependency management.
+         But they don't do much to help you install software from
+         a central catalog of programs or perform automatic updates.
+         This is where a package manager like Chocolatey can come in handy.
+         Chocolatey is a third party package manager for Windows.
+         This means it's not written by Microsoft.
+         It lets you install Windows applications from the command line.
+         Chocolatey is built on some existing Windows technologies like PowerShell,
+         and lets you install any package or software that
+         exists in the public Chocolatey repository.
+         I've included links to both in the next reading.
+         You can add any software that might be missing to the public repository.
+         You can even create your own private repository if you need to
+         package something like an internal company application.
+         Configuration management tools like SCCM and Puppet,
+         even integrate with Choclatey.
+         That helps make managing deployments of software to
+         the Windows computers in your company, automatic and simple.
+         We've talked about a few ways we can install packages in earlier videos.
+         Let's add Chocolatey to the mix,
+         which supports several methods of software installation itself.
+         First, you can install the Choclatey command line tool
+         and run it directly from your PowerShell CLI.
+         Or you can use the package management feature that was recently released for PowerShell.
+         Just specify that the source of the package should be the Choclatey repository.
+         Remember this from our talk about installing software?
+         We use this command to locate
+         the Windows Sysinternals package after adding Choclatey as a software source.
+         Just a refresher, the command was Find-package sysinternals include dependencies.
+         That's all well and good.
+         But how do we actually go about installing this package?
+         Well, that's where the Install-Package command-let comes into play.
+         We can use this tool to install a piece of software and its dependencies.
+         Let's get installing that sysinternals package we found earlier shot.
+         I'm just going to go install, package-name sysinternals.
+         Yep, I'm just going to confirm.
+         And just like that, we've got our package.
+         We can verify it's in place with the Get-Package command-let.
+         Get-Package -name sysinternals.
+         You can also uninstall a package using the Uninstall-Package -Name sysinternals.
+
+What's Happening in the background:
+    - Windows: Underneath the Hood:
+        -- We've talked a lot about the practical aspects of installing software,
+         which has been abstracted for us in the form of package managers.
+         But as someone who might be working in IT,
+         it's also important for you to understand what happens underneath the hood,
+         when installing or removing software.
+         In other words, what really happens with
+         the underlying technology when you perform this action.
+         You might come across a situation where a package you install,
+         modifies a configuration file that it's not supposed to,
+         and then starts causing issues for you.
+         So how does software installation work underneath the hood?
+         Let's take a look at how an EXE gets installed in Windows.
+         When you click on an installation executable,
+         what happens next depends on how the developer of
+         the program has set their application app to be installed.
+         If the EXE contains code for
+         a custom installation that doesn't use the Windows installer system,
+         then the details of what happens under the hood will be mostly unclear.
+         This is because most Windows software is distributed in closed source packages.
+         Meaning you can't look at the source code to see what the program is doing.
+         In this case though, although you can't read the instructions the developer has written,
+         you can use certain tools to check out the actions the installer is taking.
+         One way to do this, will be to use
+         the process monitoring program provided by the Microsoft CIS internals toolkit.
+         This will show you any activity the installation executable is taking,
+         like the files it writes and any process activity it performs.
+         You can read more about the Microsoft CIS internals toolkit
+         in the next supplemental reading.
+         So what about MSI file,
+         or an executable wrapping an MSI?
+         Again, the application itself will be closed source,
+         so you won't be able to peek at the source code to see what it does.
+         But, installation packages that use
+         the MSI format have a set of rules and standards they need to conform to,
+         so that the Windows installer system can understand
+         their instructions and perform the installation.
+         There are more to MSI files than it might seem at first.
+         In fact, they aren't simple files at all.
+         They're actually a combination of databases that contain
+         installation instructions in different tables along with all the files,
+         objects, shortcuts, resources and libraries the program will need all grouped together.
+         The Windows installer uses the information stored on the tables in the MSI database,
+         to guide how the installation should be performed.
+         They'll know where files and application data should go,
+         and any other things that should happen to successfully install the program.
+         The Windows installer will keep track of all the actions it
+         takes and create a separate set of instructions to undo them.
+         This is how it lets users uninstall the program.
+         If you're curious about the details of what goes into an MSI file,
+         or want to create a Windows installer package yourself,
+         check out the orca.exe tool that Microsoft provides.
+         It's a good way to satisfy your curiosity.
+         Orca, is part of the Windows SDK or software development kit,
+         but you don't need to be a programmer to use it.
+         Orca can help you edit,
+         or create Windows installer packages.
+         So, feel free to explore what it can do.
+         We've provided a link to the tool in the supplementary reading right after this video.
+         Wow, there's a lot going on underneath the hood in a Windows installation,
+         and it's all kicked off by a couple of clicks.
+         So what about LIX?
+         Glad you asked, that's up next.
+         
+                         
+Device Software Management:
+    - Windows: Devices and Drivers:
+        -- An important piece of software that we've talked about, but
+         haven't really seen in action, is a driver.
+         Remember that a driver is used to help our hardware devices interact with
+         our operating system.
+         In this lesson, we're going to talk about device drivers and how to manage them.
+         First, let's talk about how to manage the devices that our computer sees, and
+         then we'll go over how we install drivers for them.
+         In Windows, Microsoft groups all of the devices and drivers on the computer
+         together in a single Microsoft management console called the Device Manager.
+         You can get to the Device Manager in a couple of different ways.
+         You can open up the Run dialog box and type in devmgmt.msc.
+         Or you can right-click on This PC, select Manage, and
+         click on the Device Manager option in the left-hand navigation menu.
+         I'm just going to open it up from here.
+         
+        Most devices you've got on your computer will be grouped together according to some
+         broad categories by Windows.
+         So any displays you might be using with your computer would show up under
+         the Monitors section in the Device Manager.
+         
+        Like so.
+         This grouping usually happens automatically when you plug in a new
+         device.
+         It's part of the plug and play system
+         that Windows uses to automatically detect new hardware plugged into your computer.
+         It then recognizes and installs the appropriate software to manage it.
+         
+        If you're interested,
+         you can read more about the PnP system in the supplementary reading.
+         We'll give you an overview of how this works too, so you can get a feel for it.
+         When you plug a new device, like a mouse or keyboard, into your computer,
+         the Windows operating system will go through a few steps to try and
+         get it working.
+         Most vendors or computer hardware manufacturers will assign a special string
+         of characters to their devices called a hardware ID.
+         
+        When Windows notices that a new device has been connected, the first thing it'll do
+         is ask the device that's been plugged in for its hardware ID.
+         
+        Once Windows has the new device's hardware ID, the OS uses it to search for
+         the right driver for the device.
+         It looks for it in a few places, starting with a local list of well-known drivers.
+         Then it goes on to Windows Update or
+         the driver store if it needs to expand the search.
+         Sometimes the device will come with an installation disk,
+         which contains custom driver software and you can tell Windows to look there too.
+         Finally, Windows will take the driver software it found and
+         install it so you can use your new device.
+         Although this process mostly happens automatically and
+         behind the scenes, you can interact directly with the Windows drivers through
+         the Device Manager console we mentioned earlier.
+         You can expand any of the categories in the Device Manager to view the devices
+         inside them, like so.
+         
+        You can also use the all-powerful Windows right-click to open up a menu with options
+         to work with them.
+         
+        You can uninstall, disable, and update a device driver from this menu.
+         You can also tell Windows to look for
+         hardware changes like a newly plugged in device.
+         
+        Finally, if you choose Properties from the right-click menu,
+         you can see some details about the device and its driver.
+         
+        Like its manufacturer and the driver version being used.
+         
+        If you're interested in accessing drivers through Windows CLI,
+         check out the following reading for more info.
+    - Supplementary Reading Windows Devices and Drivers:
+        -- 
+
+    - Windows: Operating System:
+        -- You've made it to the last lesson in this module where we're going to cover
+         the most important software, the operating system.
+         We've already looked at how to install and
+         maintain applications like a word processor, graphical editor, etc.
+         Then we looked at how to install device driver software too.
+         Now we're going to look at the core operating system updates.
+         Spoiler alert, they work just the same way as every other software we've installed.
+         
+        It's important to keep your operating system up to date for
+         lots of different reasons.
+         You want the newest features that your operating system has, and
+         you want the security updates that your operating system needs.
+         When your operating system manufacturer discovers a security hole in the OS,
+         they do their best to create a patch for this hole.
+         
+        A security patch is software that's meant to fix up a security hole.
+         When you have an operating system update with security patches it's
+         vital that you install those patches right away.
+         The longer you wait the more prone you are to being effected by a security hole.
+         
+        As an IT support specialist, it's very common to routinely install
+         operating system updates to keep your system up to date and secure.
+         
+        Windows usually does a great job of telling you when there are updates
+         to install.
+         The Windows Update Client service runs in the background on your computer to
+         download and install updates, and patches for your operating system.
+         It does this by checking in with the Windows Update servers at Microsoft
+         every so often, you can learn more in the next reading.
+         If it finds updates that should be applied to your computer it'll download them,
+         if you decided to allow it to, more on that later.
+         Once the download has completed, depending on your Windows Update settings,
+         the Windows Update Client will ask you if it's okay to install the updates or
+         just go ahead and install them automatically.
+         This process usually requires a restart of your computer,
+         which the Client performs after requesting permission.
+         In versions of Windows before Windows 10,
+         you can tell Windows to manage your updates in a few different ways.
+         You could have the Windows Update Client install updates and patches that Microsoft
+         releases automatically or can let Windows Update know that you want
+         to decide whether or not you'd like to download and install them.
+         You can even turn off updating entirely,
+         but that's probably not a good idea for the security reasons we talked about.
+         You can configure Windows Update by searching updates in the search box and
+         going to Windows Update setting.
+         
+        From there, you can tell the Windows Update Client to check for new updates,
+         look at the history of updates installed, or change the way that it'll download and
+         apply patches by clicking into the settings section.
+         
+        From there, you can tell the Update Client how you want to manage your updates and
+         even set a time when you want them installed.
+         
+        Windows 10 does things differently, instead of
+         downloading a handful of independent updates that you can choose to apply or
+         not apply to your computer, updates are cumulative.
+         This means that every month a package of updates and
+         patches is released that supersedes the previous month's updates.
+         
+        The idea behind this is that computers will need to download less stuff
+         in order to be up to date.
+         As an example of how this might be beneficial,
+         think about a Windows machine that's been turned off for a while.
+         When it boots up again after a long period of inactivity,
+         it'll need to download all of the updates that it's missed and apply them.
+         If it's been off for a really long time, this could mean it'll need to download and
+         apply hundreds of updates.
+         With the cumulative update model, a computer like that
+         would only need to download the latest cumulative update, then be good to go.
+         
+        One downside to this is that in Windows 10,
+         installing updates is no longer optional.
+         You also can't pick and choose the updates you want to apply,
+         since they're all rolled into one monthly release.
+         
+        Microsoft has announced that the update model in Windows 7 and
+         8 will also be moving in this cumulative package direction.
+         So, Windows 10 users won't be alone.
+
+

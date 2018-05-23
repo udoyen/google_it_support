@@ -1,0 +1,273 @@
+Life of a Process:
+    - Programs vs Processes Revisited:
+        -- In earlier lesson, we learned that programs are the applications that we can run like the Chrome web browser. Processes are programs that are running. We can have lots of processes running for the same program like how we can have many chrome windows open at once or lots of movies playing using one program. When we launch a process, we're executing a program. And remember, a program is just software. To calculate the information that our software contains, we need to give it resources so that it can be run. When processes are run, they take up hardware resources like CPU and RAM. Luckily, today's computers are powerful enough to handle the processes that we use in our day-to-day activities, like browsing the web, watching movies, etc.. But, sometimes this isn't enough, sometimes a process is taking more resources than it's supposed to. Sometimes, processes are unresponsive and freeze up our system making our entire computer unresponsive. Well, we're going to talk about why this happens, and how we can fix it in the upcoming lessons. But before we can talk about managing processes, we have to understand how they work. When you open up an application like a word processor, you're launching a process. That processes get in something called a process ID to uniquely identify it from other processes. Our computer sees that the process needs hardware resources to run. So our kernel makes decisions to figure out what resources to give it. Then, in the blink of an eye, our computer starts up a word processor and tadah, already to start working. This happens for every process you launch yourself, and for every process you don't even know who's running. Besides, the visible processes that we start, like our music player or word processor, there are also not so visible processes running. These are known as background processes, sometimes referred to as daemon processes. Background processes are processes that run in the background. We don't really see them, and we don't interact with them, but our system needs them to function. They include processes like scheduling resources, logging, managing networks, and more. When we take a look at all the processes running on our system, you'll see what I'm talking about. In the next couple of lessons, we'll talk about how processes get created and terminated. Then, we can start digging into the details of process management. Process management is a vital skill in IT support. You'll often find yourself troubleshooting issues with frozen applications, slow applications, and more. 
+
+    - Windows: Process Creation and Termination:
+        -- The way that processes are created and stopped differs based on the operating system you use. First, let's have a look at how Windows does things. When Windows boots up or starts, the first non-kernel user mode that starts is the Session Manager Subsystem or smss.exe. The smss.exe process is in charge of setting some stuff up for the OS to work. It then kicks off the log-in process called winlogon.exe appropriately enough, along with the Client/Server Runtime Subsystem called csrss.exe, which handles running the Windows GUI and command line council. We'll talk about a process called init in the next lesson, which Linux uses as the first process. You might be tempted to think of smss.exe as a Windows equivalent of init. Don't fall into that trap though. When it comes to process creation mechanisms, they're all pretty different. In Windows, each new process that's created needs a parent to tell the operating system that a new process needs to be made. The child process inherit some things from its parent like variables and settings, which we can collectively refer to as an environment. This gives the child process a pretty good start in life, but after the initial creation step, the child is pretty much on its own. Unlike in Linux, Windows processes can operate independently of their parents. Let's take a look at how this works by creating our own. First, let's launch the PowerShell process to give us a Windows command prompt. 
+1:52
+        From there, we can type in notepad.exe to create a new process for the notepad program. So far, so good. The parent process is PowerShell, and the child is the notepad application. What happens if we kill the parent process though by clicking on the X button? Notice that notepad keeps on running happily even though its parent has been terminated. Those children are just in their own world. Clicking the X is just one way to stop a process from running in Windows, but as you might expect, there are other ways you can stop processes. You can use a command prompt command by calling on the task kill utility. Task kill can find and halt a process in a few ways. One of the more common ways is use an identification number, known as the process id or PID to tell task kill which process you'd like stopped. One way to do this is to kill notepad again by specifying the PID using taskkill/pid and then the PID number. Taskkill/pid, this is the process id of notepad. That's success. This will send the termination signal to the process identified by the PID, which happens to be notepad in our case. This is useful, but how do we get that PID in the first place? Glad you asked. We'll talk about how to locate and view processes and other more detailed process information in an upcoming lesson. 
+
+    - Supplementary Reading for process Creation and Termination in Windows:
+        -- https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/taskkill
+
+    - Linux: Process Creation and Termination:
+        -- In Linux processes have a parent child relationship. This means that every process that you launch comes from another process. 
+
+        Lets check out this command. 
+
+        The less command would be the parent process to our grep process. 
+
+        If all processes come from another process, there must be an initial process that started this all, right? 
+
+        Yes, there is, when you start up your computer, the kernel creates a process called a nit, which has a pit of one. A nit starts up other processes that we need to get our computer up and running. There are more nuances to process creation than this, but I wanted to introduce the parent process concept, since you'll see them when we start managing processes. What about what happens when we're done with our processes? When your processes complete their task, they'll generally terminate automatically. Once a process terminates, it'll release all the resources it was using back to the kernel, so that they can be used for another process. You can also manually terminate a process, which we'll discuss how to do in an upcoming lesson. 
+    -
+
+Managing Processes:
+    - Windows: Reading Process Information:
+        -- It might feel like we're starting to get into the weeds here.
+         So let's take a step back and think about what processes really
+         are and what they represent in the context of an operating system.
+         You can think of processes as programs in motion.
+         Consider all the code for your Internet browser.
+         It sits there on your hard drive quietly waiting for its time to shine.
+         Once you start it up,
+         the operating system takes that resting code then
+         turns it into a running, responding, working application.
+         In other words, it becomes a process.
+         You interact with launch and halt processes all the time on computers,
+         although the OS usually takes care of all that behind the scenes.
+         By learning about processes,
+         you're taking a peek behind the curtain at how operating systems really work.
+         This knowledge is both fascinating and powerful,
+         especially when applied by a savvy IT support specialist to solve problems.
+         Keep all that in mind as we take a look at how you
+         can pull back the curtain even further.
+         Next, we'll learn about the different ways you can investigate
+         which processes are running on
+         a Windows computer and more methods of interacting with them.
+         On the Windows operating system,
+         the task manager or task mgr.exe is one method of obtaining process information.
+         You can open it with the control shift escape
+         key combination or by locating it using the start menu.
+         
+        If you click on the processes tab,
+         you should see a list of the processes that the current user is running
+         along with a few of the system level processes that the user can see.
+         Information about each process is broken out into columns in the task manager.
+         The task manager tells you what application or image the process is
+         running along with the user who launched it and the CPU or memory resources it's using.
+         To kill a process,
+         you can select any of the process rows and click
+         the end task button in the lower right corner.
+         We can demonstrate this by launching another notepad.exe process from the command line,
+         then switching over to the task manager,
+         selecting the notepad.exe process and ending it.
+         I already have Notepad open so I'm going to click on it, click end task.
+         In an earlier lesson,
+         we talked about starting and ending Windows processes.
+         Remember that we used the task kill command to stop
+         a process by its identification number or PID.
+         So how do we get that PID number?
+         While in task manager,
+         you can click on the details menu option and here,
+         you can see a whole bunch of other information you can get the task manager
+         to display, including the PID.
+         You can also see this information from both a command prompt and PowerShell.
+         From the command prompt,
+         you can use utility called TaskList to show all the running processes.
+         
+        From a PowerShell prompt,
+         you can use a Commandlet called Get-Process to do the same.
+         
+        There are lots of ways you can get process information from the Windows operating system.
+         We've included links to the documentation of both TaskList and
+         Get-Process in the supplementary reading
+         in case you want to dive deeper into either of these tools.
+
+    - Supplementary Reading for Reading Process Information in Windows:
+        -- https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-process?view=powershell-5.1
+
+    - Linux: Reading Process Information:
+        -- Okay, now let's talk about how to view the processes running on our system in Linux.
+         We'll be using the ps command, so let's just go ahead and
+         run that command with the dash X flag, and see what happens.
+         
+        This shows you a snapshot of the current processes you have running on your system.
+         The ps output can be overwhelming to look at at first, but
+         don't worry, we'll walk through how to read this output.
+         
+        Let's start from right to left here.
+         P-I-D or
+         PID is the process ID, remember processes get a unique ID when they're launched.
+         TTY, this is the terminal associated with the process,
+         we won't talk about this field but
+         you can read more about it in the manpages linked right after this video.
+         STAT this is the process status,
+         if you see an R here it means the process is running or it's waiting to run.
+         Another common status you'll see is T for
+         stopped, meaning a process that's been suspended.
+         
+        Another one you might see is an S for interruptible sleep,
+         meaning the task is waiting for an event to complete before it resumes.
+         
+        You can read more about the other types of process statuses in the manpages.
+         
+        TIME, this is the total CPU time that the process has taken up.
+         
+        And lastly, command, this is the name of the command we're running.
+         Okay, now we're going to enter hard mode here.
+         Run this command, PS-EF.
+         The E flag is used to get all processes, even the ones run by other users.
+         The dash F flag is for full, which shows you full details about a process.
+         
+        Look at that, we have more processes and even more process details.
+         Let's break this down.
+         
+        UID is the user ID of the person who launched the process.
+         PID is the process ID, and PPID is the parent ID
+         that we discussed in earlier lesson which launched the process.
+         C is the number of children processes that this process has.
+         STime is the start time of the process.
+         TTY is the terminal associated with the process.
+         
+        TIME is the total CPU time that the process has taken up.
+         
+        And CMD or command is the name of the command that we're running.
+         What if we wanted to search through this output?
+         It's super messy right now,
+         can you think of a way we can see if a process is running?
+         That's right,
+         with the grep command, I told you we were going to use it all the time.
+         
+        This will give us a list of process that have the name Chrome in them.
+         There's another way to view process information,
+         remember everything in Linux has a file, even processes.
+         To view the files that correspond to processes we can look into slash proc
+         directory.
+         
+        There are a lot of directories here for every process that's running.
+         If you looked inside of one of the subdirectories it'll give you even more
+         information about the process.
+         Let's look at a sample process file for PID 1805.
+         
+        This tells us even more information about a process state than what we saw in PS.
+         While the slash proc directory is interesting to look at,
+         it's not very practical when we need to troubleshoot issues with processes.
+         For now stick with the PS-EF command to look at process information.
+         As you can see, we can learn a lot about the processes running on our
+         machine with just a few key strokes.
+         In an upcoming lesson we'll talk about how to use process information to our benefit
+         when figuring out which processes are taking up too many resources.
+         For now, feel free to learn a little more about the processes that you're running,
+         I'll be waiting for you in the next video.
+
+    - Supplementary Reading for Reading Process Information in Linux:
+        -- 
+    - Linux: Signals:
+        -- In Linux, there are lots of signals that we can send to processes.
+         These signals are labeled with names starting with SIG.
+         Remember the SIGINT signal we talked about before?
+         You can use SIGINT to interrupt a process,
+         and the default action of this signal is to terminate the process that it's interrupting.
+         This is true for Linux too.
+         You can send a SIGINT signal through
+         the keyboard combination control C. Let's see this in action.
+         I'm going to do the same thing as we did in Windows and start a program like sudo parted.
+         
+        We can see that we're in the parted tool now.
+         Let's interrupt this tool and say we want it to abort
+         the process with the control C keyboard combination.
+         
+        Now, we can see that the process closed and we're back in our shell.
+         We were able to interrupt our process midway and terminate it.
+         Success. There are lots of signals used in Linux,
+         and we'll talk about the most common ones in the upcoming lessons.
+ 
+    - Supplemmentary Reading for Windows Signal:
+        -- https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/signal
+
+    - Windows: Managing Processes:
+        -- In earlier lessons, we talked about processes.
+         We saw some examples of how to manipulate them with signals.
+         Let's expand on that idea, Process Management,
+         by looking at some of the things you can do to manipulate processes.
+         In Windows, we've looked up programs like Task Manager,
+         the PowerShell command like Get-Desk process,
+         and the Task close utility, to name a few.
+         We've also seen how to send a running processor signal through Control C,
+         but there's another Process Management tool we haven't talked about
+         which lets you do things like restart or even pause processes.
+         This tool is called Process Explorer.
+         Process Explorer is a utility Microsoft created let IT support specialists,
+         systems administrators, and other users look at running processes.
+         Although it doesn't come built into the Windows operating system,
+         you can download it from the Microsoft website which I've
+         linked to in the supplemental reading right after this video.
+         Once you've downloaded Process Explorer and started it up,
+         you'll be presented with a view of the currently active processes in the top window pane.
+         You'll also see a list of the files
+         a selective process is using in the bottom window pane.
+         This can be super handy if you need to figure out which processes use a certain file,
+         or if you want to get insight into exactly what the process is doing, and how it works.
+         You can search for a process easily in Process Explorer by either pressing Control F,
+         or clicking on the little binocular button.
+         Let's go ahead and do a search for the notepad process we opened up earlier.
+         You should see C\Windows\System32\notepad.exe
+         listed as one of the search results.
+         If you see something that says notepad.exe.mui, don't worry.
+         MUI stands for multilingual user interface,
+         and it contains a package of features to support different languages.
+         Anyways, once you've located the notepad.exe process,
+         notice how it's nested under the command.exe process in the UI.
+         
+        This indicates that it's a child process of command.exe.
+         If you right-click on the notepad.exe process,
+         you'll be given a list of different options that you can use to manage the process.
+         Check out the ones that say Kill Process,
+         Kill Process Tree, Restart, and Suspend.
+         Kill Process is what you might expect.
+         Say goodbye to notepad. Kill Process Tree does a little bit more.
+         It'll kill the process and all of its descendants.
+         So, any child process started from it will be stopped.
+         Kill Process Tree takes no prisoners.
+         Restart is another interesting option.
+         You might be able to guess what it does just by its name.
+         It will stop and start the process again.
+         Let's do that with the notepad.exe process.
+         We started from command.exe.
+         Interesting.
+         After the restart,
+         notepad.exe doesn't appear as a child of command.exe anymore.
+         What gives? Well, if you'll search for notepad.exe again,
+         we can see it's been restarted as a child of the procexp.exe process.
+         This is the process name for Process Explorer.
+         This makes sense since Process Explorer was
+         a process in charge of starting it again after we terminated it.
+         But what about the Suspend option?
+         Instead of killing a process,
+         you can use this option to suspend it and potentially continue it at a later time.
+         If we right-click, suspend the process,
+         we'll see that in the CPU column,
+         the process explorer output,
+         the word suspended appears.
+         
+        While a process is suspended,
+         it doesn't consume the resources it did when it was active.
+         We can kick it off again by right-clicking and selecting the Resume option.
+         
+        Process Explorer can do a lot,
+         and we'll take a look at some of
+         the monitoring information it can give us in an upcoming lesson.
+         We won't get into the details of all its features though.
+         So, if you're curious, you can check out the documentation on Microsoft's website.
+         We put a link to it for you and the supplementary reading.
+         
+
+    - Supplementary Reading for Managing Processes in Windows:
+        --
+
+    - Linux: Managing Processes:
+        --
+
+Process Utilization:
+    - 

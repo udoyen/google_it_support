@@ -1,0 +1,823 @@
+Introduction to Operating Systems and Becoming a Power User:
+    - Lesson Overview & Practice Tips:
+        -- We dipped our toes in the Windows and Linux OS's in the first course of this program.
+         Now, let's jump right in and learn how to perform
+         all the common navigational tasks of both operating systems.
+         For Windows, we're going to learn how to navigate the operating system using
+         the GUI and using the command line interpreter or CLI.
+         For Linux, we're only going to focus on learning the command line.
+         The command line interpreter in Linux is called a shell,
+         and the language that we'll use to interact with the shell is called Bash.
+         It's worth calling out that these two operating systems are very similar to one another.
+         So, even if you don't know how to use the Linux GUI,
+         as long as you know how to navigate the Windows GUI,
+         you'll be able to apply those tools to the Linux GUI.
+         It's possible that you'll only be using the Windows GUl in the workplace.
+         Even so, if you learn how to use the Windows command line,
+         this will set you apart from other IT support specialists.
+         You'll soon discover that using the command line in any operating system
+         can actually help you complete your work faster and more efficiently.
+         We surely encourage you to follow along and
+         actually perform the task we do in this course yourself.
+         If you can, pause a video and do the exercises
+         that we do or type out any of the commands we introduce.
+         It will be much easier for you to understand them in this way.
+         We also recommend that you document all the commands that we show you.
+         Either write them down with an old-fashioned pen and paper notebook,
+         or type them out in a doc or text editor.
+         Just write them on a stone if you have to,
+         we just want you to write them down somewhere.
+         You probably won't remember all the commands
+         immediately when we first introduced you to them,
+         but with a little practice,
+         typing the commands will become second nature to you.
+         You can also use the official Windows CMI and Bash documentation
+         that we've provided for you in the supplemental reading,
+         right after this video for reference, if you need to.
+         In this lesson, the content is broken down into two themes.
+         The first is basic operating system navigation,
+         like navigating from one directory to another,
+         getting file information, and removing files and directories.
+         The second theme is file and text manipulation,
+         like searching through your directories to find a specific file,
+         copying and pasting, chaining commands and more.
+         Okay. Enough chit-chat. Let's get started.
+
+    - Supplemental Reading for Windows CLI & Unix Bash:
+        -- https://www.gnu.org/software/bash/manual/bash.html
+        -- https://docs.microsoft.com/en-us/powershell/scripting/powershell-scripting?view=powershell-5.1
+
+    - List Directories in a GUI:
+        -- In operating systems, files and folders or
+         directories are organized in a hierarchical directory tree.
+         You have a main directory that branches off and holds other directories and files.
+         We call the location of these files and directories, paths.
+         Most paths in Windows looks something like this C:\Users\Cindy\Desktop.
+         In Windows, file systems are assigned to drive letters which look like C:,
+         or D:, Or X:.
+         Each drive letter is a file system.
+         Remember that file systems are used to keep track of files on our computer.
+         Each file system has a root directory which is
+         the parent for all other directories in that file system.
+         The root directory of C: would be written C:\,
+         and the root directory of X: would be written X:\.
+         Subdirectories are separated by backslashes,
+         unlike Linux, which uses forward slashes.
+         A path starts at the root directory of a drive and continues to the end of the path.
+         Let's open up this PC and navigate to our main directory.
+         The main directory in a Windows system is the drive that the file system is stored on.
+         In this case, our file system is stored on Local Disk C. From here,
+         I'm going to go to Users,
+         then my User folder cindy,
+         and finally to Desktop.
+         If you look at the top here,
+         you can see the path I'm in.
+         Local disk, Users, cindy, Desktop.
+         That wasn't too hard, right?
+         You can see here in our desktop directory that we have a few folders and files.
+         We have a Puppy's Pictures folder,
+         a Hawaii folder, and a file called My Super Cool File.
+         There are also some files on here that you can't see.
+         We call these hidden files.
+         They're hidden for a few reasons.
+         One is that we don't want anyone to see or accidentally modify these files.
+         They could be critical system files or configs or even worse,
+         embarrassing pictures of you in grade school rocking a mullet.
+         It's okay, you aren't the first person who like their hair
+         to be business in the front and party in the back.
+         Just for fun, let's see what kind of hidden files we have in here.
+         We'll go to the top and click View,
+         then check the hidden items checkbox.
+         Now we can see all the hidden files on our system.
+         Oh, interesting. There is a file named secret_file.
+         As much as I'd like to take a peek at it,
+         whoever created it probably doesn't want us to see
+         what's inside so we're going to leave it alone.
+         Let's go ahead and revert this option so we don't accidentally change something else.
+         
+        Okay, so what if we wanted to view information about a file?
+         Well, to do this,
+         we can actually just right click and choose Properties.
+         Let's try this for My Super Cool File.
+         This pop up dialog has a lot of information displayed here.
+         Let's break it down.
+         In the general tab,
+         we can see the file name,
+         the type of file, what applications we use to open it,
+         and the location path of the file which is C\Users\cindy\Desktop,
+         then we have the size of the file,
+         and the size on disk.
+         This can be a little confusing.
+         The size of the file is actually the amount of data that it takes up,
+         but size on disk is a little different.
+         It's not something you need to know right now but if you want to learn more about it,
+         you can check out the next supplemental reading.
+         All right, let's move on.
+         Next you have timestamps of when the file was created,
+         last modified, and last accessed.
+         After that our file attributes we can enable for our file.
+         We have Read-Only and Hidden.
+         You might guess that if you check hidden,
+         our file will be hidden and only visible if we enable show hidden items.
+         There are some advanced options too but we won't touch those for now.
+         You'll also notice a few other tabs here at the top.
+         Security, Details, and Previous Versions.
+         We'll talk more about the security tab in a later lesson.
+         The Details tab, basically,
+         tells us the information we just discussed about a file.
+         The Previous Versions tab lets us restore an earlier version of
+         a file so if you made a change to a file and wanted to revert to that change,
+         you could go back to that version.
+         To sum up listing the directories in the Windows GUI,
+         we can see the list of files and folders by default here.
+         You can even change how you want to view them using icons or even a list.
+         Then if you want to get more information about a file,
+         you can look at its properties.
+         Next up, let's see how to view all this information through the Windows CLI.
+
+    - Windows:List Directories in CLI:
+        -- It's important to know that there are a couple of
+         command line interfaces or CLIs available in Windows.
+         The first one is called the Command Prompt, command.exe.
+         The second one is PowerShell or powershell.exe.
+         The command prompt has been around for a very long time.
+         It's very similar to the Command Prompt that was used in MS DOS.
+         Since PowerShell supports most of the same commands as Command Prompt and many,
+         many more, we're going to use PowerShell for the exercises in this module.
+         I want to call out that many PowerShell commands that we use are
+         actually aliases for common commands in other shells.
+         An alias is sort of like a nickname for a command.
+         The first command that we'll use is for listing files and directories.
+         Let's start by listing the directories in the root of our C: drive.
+         The C: drive is where the Windows operating system is installed.
+         For many of you, it might be the only hard drive that you have in your computer.
+         To get to the PowerShell CLI, just search in your application's list PowerShell.
+         From here, we can go ahead and launch the PowerShell program.
+         We're going to use the ls or list directory command and
+         give it the path of where we want to look.
+         The path is not actually part of the command but it is a command parameter.
+         You can think of parameters as a value that's associated with a command.
+         Now you can see all the directories in the root of your C: drive.
+         You might just see a few or a whole bunch of directories.
+         It all depends on what your computer is used for.
+         The C: drive root folder is what we call a parent
+         directory and the contents inside are considered child directories.
+         As you continue to work with operating systems,
+         you'll encounter terms that may seem a bit out of place
+         at first but they actually make a lot of sense.
+         Parents and children are common terms that stand for hierarchical relationships in OS's.
+         If I have a folder named dogs and a second folder nested within that folder called Corgi,
+         dogs would be the parent directory and Corgi would be the child directory.
+         Let's look at a few of the common child directories in this folder.
+         Program Files x86.
+         These directories contain most of the applications and
+         other programs that are installed in Windows users.
+         This contains the user profile directories or home directories.
+         Each user who logs into this Windows machine will get their own directory here.
+         Windows, this is where the Windows operating system is installed.
+         If we open a PowerShell and run Get-Help ls,
+         we'll see the text describing the parameters of the ls command.
+         This will give us a brief summary of the commands parameters.
+         But if you want to see more detailed help,
+         try Get-Help ls -Full.
+         Now you can see
+         a description of each of the parameters and some examples of how to use the command.
+         What if we wanted to see all the hidden files in this directory?
+         Well, we can use another useful parameter for the ls command, -Force.
+         
+        The -Force parameter will show
+         hidden and system files that aren't normally listed with just ls.
+         Now you can see some important files and directories like Recycle Bin.
+         This is where the Recycle Bin lives.
+         When you move files to the Recycle Bin,
+         they're move to this directory instead of being deleted immediately.
+         Program data, this directory contains lots of different things.
+         In general, it's used to hold data for programs that are installed in Program Files.
+         All right, now that you've seen how to take a look around the file system in Windows,
+         lets see what this process looks like in Linux.
+
+    - Linux: List Directories:
+        -- In Linux,
+         the main directory that all other stem from is called the root directory.
+         The path to the root directory is denoted by a slash or forward slash.
+         An example of a path in Linux that starts from the root directory
+         is /home/cindy/Desktop.
+         Just like c:\users\cindy\desktop in Windows.
+         Let's go ahead and see what's under the root directory.
+         We're going to be using the ls or list directory contents command.
+         We also want to give this command, the path, the directory that we want to see.
+         If we don't provide a path, it will just default to the current directory we're in.
+         
+        So ls slash.
+         All right,
+         now we can see all the directories that are listed under the root directory.
+         There are a lot of directories here, and they're all used for different purposes.
+         We won't go through them all, but let's talk about a few of the important ones.
+         Slash bin, this directory stores our essential binaries or programs.
+         The ls command that we just used is a program, and
+         it's located here in the slash bin folder.
+         It's very similar to our Windows program files directory.
+         Slash etsy, this folder stores some pretty important system configuration files.
+         Slash home, this is the personal directory for users.
+         It holds user documents, pictures, and etc.
+         It's also similar to our Windows users directory.
+         Slash proc,
+         this directory contains information about currently running processes.
+         We'll talk more about processes in an upcoming lesson.
+         Slash user, the user directory doesn't
+         actually contain our user files like our home directory.
+         It's meant for user installed software.
+         Slash var, we store our system logs and
+         basically any file that constantly changes in here.
+         The ls command has a couple of very useful flags that we can use too.
+         Similar to Windows command parameters,
+         a flag is a way to specify additional options for a command.
+         We can usually specify a flag by using a hyphen then the flag option.
+         This varies depending on the program, though.
+         Every command has different flag options.
+         You can actually view what options are available for
+         a command by adding the dash, dash help flag.
+         Let's see this in action.
+         
+        There's an incoming wall of text, but don't panic.
+         You don't have to memorize these options.
+         This is mainly used for reference.
+         For now, let's just quickly go through the help menu
+         
+        At the top here it tells you what format to put the command in.
+         And here it gives you a description of what the command does.
+         This huge chunk of text lists the options that we can use.
+         It tells us what command flags are available and what they do.
+         The dash, dash help flag is super useful, and
+         even experienced OS users refer to it every so often.
+         Another method that you can use to get information about commands
+         is the man command from manual.
+         It's used to show us manual pages, in Linux we call them man pages.
+         To use this command, just run man, then the command you want to look up.
+         
+        So let's look up man ls.
+         
+        And here we get the same information as dash, dash help, but
+         with a little more detail.
+         
+        Okay, back to using the ls command.
+         
+        Right now, it's not quite friendly to read.
+         So let's make our directory list more readable with the dash l flag for long.
+         This shows detailed information about files and
+         folders in the format of a long list.
+         
+        Now we can see additional information about our directory and the files and
+         folders in them.
+         Similar to the Windows show properties,
+         the ls command will show us the detailed file information.
+         Let's break down this output starting from the left.
+         The first column here are file permissions, side note,
+         we're going to cover file permissions in an upcoming lesson.
+         Okay, next up is the number of links a file has.
+         Again, we'll discuss this is more detail in a later lesson.
+         
+        Next, we have the file owner, then the group the file belongs to.
+         Groups are another way we can specify access,
+         we'll talk about this in another lesson too.
+         So then we have the file size.
+         The time stamp of last modification, and finally, the file or directory name.
+         The last slide that we'll discuss for the ls command is the dash a or all option.
+         This shows us all the files in the directory including the hidden files.
+         
+        You'll notice that I appended two different flags together.
+         This is the same thing as ls -l -a /.
+         Both work the exact same way.
+         The order of the flag determines which order it goes in.
+         In our case, it doesn't matter if we do a long list first or show all files first.
+         
+        Check out how there are some new files are visible when we use these flag.
+         The dash a or all flag, shows all files including hidden ones.
+         You can hide a file or directory by pre-pending adapt to it.
+         Like the file shown here .I_am_hidden.
+         
+        We've covered a lot in this video, we've learned how to view detailed information
+         about files with the ls command.
+         We also started using computer paths and we learned how to get help
+         with commands using the dash dash help flag and man pages.
+         We even took a sneak peek at our Linux files system.
+         If I went through any of this a little too quickly, just rewatch the video.
+         We'll meet back up in the next one,
+         where we'll start changing directories in the GUI.
+         See you there.
+
+    - Windows: Changing Directories in the GUI:
+        -- Okay. Now that we know how directories are laid out,
+         let's start moving from one directory to the next.
+         You probably change directories in your GUI a lot without even realizing it.
+         Even if that's not the case,
+         we're going to go ahead and show you how to do it.
+         Knowledge is power.
+         There, that was pretty simple, right?
+         We can move freely between any directory in any path on our systems.
+         One thing to call out is that there are two different types of
+         paths, absolute and relative.
+         An absolute path is one that starts from the main directory.
+         A relative path is the path from your current directory.
+         These two distinctions aren't as important when we're working in a GUI,
+         but they're important when you work in a shell.
+    - Windows: Changing Directory in the CLI:
+        - When you first open PowerShell,
+         you'll usually be in your home directory.
+         Your prompt shows you which directory you're currently in,
+         but there's also a command that will tell you where you are.
+         PWD or print-working directory tells you which directory you're currently in.
+         If we want to change the directory that we're in,
+         we can use the CD or change directory command.
+         To use this command,
+         we'll also need to specify the path that we want to change to.
+         Remember, this path can be absolute,
+         which means it starts from this drive letter and spells out the entire path.
+         On the flip side, it can be relative, meaning,
+         that we only use part of the path to describe how to get
+         to where we want to go relative to where we're currently are.
+         I'll show you what I mean in a minute.
+         So right now, we're in C:\Users\cindy.
+         Let's say that instead,
+         I want to go to C:\Users\cindy\documents,
+         what do you think the command would look like here?
+         Here it is,
+         cd C:\Users\cindy\documents.
+         And now we've changed to the documents directory.
+         We use an absolute path to get to this directory,
+         but this can be a little cumbersome to type out.
+         We know that that documents directory is under the cindy folder,
+         so can't we just go up one level to get to that folder? We absolutely can.
+         There's a shortcut to get to the level above your current directory, CD dot dot.
+         Let's run the PWD command one more time.
+         Now, we can see that I'm in C:\users\cindy,
+         the parent directory of where I was before.
+         The dot dot is considered a relative
+         path because it'll take you up one level relative to where you are.
+         Let's go back to the documents folder and try this again,
+         except this time, let's go to the desktop folder using the new command we learned.
+         We know that the desktop and document directories are under the home directory,
+         so we could run CD dot dot then CD desktop,
+         but there is actually an easier way to write this, cd..\Desktop.
+         Let's check PWD one more time.
+         PWD now shows that were in the Desktop folder.
+         Sweet. Another cool shortcut for CD that you can use is CD~.
+         The tilde is a shortcut for the path of your home directory.
+         Let's say I want to get to the desktop directory in my home folder.
+         I can do something like this, cd~\Desktop.
+         We've done quite a bit of typing so far,
+         you might actually be wondering,
+         what would happen if we messed up while typing these directory names?
+         How are we supposed to memorize where everything is,
+         and if it's spelled correctly?
+         Fortunately, we don't have to do that.
+         Our shell has a built-in feature called tab completion.
+         Tab completion lets us use the tab key to auto-complete file names and directories.
+         Let's use the tab completion to get to our desktop from our home directory,
+         if I type D and then tab,
+         the first file or directory starting with D will now complete.
+         Now, if this isn't the file or directory that I was looking for,
+         I can continue to press tab,
+         and the path will rotate through all the options
+         that complete the name that I started to type.
+         So I'll see desktop,
+         and then documents, and then downloads.
+         Take note, that the dot in front of the path
+         of.\Desktop just means the current directory.
+         If I erased this and instead type DE then the only directory that matches is desktop.
+         Tab completion is an awesome feature that you'll be
+         using more and more as you continue to work with commands.
+
+    - Windows: Mkae Directory in the GUI & CLI:
+        -- Now that we've covered listing and changing directories,
+         let's learn how to add new directories.
+         We can do this in the GUI in a super simple way.
+         Just right-click, new, then folder,
+         and bam, we have a new folder.
+         Now, what if we wanted to do this in the CLI?
+         In PowerShell, the command to make a new directory is called mkdir or make directory.
+         Let's make a new directory called my_cool_folder
+         
+        and there it is. That was easy.
+         What if we wanted to use spaces in our folder name instead of underscores?
+         What do you think would happen if I did this instead?
+         Mkdir my cool folder.
+         That's an error.
+         Mkdir is trying to interpret cool and folder as other parameters to the mkdir command.
+         It doesn't understand those words as valid parameters.
+         Turns out that our shell doesn't interpret spaces the way we do.
+         So, we need to tell it explicitly that this folder name is one single thing.
+         We can do this in a variety of ways.
+         We can surround the name with quotes like,
+         mkdir 'my cool folder',
+         or we can escape to space by using the back tick character, mkdir my` cool` folder.
+         Escaping characters is a pretty common concept
+         when dealing with code.
+         It means that the next character after the back tick should be treated literally.
+         In our example, escaping the space tells
+         the shell that the space after the back tick is part of our filename.
+         While the back tick is the escape character in PowerShell,
+         other shells and programming languages may use another character as an escape character.
+         You'll see this in the next video.
+
+    - Linux: Make directory in Bash:
+        -- Now that we've covered listing and changing directories,
+         let's learn how to add new directories.
+         We can do this in the GUI in a super simple way.
+         Just right-click, new, then folder,
+         and bam, we have a new folder.
+         Now, what if we wanted to do this in the CLI?
+         In PowerShell, the command to make a new directory is called mkdir or make directory.
+         Let's make a new directory called my_cool_folder
+         
+        and there it is. That was easy.
+         What if we wanted to use spaces in our folder name instead of underscores?
+         What do you think would happen if I did this instead?
+         Mkdir my cool folder.
+         That's an error.
+         Mkdir is trying to interpret cool and folder as other parameters to the mkdir command.
+         It doesn't understand those words as valid parameters.
+         Turns out that our shell doesn't interpret spaces the way we do.
+         So, we need to tell it explicitly that this folder name is one single thing.
+         We can do this in a variety of ways.
+         We can surround the name with quotes like,
+         mkdir 'my cool folder',
+         or we can escape to space by using the back tick character, mkdir my` cool` folder.
+         Escaping characters is a pretty common concept
+         when dealing with code.
+         It means that the next character after the back tick should be treated literally.
+         In our example, escaping the space tells
+         the shell that the space after the back tick is part of our filename.
+         While the back tick is the escape character in PowerShell,
+         other shells and programming languages may use another character as an escape character.
+         You'll see this in the next video.
+
+    - Windows: Copying files and Directories:
+        -- 
+    - Windows: MOving and Renaming Files, Directory:
+        -- We talked about making and copying files and directories so far.
+         But what if we wanted to rename something that we've created?
+         Well, in the Windows GUI,
+         if you are to rename a file,
+         we just right-click and rename.
+         
+        In the command line, if we wanted to rename a file,
+         we can use the move or move item command.
+         It lets us rename files.
+         Lets move the file without changing the directory that it's stored in.
+         On my desktop here,
+         I have blue document and I'm going to move or
+         rename it to yellow document.
+         Now, you can see that I have a yellow document.
+         As you might guess, the move command also lets us
+         move files from one directory to another.
+         Let's move the yellow document into My Documents.
+         
+        I can verify that.
+         There it is, cool.
+         You can even move multiple files by using wildcards.
+         And now you can see,
+         the rest of my colored documents went into My Documents.
+
+    - Windowws: Removing Files and Directories:
+        -- All righty, now that we've learned how to list, create, and
+         move around files in directories, let's start removing them.
+         In the Windows GUI, if you wanted to remove a file or folder,
+         just right-click and delete.
+         
+        The file ends up in the recycle bin, which you can find on your desktop.
+         
+        If you wanted to restore a file here, you could just right-click and Restore.
+         
+        If you empty your bin for any reason you won't be able to retrieve those files.
+         In PowerShell, the command to remove files and directories is rm or remove.
+         Take caution when using remove because it doesn't use the recycle bin.
+         Once the files and directories are removed, they're gone for good.
+         Let's remove a file called text1.txt in my home directory.
+         
+        We can see, There it is.
+         I'm just going to remove it.
+         
+        And now it's gone.
+         The remove command might seem like a dangerous weapon in the wrong hands.
+         Fortunately, there are safety measures in place that
+         only give this ability to users that are actually authorized to use it.
+         
+        We'll talk more about file permissions in a different lesson.
+         But let's take a quick look at what I mean.
+         
+        Let's remove a file called important_system_file.
+         
+        I get an error message saying that I don't have permission to delete this file.
+         
+        In some cases like this one, it's because it's been marked as a system file.
+         In other cases, it might be because I don't have enough permissions
+         in the file system to remove the file.
+         I do have the right permissions this time, but since it is an important file,
+         PowerShell wants to make sure that I meant to do this.
+         
+        If I repeat the command with the -Force parameter, remove will go ahead and
+         remove the file.
+         Let's take a look.
+         
+        -Force, And you can see the file's gone.
+         If the file belongs to someone else, or if I'm not an administrator,
+         then I might not have the right permissions to remove the file.
+         In that case I'll need to access an administrative account to remove the file.
+         Okay, let's try removing a directory with remove next.
+         
+        Here we go.
+         Here's another place where PowerShell is going to ask us if we really meant to
+         do this.
+         Since this is in a directory, it contains other files.
+         And we did not use the -Recurse parameter.
+         We see a prompt asking us to confirm if we really want to remove the directory and
+         all its contents.
+         We can say Yes or Yes to All to continue.
+         We can also cancel this command and run it again with the -Recurse parameter.
+         That way, PowerShell knows that we understand the consequences of what
+         we're doing.
+         
+        So let's go ahead and cancel this and try again.
+         
+        -Recurse.
+         
+        Yeah, now it's gone.
+         And that's the remove command in a nutshell.
+         Again, because of the nature of this command,
+         you'll want to be extra careful when removing files or directories.
+
+    - Windows: Display file content:
+        -- Now that we've learned the basics of file and directory navigation,
+         let's learn how we can display and edit files,
+         search for text within files and more.
+         In the Windows GUI, if we want to open a file and view its contents,
+         we can just double click on the file.
+         Depending on the file type,
+         it will open on a default application.
+         In Windows, text files default to open in an application called notepad.
+         But we can change this if we want to.
+         To change the default application that opens files,
+         just right click and click Properties.
+         Under 'Open with', we can change the application to another text editor, like Word Pad.
+         Most of the files that we'll be dealing with throughout this course,
+         will be text and configuration files.
+         So, let's just focus on those files instead of images, music files, etc.
+         Viewing the contents of a file in PowerShell is simply using the 'cat' command,
+         which stands for concatenate. Let's give it a try.
+         
+        This will dump the contents of the file into our shell.
+         This isn't the best solution for a file since it just
+         keeps writing the content until the whole file is displayed.
+         If we want to view the contents of the file one page at a time,
+         we can use the 'more' command, like this.
+         
+        The 'more' command will get the contents of the file but
+         will pause once it fills the terminal window.
+         Now, we can advance the text at our own pace.
+         When we run the 'more' command,
+         were launched into a separate program from the shell.
+         This means that we interact with the more program with different keys.
+         The Enter key advances the file by one line.
+         You can use this if you want to move slowly through the file.
+         Space advances the file by one page.
+         A page in this case depends on the size of your terminal window.
+         Basically, 'more' will output enough content to fill the terminal window.
+         The q key allows you to quit out of 'more' and go back to your shell.
+         If we want to leave the 'more' command and go back to our shell,
+         we can just hit the q key.
+         Here we are.
+         Now, what if we just wanted to view part of the file?
+         Let's say we want to quickly see what the first few lines of the text file are.
+         We don't really want to open up the whole file.
+         Instead, we just want to get a glimpse of what the document is.
+         This is called the head of the file.
+         To do this, we can go back to 'cat' and add the -Head parameter.
+         This will show us the first 10 lines of the file.
+         Now, what if we wanted to view the last few lines or the tail of the file?
+         I bet you can guess what you are going to do.
+         
+        This will show us, by default,
+         the last ten lines of the file.
+         Again, these two commands don't seem like they have any immediate use to you yet.
+         We'll see their benefits when we work with logs in an upcoming lesson.
+         Now, let's take a look at how to do these same tasks in Linux.
+         
+    - Windows: Modifying Text Files:
+        --  So far, we've discussed how to read and modify files.
+         But we haven't covered how to edit file contents yet.
+         Spoiler alert, you're about to learn.
+         You can edit text based files in notepad,
+         which we used earlier to view a text file.
+         Notepad is great for basic editing.
+         But when making changes to configuration files, scripts,
+         or other complex text files,
+         you might want something with more features.
+         There are lots of good editors out there for the Windows GUI.
+         For this demonstration, we'll use one called Notepad++.
+         Notepad++, which you can access from the next supplemental reading,
+         is an excellent open source text editor,
+         with support for lots of different file types.
+         Notepad++ can open multiple files and tabs.
+         It also does syntax highlighting for known file types,
+         and has a whole bunch of advanced text editing features.
+         Syntax highlighting is a feature that a lot of text editors provide.
+         It displays text in different colors and fonts to help you categorize things differently.
+         We've already installed Notepad++ on our machine.
+         So, you can check out their website and do the same.
+         Now, you can edit any file using Notepad++ by
+         right clicking it and selecting edit with Notepad++.
+         
+        What if you wanted to edit a file from the CLI?
+         Unfortunately, there's no good default editor in the Powershell terminal.
+         But we can launch our Notepad++ text editor
+         from the CLI and begin modifying text that way.
+         So start, Notepad++, and then just a filename.
+         As you can see, it opened up Notepad++,
+         and asked if I wanted to create this file.
+         If you'd like to read about text editors that you can specifically use in the CLI,
+         check out the supplemental reading on an advanced text editor called Vim.
+
+    - Windows Powershell:
+        -- So far in this course we have been using command aliases in PowerShell.
+         PowerShell is a complex and
+         powerful command language, that's also super robust.
+         We've been able to use common aliases,
+         that are exactly the same as their Linux counterparts.
+         But from here on out, we'll need to deploy some advanced command line features, so
+         we'll need to look at real PowerShell commands.
+         You've already seen an example of a real PowerShell command, Get-Help,
+         which is used to see more information about commands.
+         There's another PowerShell command that we can use to look at one of our aliases,
+         that we've been using as our list directory.
+         To see what the actually PowerShell command is that gets executed,
+         we can use the PowerShell command, Get-Alias.
+         
+        Interesting when we call LS,
+         we are calling the PowerShell command Get-ChildItem, it gets or
+         lists the children which are the files and sub directories of the given item.
+         Let us actually run this Get-ChildItem command with the item C:\.
+         
+        You'll see this is the same output as, ls C:\.
+         
+        Cool.
+         PowerShell commands are very long and
+         descriptive, which makes them easier to understand.
+         But it does mean a lot of extra typing,
+         when you're working interactively at the CLI.
+         Aliases for common commands are a great way to work more quickly in PowerShell.
+         
+        We've been using them up to this point to help us hit the ground running with
+         the command line.
+         In Windows, you pretty much have three different ways you can execute commands.
+         You can use real PowerShell commands, or the relatable alias names.
+         Another method that we've mentioned,
+         but haven't really talked about yet is cmd.exe commands.
+         Cmd.exe commands are commands from the old MS-DOS days of Windows.
+         But they can still be run do to backwards compatibility.
+         Keep that in mind, that they aren't as powerful as PowerShell commands.
+         An example of a cmd.exe command is dir.
+         Which coincidentally points to the PowerShell command Get-ChildItem,
+         which is also where, ls Alias gets pointed to.
+         Remember the PowerShell command Get-Help, well there's a command
+         parameter that you can use to get help with command.ext commands, /?.
+         Keep the difference in mind, Get-Help is used for
+         PowerShell commands like Get-Help ls, and /?, is used for other commands like dir/?.
+         If I tried to use, ls/?, it will return nothing,
+         because the PowerShell command that ls is an alias of,
+         doesn't know how to handle to the parameter /?, and vice versa.
+         You're free to use whatever commands you feel comfortable with.
+         But in this course we're going to use common aliases, and PowerShell commands.
+
+    - Windows: Searching within Files:
+        -- What if we wanted to search for something within a directory,
+         like looking for just the executables in that same directory.
+         This is where the command parameter -filter comes in.
+         I'm just going to LS
+         my programs files here with the -recurse,
+         -filter and look for exes.
+         Well, that's lots of exes.
+         The -filter parameter will filter the results for file names that match a pattern.
+         The Asterisk means match anything.
+         And the.exe Is the file extension for executable files in windows.
+         So the only results we're going to get are the files that end in.exe. Cool.
+
+    - Windows: Input, Output and Pipeline:
+        -- All right, we've learned a bunch of individual, very powerful tools.
+         These are the most important day-to-day commands that you'll need to work in PowerShell.
+         Now, we're going to learn how to combine these tools to make them even more powerful.
+         Let's run the following command in our desktop directory.
+         Then we'll break it down piece by piece.
+         Scan cd into my desktop directory.
+         Okay, I go woof > dog.txt.
+         Will do an LS to check our desktop,
+         and we'll now see a file called dog.txt.
+         Inside that file, we should see the word, woof.
+         Oh, there it is.
+         What's happening here?
+         Let's take a closer look, echo woof.
+         In PowerShell, the echo is actually an alias for Write-Output.
+         That gives us a clue to what's happening.
+         We know the echo command prints out our keyboard input to the screen.
+         But how does this work?
+         Every Windows process and every PowerShell command can take input and can produce output.
+         To do this, we use something known as I/O streams or input output streams.
+         Each process in Windows has three different streams: standard in,
+         standard out, and standard error.
+         It's helpful to think of these streams like actual water streams in a river.
+         You provide input to a process by adding things to the standard in stream,
+         which flows into the process.
+         When the process creates output,
+         it adds data to the standard out stream,
+         which flows out of the process.
+         At the CLI, the input that you provide through the keyboard
+         goes to the standard in stream of the process that you're interacting with.
+         This happens whether that's PowerShell,
+         a text editor, or anything else.
+         The process then communicates back to you by putting data into the Standard out stream,
+         which the CLI writes out on the screen that you're looking at.
+         Now, what if instead of seeing the output of the command on the screen,
+         we wanted to save it to a file?
+         The greater than symbol is something we call a redirector
+         operator that lets us change where we want our standard output to go.
+         Instead of sending standard out to the screen,
+         we can send a standard out to a file.
+         If the file exists,
+         it'll overwrite it for us.
+         Otherwise, it'll make a new file.
+         If we don't want to overwrite an existing file,
+         there's another redirector operator we can use to
+         append information, greater than, greater than.
+         So let's see that in action,
+         echo woof >> dog.txt.
+         Now, if I look at my dog.txt file again,
+         we can see that woof was added again.
+         But, what if we wanted to send the output of one command to the input of another command?
+         For this, we're going to use the pipe operator.
+         First, let's take a look at what's in this file.
+         cat words.txt.
+         Look at that, it's a list of words.
+         Now, what if we want to just list the words that contain the string st?
+         We can do what we've done before and just use select-string or SLS on the file directly.
+         This time, let's use the pipeline to pass
+         the output of cat to the input of select-string.
+         So cat words.txt | select-string st. And now,
+         we can see a list of words with the string st. To tie things together,
+         we can use output redirection to put our new list into a file.
+         So now, greater than,
+         and then a new file called st words.txt.
+         Now, if I cat st words.txt, yup, there it is.
+         That's just a very basic example of how you can take
+         several simple tools and combine them together to do complex tasks.
+         Okay, now we're going to learn about the last I/O redirector, standard error.
+         Remember when we tried to remove a restricted system file
+         earlier and we got an error that said permission denied?
+         Let's review that once more.
+         This time, I'm going to remove another protected file, rm secure_file.
+         We see errors like we're supposed to.
+         But what if we didn't want to see these errors?
+         Turns out, we can just redirect the output of
+         error messages in a different output stream called standard error.
+         The redirection operator can be used to redirect any of the output streams,
+         but we have to tell which stream to redirect.
+         So, let's type,
+         rm secure_file 2> errors.txt.
+         If I look at errors.txt,
+         I can see the error message that we just got.
+         So, what does the two mean?
+         All of the output streams are numbered.
+         One is for standard out,
+         which is the output that you normally see,
+         and two is for standard error or the error messages.
+         Heads up, PowerShell actually has
+         a few more streams that we aren't going to use in this lesson.
+         But they can be redirected in the same way.
+         You can read more about them in the supplemental reading right after this video.
+         So when we use two greater than,
+         we're telling PowerShell to redirect
+         the standard error stream to the file instead of standard out.
+         What if we don't care about the error messages,
+         but we don't want to put them in a file?
+         Using our newly learned redirector operators,
+         we can actually filter out these error messages.
+         In PowerShell, we can do this by redirecting standard error to $null.
+         What's $null?
+         Well, it's nothing. No, really.
+         It's a special variable that contains the definition of nothing.
+         You can think of it as a black hole for the purposes of redirection.
+         So let's redirect the error messages this time to $null,
+         rm secure_file 2> $null.
+         Now, our output is filtered from error messages.
+         There's still much more to learn if you're interested.
+         Try Get-Help about_redirection in PowerShell to see more detail.
+         It may take a little time to get the hang of using redirector operators.
+         Don't worry, that's totally normal.
+         Once you do start to get used to them,
+         you'll notice your command full skills level up and your job becomes a little easier.
+         Now, let's take a look at output redirection in Linux.
+
+    - Windows and Linux Advanced Navigation:
+        -- 
+         
+ 
+         

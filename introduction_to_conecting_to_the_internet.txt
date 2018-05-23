@@ -1,0 +1,686 @@
+POTS and Dial-up:
+    - The Internet is a vast and diverse place.
+
+         Not only is it huge,
+         the number of different devices connected to it can be just as staggering.
+         And if we were to actually describe all these devices,
+         they'd have an almost endless number of functions.
+         The devices that connect to the Internet fall into familiar silos;
+         desktop and laptop computers,
+         servers and data centers,
+         routers and switches that direct network traffic etc.
+         But this list also includes things like;
+         tablets and cell phones,
+         ATMs, industrial equipment,
+         medical devices and even some cars are now connected to the Internet.
+         The list go on and on.
+         It's nice and simple to discuss everything in terms of a basic physical layer made up of
+         Cat5 or Cat6 cables and a data link layer made entirely of Ethernet.
+         But that's not exactly how things work when they actually connect to the Internet.
+         The technologies used to get people and devices
+         connected are as different as the people and devices themselves.
+         By the end of this module,
+         you'll be able to describe various Internet connectivity technologies.
+         You'll also be able to define the components of LANs
+         and outline the basics of wireless and cellular networking.
+         These are the skills important as an I.T.
+         support specialist, because a big part of
+         your job will be making sure people can get online.
+         See you at the top of the next video.
+
+    - Dial-up, Moderms and Point-to-Point Protocols:
+
+        - As computer use grew over the course of 20th century, it became obvious that there
+         was a big need to connect computers to each other so that they could share data.
+         For years before Ethernet, TCP or
+         IP were ever invented, there were computer networks made up of technologies
+         way more primitive than the model we've been discussing.
+         These early networking technologies mostly focused on connecting devices within close
+         physical proximity to each other.
+         In the late 1970s two graduate students at Duke University
+         were trying to come up with a better way to connect computers at further distances.
+         They wanted to share what was essentially bulletin board material,
+         then a light bulb moment went off.
+         They realized the basic infrastructure for
+         this already existed, the public telephone network.
+         THE PUBLIC SWITCHED TELEPHONE NETWORK OR PSTN is
+         also sometimes referred to as the PLAIN OLD TELEPHONE SERVICE OR POTS.
+         It was already a pretty global and powerful system by the late 1970s
+         more than 100 years after the invention of the telephone.
+         These Duke grad students weren't the first ones to think about using a phone line to
+         transmit data.
+         But they were the first do it in a way that became somewhat permanent precursor
+         to the dial up networks to follow.
+         The system they built is known as USENET and a form of it is still in use today.
+         
+        At the time, different locations, like colleges and
+         universities, used a very primitive form of a dial-up connection
+         to exchange a series of messages with each other.
+         A dial-up connection uses POTS for data transfer, and gets its name
+         because the connection is established by actually dialing a phone number.
+         If you used dial up, back in the day, this noise might sound familiar to you.
+         [NOISE] For some of us it was like nails on a chalkboard as
+         we waited to get connected to the Internet.
+         Transferring data across a dial-up connection is done through devices called
+         modems.
+         Modem stands for modulator demodulator, and
+         they take data that computers can understand and
+         turn them into audible wavelengths that can be transmitted over POTS.
+         After all, the telephone system was developed to transmit voice messages or
+         sounds from one place to anothar.
+         This is conceptually similar to how line coding is used to turn ones and
+         zeroes into modulating electrical charges across Ethernet cables.
+         Early modems had very low baud rates.
+         A baud rate is a measurement of how many bits could be passed across a phone line in a second.
+         By the late 1950s, computers could generally only send each other data
+         across a phone line at about a 110 bits per second.
+         By the time USENET was being developed,
+         this rate had increased to around 300 bits per second.
+         And by the time dial-up access to the Internet became a household commodity in
+         the early 1990s, this rate had increased to 14.4 kilobits per second.
+         Improvements continue to be made, but
+         widespread adoption of broadband technologies,
+         which we'll discuss in the next lesson, replaced a lot of these improvements.
+         Dial-up Internet connectivity is pretty rare today but
+         it hasn't completely gone away.
+         In some rural areas, it might be the only option still available.
+         You might never run into a dial-up Internet connection during your IT career.
+         But it's still important to know that for
+         several decades this technology represented the main
+         way computers communicated with each other over long distances.
+         I'm just glad we don't have to choose between using the phone or
+         using the Internet anymore.
+         Next, let's take a deep dive into the world of broadband.
+ 
+
+Broadband Connections:
+
+    - what is broadband:
+        -- The term broadband has a few definitions.
+         In terms of internet connectivity,
+         it's used to refer to any connectivity technology that isn't dial-up Internet.
+         Broadband Internet is almost always much faster than
+         even the fastest dial-up connections and refers to connections that are always on.
+         This means that they're
+         long lasting connections that don't need to be established with each use.
+         They're essentially links that are always present.
+         Broadband shaped today's world.
+         While the Internet itself is a totally amazing invention,
+         it wasn't until the advent of broadband technologies that
+         its true potential for business and home users was realized.
+         Long before people had broadband connections at home,
+         businesses spent a lot of resources on them usually out of necessity.
+         If you had an office with more than a few employees,
+         the bandwidth available by a single dial-up connection
+         would quickly be oversaturated by just a few users.
+         By the mid 1990's,
+         it had become pretty common for businesses that needed internet access
+         for their employees to use various T-carrier technologies.
+         T-carrier technologies were originally invented by
+         AT&T in order to transmit multiple phone calls over a single link.
+         Eventually, they also became common transmission systems to
+         transfer data much faster than any dial-up connection could handle.
+         We'll cover the details of T-carrier technologies in an upcoming lesson.
+         After businesses got into the broadband game,
+         home use became more prevalent.
+         As different aspects of the Internet,
+         like the World Wide Web became more complex,
+         they also required ever increasing data transfer rates.
+         In the days of dial-up, even a single image on
+         a web page could take many seconds to download and display.
+         High resolution photos that you can now take on a cell phone
+         would have required a long time to download and a lot of your patience.
+         A single picture taken on a smartphone today can easily be several megabytes in size.
+         Two megabytes would translate to 16,777,216 bits.
+         At a baud rate of 14.4 kilobits per second,
+         that many bits would take nearly 20 minutes to download.
+         No one would've had time to download
+         all the hilarious cat images on the internet back then. What a travesty.
+         Without broadband internet connection technologies,
+         the Internet as we know it today wouldn't exist.
+         We wouldn't be able to stream music,
+         or movies, or easily share photos.
+         You definitely couldn't be taking an online course like this.
+         T-carrier technologies require dedicated lines,
+         which makes them more expensive.
+         For this reason, you usually only see them in use by businesses.
+         But other broadband solutions also exist for both businesses and consumers.
+         In the next few videos,
+         we'll deep dive into four of
+         the most common broadband solutions available today: 
+                 - T-carrier technologies,
+                 - digital subscriber lines or DSL,
+                 - cable broadband, and 
+                 - fiber connections.
+         Are you ready? Let's get started.
+ 
+    - T-Carrier Technologoies:
+        -- First inverted by AT&T
+        -- T-Carrier Technologies were first invented by AT&T in order to provision a system that allowed lots of phone calls to travel across a single cable.
+         Every individual phone call was made over individual pairs of copper wire before Transmission System 1,
+         the first T-Carrier specification called T1 for short.
+         With the T1 specification, AT&T invented a way to carry up to 24 simultaneous phone calls across a single piece of twisted pair copper.
+         Years later, the same technology was re-purposed for data transfers.
+         Each of the 24 phone channels was capable of transmitting data at 64 kilobits per second,
+         making a single T1 line capable of transmitting data at 1.544 megabits per second.
+         Over the years, the phrase T1 has come to mean any twisted-pair copper connection capable of speeds of 1.544 megabits per second even,
+         if it doesn't strictly follow the original Transmission System 1 specification.
+         Originally, T1 technology was only used to connect different telecom company sites to each other
+         and to connect these companies to other telecom companies.
+         But with the rise of the internet as a useful business tool in the 1990s,
+         more and more businesses started to pay to have T1 lines installed at their offices to have faster internet connectivity.
+         More improvements to the T1 line were made by developing a way of multiple T1s to act as a single link.
+         So, T3 line is 28 T1s all multiplexed achieving a total throughput speed of 44.736 megabits per second.
+         You'll still find T-Carrier Technologies in use today, but they've usually been surpassed by other broadband technologies.
+         For small business offices, cable broadband or fiber connections are now way more common,
+         since they're much cheaper to operate. For inner ISP communications, different fiber technologies have all replaced older copper-based ones.
+    - Digital Subscriber Lines:
+        --  The public telephone network was a great option for getting people connected to
+         the Internet, since it already had infrastructure everywhere.
+         For a long time, dial-up connections were the main way that people connected to
+         the Internet from home.
+         But there were certain limitations with trying to transmit data as what were
+         essentially just audio waves.
+         As people wanted faster and faster Internet access, telephone companies began
+         to wonder if they could use the same infrastructure but in a different way.
+         The research showed that twisted pair copper used by modern telephone lines was
+         capable of transmitting way more data than what was needed for voice to voice calls.
+         By operating at a frequency range that didn't interfere with normal phone calls,
+         a technology known as digital subscriber line or DSL, was able to send much
+         more data across the wire than traditional dial-up technologies.
+         And to top it all off, this allowed for normal voice phone calls, and
+         data transfer to occur at the same time, on the same line.
+         kind of like how dial-up uses modems, DSL technologies also use their own modems.
+         But more accurately, they're known as DSLAMs or Digital Subscriber Line Access Multiplexers.
+         Just like dial-up modems these devices establish data connections across phone lines.
+         But unlike dial up connections, they're usually long running.
+         This means that the connection is generally established when the DSLAM is
+         powered on and isn't torn down until the DSLAM is powered off.
+
+         There are lots of different kinds of DSL available, but
+         they all vary in a pretty minor way.
+         For a long time, the two most common types of DSL were ADSL and SDSL.
+                 ADSL stands for Asymmetric Digital Subscriber Line.
+         ADSL connections featured different speeds for outbound and incoming data.
+         Generally, this means faster download speeds and slower upload speeds.
+         Home users rarely need to upload as much data as they download,
+         since home users are mostly just clients.
+         For example, when you open a webpage in a web browser, the upload or
+         outbound data is pretty small.
+         You're just asking for a certain web page from the web server.
+         The download or inbound data tends to be much larger since it will contain
+         the entire web page including all images and other media.
+         For this reason, asymmetric lines often provide a similar user experience for
+         a typical home user but at a lower cost.
+                 SDSL, as you might be able to guess, stands for
+         Symmetric Digital Subscriber Line.
+         SDSL technology is basically the same as ADSL,
+         except the upload and download speeds are the same.
+         At one point, SDSL was mainly used by businesses
+         that hosted servers that needed to send data to clients.
+         As the general bandwidth available on the Internet has expanded, and
+         as the costs of operation have come down over the years,
+         SDSL is now more common for both businesses and home users.
+         Most SDSL technologies have an upper cap of 1.544
+         megabits a second, or the same as a T1 line.
+         Further developments in SDSL technologies have yielded things like HDSL,
+         or High Bit-rate Digital Subscriber Lines.
+         These are DSL technologies that provision speeds above 1.544 megabits per second.
+         There are lots of other minor variations in DSL technology out in the wild,
+         offering different bandwidth options and operating distances.
+         These variations can be so numerous and
+         minor it's not really practical to try to cover them here.
+         If you ever need to know more about a specific DSL line,
+         you should contact the ISP that provides it for more details.
+        
+
+    - Cable Broadband:
+        --  The history of both the telephone and computer networking tells a story that
+         started with all communications being wired.
+         But the recent trend is moving towards more and
+         more of this traffic becoming wireless.
+         The history of television follows the opposite path.
+         Originally, all television broadcasts were wireless transmissions sent out by
+         giant television towers and received by smaller antennas in people's homes.
+         This meant you had to be within range of one of these television towers to watch
+         TV, just like you have to be within range of a cell phone tower to
+         use your cellphone today.
+         
+        Starting in the late 1940s in the United States,
+         the first cable television technologies were developed.
+         At the time, they mainly wanted to provide television access to remote towns and
+         rural homes that were out of range of capabilities
+         of television towers at the time.
+         
+        Cable television continued to expand slowly over the decades, but in 1984,
+         The Cable Communications Policy Act was passed.
+         This deregulated the cable television business in the United States and
+         caused a massive boom in growth and adoption.
+         Other countries all over the globe soon followed.
+         By the early 1990s, cable television infrastructure in the United States
+         was about the size of the public telephone system.
+         Not too long after that,
+         cable providers started trying to figure out if they could join
+         in on the massive spike in Internet growth that was happening at the same time.
+         
+        Much like how DSL was developed, cable companies quickly realized that
+         the coaxial cables generally used by cable television delivery into a person's
+         home were capable of transmitting much more data than what was required for
+         TV viewing.
+         By using frequencies that don't interfere with television broadcast, cable-based Internet access technologies
+         were able to deliver high speed Internet access across these same cables.
+         This is the technology that we refer to when we say cable broadband.
+         One of the main differences in how cable Internet access works when compared to other broadband solutions is that cable is generally what's known as a shared bandwidth technology.
+         With technologies like DSL or even dial up, the connection from your home or
+         business goes directly to what's known as a Central Office or CO.
+         A long time ago, the COs were actually offices staffed with telephone operators
+         who used a switchboard to manually connect the caller with the callee.
+         As technology improved, the COs became smaller pieces of automated hardware that
+         handled these functions for the telephone companies, but the name stayed the same.
+         Technologies that connect directly to a CO can guarantee a certain amount of
+         bandwidth available over that connection since it's point to point.
+         On the flip side of this, are cable Internet technologies, which employ a shared bandwidth model.
+         With this model in place, many users share a certain amount of bandwidth until
+         the transmissions reach the ISP's core network.
+         This could be anywhere from a single city block to entire subdivisions in the suburbs.
+         It just depends on how that area was originally wired for cables.
+         Today, most cable operators have tried to upgrade their networks to the point that end users might not always notice the shared bandwidth.
+         But it's also still common to see cable Internet connections slow down during periods of heavy use.
+         Like when lots of people in the same region are using their Internet connection at the same time.
+         Cable Internet connections are usually managed by what's known as a cable modem.
+         This is a device that sits at the edge of a consumer's network and connects it to the cable modem termination system, or CMTS.
+         The CMTS is what connects lots of different cable connections to an ISP's core network.
+
+    - Fiber Connections:
+        -- The core of the internet has long used fiber for its connections,
+         both due to higher speeds and because fiber allows for
+         transmission to travel much further without degradation of the signal.
+         Remember that fiber connections use light for
+         data transmission instead of electrical currents.
+         The absolute maximum distance an electrical signal can travel across
+         a copper cable before it degrades too much and requires a repeater is thousands of feet.
+         But, certain implementations of fiber connections can travel many,
+         many miles before a signal degrades.
+         Producing and laying fiber is a lot more expensive than using copper cables.
+         So, for a long time,
+         it was a technology you only saw in use by ISPs
+         within their core networks or maybe for use within data centers.
+         But in recent years,
+         it's become popular to use fiber to deliver data closer and closer to the end user.
+         Exactly how close to the end user can vary a ton across implementations,
+         which is why the phrase FTTX was developed.
+         FTTX stands for fiber to the X,
+         where the X can be one of many things.
+         We'll cover a few of these possibilities.
+         The first term you might hear is FTTN,
+         which means fiber to the neighborhood.
+         This means that fiber technologies are used to deliver data to
+         a single physical cabinet that serves a certain amount of the population.
+         From this cabinet, twisted pair copper
+         or coax might be used for the last length of distance.
+         The next version you might come across is FTTB.
+         This stands for fiber to the building,
+         fiber to the business or even a fiber to the basement,
+         since this is generally where cables to buildings physically enter.
+         FTTB is a setup where fiber technologies
+         are used for data delivery to an individual building.
+         After that, twisted pair copper is typically
+         used to actually connect those inside of the building.
+         A third version you might hear is FTTH,
+         which stands for fiber to the home.
+         This is used in instances where fiber is actually run to
+         each individual residents in a neighborhood or apartment building.
+         FTTH and FTTB may both also be referred to as FTTP, fiber to the premises.
+         Instead of a modem, the demarcation point for fiber technologies is known
+         as Optical Network Terminator, or ONT.
+         An ONT converts data from protocols the fiber network can understand to those that are more traditional twisted pair copper networks can understand.
+        
+        Broadband Protocols:
+                 links: https://en.wikipedia.org/wiki/Point-to-Point_Protocol
+                        https://en.wikipedia.org/wiki/Point-to-Point_Protocol_over_Ethernet
+
+
+WANs:
+    - Wide Area Network Technologies:
+        -- Let's say that you're in charge of the network as
+         the sole IT support specialist at a small company.
+         At first, the business only has a few employees with a few computers in a single office.
+         You decide to use non-routable address space for
+         the internal IPs because IP addresses are scarce and expensive.
+         You set up a router and configure it to perform NAT.
+         You configure a local DNS server and a DHCP server to make network configuration easier.
+         And of course, for all of this to really work,
+         you sign a contract with an ISP to deliver a link to
+         the Internet to this office so your users can access the web.
+         Now imagine the company grows.
+         You're using non-routable address space for your internal IPs,
+         so you have plenty of space to grow there.
+         Maybe some salespeople need to connect to resources
+         on the LAN you've set up while they're on the road,
+         so you configure a VPN server and make
+         sure the VPN server is accessible via port forwarding.
+         Now, you can have employees from all over the world connect to the office LAN.
+         Business is good and the company keeps growing.
+         The CEO decides that it's time to open a new office in another city across the country.
+         Suddenly, instead of a handful of sales people
+         requiring remote access to the resources on your network,
+         you have an entire second office that needs it.
+         This is where wide area networks or WAN technologies come into play.
+         Unlike a LAN or a local area network,
+         WAN stands for wide area network.
+         A wide area network acts like a single network but
+         spans across multiple physical locations.
+         WAN technologies usually require that you
+         contract a link across the Internet with your ISP.
+         This ISP handles sending your data from one side to the other.
+         So, it could be like all of your computers are in the same physical location.
+         A typical WAN set up has a few sections.
+         Imagine one network of computers on one side of
+         the country and another network of computers on the other.
+         Each of those networks ends at a demarcation point,
+         which is where the ISPs network takes over.
+         The area between each demarcation point and
+         the ISP's actual core network is called a local loop.
+         This local loop would be something like a T-carrier line or
+         a high-speed optical connection to the provider's local regional office.
+         From there, it would connect out to the ISP's core network and the Internet a large.
+         WANs work by using a number of different protocols at
+         the data link layer to transport your data from one site to another.
+         In fact, these same protocols are what are sometimes at work
+         at the core of the Internet itself instead of our more familiar Ethernet.
+         Covering all the details of these protocols is out of the scope of this course,
+         but in an upcoming lesson,
+         we'll give you some links to the most popular WAN protocols.
+
+    - WAN Protocols:
+        -- links:
+            - https://en.wikipedia.org/wiki/Frame_Relay
+            - https://en.wikipedia.org/wiki/Asynchronous_Transfer_Mode
+            - https://en.wikipedia.org/wiki/High-Level_Data_Link_Control
+
+    - Point-toPoint VPNs:
+        - A popular alternative to WAN technologies are point-to-point VPNs.
+         WAN technologies are great for when you need to
+         transport large amounts of data across lots of sites,
+         because WAN technologies are built to be super fast.
+         A business cable or DSL line might be way cheaper
+         but it just can't handle the load required in some of these situations.
+         But over the last few years,
+         companies have been moving more and more of their internal services into the cloud.
+         We'll cover exactly what this means later, but for now,
+         it's enough to know that the cloud lets companies outsource
+         all or part of their different pieces of infrastructure to other companies to manage.
+         Let's take the concept of email.
+         In the past, a company would have to run
+         their own email server if they wanted an email presence at all.
+         Today, you could just have a cloud hosting provider host your email server for you.
+         You could even go a step further and using email as a service provider,
+         then you wouldn't have an email server at all anymore.
+         You just have to pay another company to handle everything about your email service.
+         With these types of cloud solutions in place,
+         lots of businesses no longer require extreme high speed connections between their sites.
+         This makes the expense of a WAN technology totally unnecessary.
+         Instead, companies can use point-to-point VPNs
+         to make sure that there are different sites can still communicate with each other.
+         A point-to-point VPN, also called a site-to-site VPN,
+         establishes a VPN tunnel between two sites.
+         This operates a lot like the way that a traditional VPN setup
+         lets individual users act as if they are on the network they're connecting to.
+         It's just that the VPN tunneling logic is handled by network devices at either side,
+         so that users don't all have to establish their own connections.
+         Now, it's time for one more quiz to see how your connections are firing.
+
+
+Wireless Networking:
+    - In today's world, fewer and fewer devices are weighed
+         down by physical cables in order to connect to computer networks.
+         With so many portable computing devices in use,
+         from laptops to tablets to smartphones,
+         we've also seen the rise of wireless networking.
+         Wireless networking, is exactly what it sounds like.
+         A way to network without wires.
+         By the end of this lesson, you'll be able to describe the basics of how wireless communication works.
+         You'll know how to tell the difference between infrastructure networks, and ad hoc networks.
+         You'll be able to explain how wireless channels help wireless networks operate.
+         And you'll understand the basics of wireless security protocols.
+         These are all invaluable skills as an IT support specialist, since wireless networks are becoming more and more common in the workplace.
+         The most common specifications for how wireless networking devices should communicate, are defined by the IEEE 802.11 standards.
+         This set of specifications, also called the 802.11 family, make up the set of technologies we call WiFi.
+         Wireless networking devices communicate with each other through radiowaves.
+         Different 802.11 standards generally use the same basic protocol, but might operate at different frequency bands.
+         A frequency band is a certain section of the radio spectrum that's been agreed upon to be used for certain communications.
+         In North America, FM radio transmissions operate between 88 and 108 megahertz.
+         This specific frequency band is called the FM broadcast band.
+         WiFi networks operate on a few different frequency bands.
+         Most commonly, the 2.4 gigahertz and 5 gigahertz bands.
+         There are lots of 802.11 specifications including some that exist just experimentally or for testing.
+         The most common specifications you might run into are 802.11b, 802.11a, 802.11g, 802.11n, and 802.11ac.
+         We won't go into detail about each one here.
+         For now, just know that we've listed these in the order they were adopted.
+         Each newer version of the 802.11 specifications has generally seen some improvement, whether it's higher access speeds,
+         or the ability for more devices to use the network simultaneously.
+         In terms of our networking model, you should think of 802.11 protocols as defining how we operate at both the physical and the data link layers.
+         An 802.11 frame has a number of fields.
+         The first is called the frame control field.
+         This field is 16 bits long, and contains a number of sub-fields that are used to
+         describe how the frame itself should be processed.
+         This includes things like what version of the 802.11 was used.
+         The next field is called a duration field.
+         It specifies how long the total frame is.
+         So, the receiver knows how long it should expect to have to listen to the transmission.
+         After this, are four address fields.
+         Let's take a moment to talk about why there are four instead of the normal two.
+         We'll discuss different types of wireless network architectures in more detail later in this lesson,
+         but the most common setup includes devices called access points.
+         A wireless access point is a device that bridges the wireless and wired portions of a network.
+         A single wireless network might have lots of different access points to cover a large area.
+         Devices on a wireless network will associate with a certain access point.
+         This is usually the one they're physically closest to.
+         But, it can also be determined by all sorts of other things like general signal strength, and wireless interference.
+         Associations isn't just important for the wireless device to talk to a specific access point,
+         it also allows for incoming transmissions to the wireless device to be sent by the right access point.
+         There are four address fields, because there needs to be room to indicate which wireless access point should be processing the frame.
+         So, we'd have our normal source address field, which would represent the MAC address of the sending device.
+         But, we'd also have the intended destination on the network, along with a receiving address and a transmitter address.
+         The receiver address would be the MAC address of the access point that should receive the frame,
+         and the transmitter address would be the MAC address of whatever has just transmitted the frame.
+         In lots of situations, the destination and receiver address might be the same.
+         Usually, the source and transmitter addresses are also the same.
+         But, depending on exactly how a specific wireless network has been architected, this won't always be the case.
+         Sometimes, wireless access points will relay these frames from one another.
+         Since all addresses in an 802.11 frame are Mac addresses, each of those four fields is 6 bytes long.
+         In between the third and fourth address fields, you'll find the sequence control field.
+         The sequence control field is 16 bits long and mainly contains a sequence number used to keep track of ordering the frames.
+         After this is the data payload section which has all of the data of the protocols further up the stack.
+         Finally, we have a frame check sequence field which contains a checksum used for a cyclical redundancy check.
+         Just like how ethernet does it.
+
+    - Alphabet Soup:
+        -- The many different 802.11 specifications -- most commonly b, a, g, n and ac -- all operate with the same basic data link protocol. But, how they operate at the physical layer varies. Each of these specifications can have different ranges, can use different modulation techniques, can have different transmission bit rates, operate on different frequency bands, etc.
+Memorizing all of these differences probably isn't worth the time unless you\u2019re going to be working with many different types of wireless networks all the time. The most important thing to remember is that networks that operate on the 5Ghz band are almost always faster, but have less of a range. Most of the 2.4Ghz networks are slightly slower and more susceptible to interference, but usually cover a larger area.
+If you want to learn more about these complicated network specifications, you can start with Wikipedia. This page has an overview of the 802.11 family, but also includes links to articles about each specification with many technical details
+
+    - Wireless Internet Connection:
+        -- There are a few main ways that a wireless network can be configured.
+         There are Ad-hoc networks where nodes all speak directly to each other.
+         There are wireless LANS or WLANS where one or more access points act as a bridge between a wireless and a wired network.
+         And there are Mesh networks which are kind of a hybrid of the two.
+         Ad-hoc networks are the simplest of the three.
+         In an ad-hoc network, there isn't really any supporting network infrastructure.
+         Every device involved with the network communicates with every other device within range,
+         and all nodes help pass along messages. Even though they are most simple,
+         ad-hoc networks aren't the most common type of wireless network, but they do have some practical applications.
+         Some smartphones can establish ad-hoc networks with other smartphones in the area so that people can exchange photos,
+         video, or contact information.
+         You'll also sometimes see ad-hoc networks used in industrial or warehouse settings, where individual pieces of equipment might need to
+         communicate with each other but not with anything else.
+         Finally, ad-hoc networks can be powerful tools during disaster situations.
+         If a natural disaster like an earthquake or hurricane knocks out all of the existing infrastructure in an area,
+         disaster relief professionals can use an ad-hoc network to communicate with each other while they perform search and rescue efforts.
+         The most common type of wireless network you'll run into in the business world is a wireless LAN or WLAN.
+         A wireless LAN consist of one or more access points which act as bridges between the wireless and wired networks.
+         The wired network operates as a normal LAN, like the types we've already discussed.
+         The wired LAN contains the outbound internet link.
+         In order to access resources outside of the WLAN,
+         wireless devices would communicate with access points.
+         They then forward traffic along to the Gateway router,
+         where everything proceeds like normal.
+         Finally, we have what's known as Mesh networks.
+         Mesh networks are kind of like ad-hoc networks,
+         since lots of the devices communicate with each other wirelessly forming
+         a mesh if you were to draw lines for all the links between all the nodes.
+         Most Mesh networks you'll run into are made up of only wireless access points,
+         and will still be connected to a wired network.
+         This kind of network lets you deploy
+         more access points to the Mesh without having to run a cable to each of them.
+         With this kind of setup,
+         you can really increase the performance and range of a wireless network.
+
+    
+    - Wireless Channels:
+        -- The concept of channels is one of
+         the most important things to understand about wireless networking.
+         Channels are individual, smaller sections of
+         the overall frequency band used by a wireless network.
+         Channels are super important because they help address
+         a very old networking concern, collision domains.
+         You might remember that a collision domain is
+         any one network segment where one computer can interrupt another.
+         Communications that overlap each other can't be properly understood by the receiving end.
+         So when two or more transmissions occur at the same time,
+         also called a collision,
+         all devices in question have to stop their transmissions.
+         They wait a random amount of time and try again when things quiet down.
+         This really slows things down.
+         The problem caused by collision domains has been mostly
+         reduced on wired networks through devices called switches.
+         Switches remember which computers live on which physical interfaces.
+         So traffic is only sent to the node It's intended for.
+         Wireless networking doesn't have cables,
+         so there aren't physical interfaces for a wireless device to connect to.
+         That means, we can have something that works like a wireless switch.
+         Wireless devices are doomed to talk over each other.
+         Channels help fix this problem to a certain extent.
+         When we were talking about the concept the frequency bands,
+         we mentioned that FM radio in North America operates
+         between 80 megahertz and 108 megahertz.
+         But when we discuss the frequency bands we use by Wi-Fi,
+         we just mentioned 2.4 Gigahertz and five Gigahertz.
+         This is because that's really just shorthand
+         for where these frequency bands actually begin.
+         For wireless networks that operate on a 2.4 Gigahertz band,
+         what we really mean is that they operate on
+         roughly the band from 2.4 Gigahertz to 2.5 Gigahertz.
+         Between these two frequencies are a number of channels,
+         each with a width of a certain megahertz.
+         Since different countries and regions have
+         different regulatory committees for what radio frequencies might be used for what,
+         exactly how many channels are available for use depends on where in the world you are.
+         For example, dealing with an 802.11b network,
+         channel one operates at 2412 megahertz,
+         but since the channel width is 22 megahertz,
+         the signal really lives on the frequencies between 2401 megahertz and 2423 megahertz.
+         This is because radio waves are imprecise things.
+         So, you need some buffer around
+         what exact frequencies a transmission might actually arrive on.
+         Some channels overlap but some are
+         far enough apart so they won't interfere with each other at all.
+         Let's look again at 802.11b network running on a 2.4 Gigahertz band,
+         because it's really the simplest and the concepts
+         translate to all other 802.11 specifications.
+         With a channel width of 22 megahertz,
+         channel one with its midpoint at 2412 megahertz,
+         is always completely isolated from channel six with its midpoint at 2437 megahertz.
+         For an 802.11b network,
+         this means that channels one and six and 11 are the only ones that never overlap at all.
+         That's not all that matters, though.
+         Today, most wireless networking equipment is built
+         to auto sense what channels are most congested.
+         Some access points will only perform this analysis when they start up,
+         others will dynamically change their channel as needed.
+         Between those two scenarios and manually specified channels,
+         you can still run into situations where you experience heavy channel congestion.
+         This is especially true in
+         dense urban areas with lots of wireless networks in close proximity.
+         So, why is this important in the world of I.T.
+         support? Well, understanding how these channels overlap for all of the 802.11
+         specifications is a way you can help troubleshoot
+         bad wireless connectivity problems or slowdowns in the network.
+         You want to avoid collision domains wherever you can.
+         I should call out that it's not important to
+         memorize all of the individual numbers we've talked about.
+         The point is to understand how collision domains
+         are a necessary problem with all wireless networks,
+         and how you can use your knowledge in
+         this space to optimize wireless network deployments.
+         You want to make sure that both your own access points and
+         those of neighboring businesses overlap channels as little as possible.
+
+    - Wireless Security:
+        -- When you're sending data over a wired link,
+         your communication has a certain amount of inherent privacy.
+         The only devices that really know what data is being
+         transmitted are the two nodes on either end of the link.
+         Someone or some device that happens to be in close proximity can't just read the data.
+         With wireless networking, this isn't really the case,
+         since there aren't cables,
+         just radio transmissions being broadcast through the air,
+         anyone within range could hypothetically intercept any transmissions,
+         whether they were intended for them or not.
+         To solve this problem, WEP was invented.
+         WEP stands for Wired Equivalent Privacy,
+         and it's an encryption technology that provides a very low level of privacy.
+         Actually, it's really right there in the name, wired equivalent privacy.
+         Using WEP protects your data a little but it should really only
+         be seen as being as safe as sending unencrypted data over a wired connection.
+         The WEP standard is a really weak encryption algorithm.
+         It doesn't take very long for a bad actor to be
+         able to break through this encryption and read your data.
+         You'll learn more about key lengths and encryption in a future course.
+         But for now, it's important to know that the number of
+         bits in an encryption key corresponds to how secure it is,
+         the more bits in a key the longer it takes for someone to crack the encryption.
+         WEP only uses 40 bits for its encryption keys and with the speed of modern computers,
+         this can usually be cracked in just a few minutes.
+         WEP was quickly replaced in most places with WPA or Wi-Fi Protected Access.
+         WPA, by default, uses a 128-bit key, making it a whole lot more difficult to crack than WEP.
+         Today, the most commonly used encryption algorithm for wireless networks is WPA2,
+         an update to the original WPA.
+         WPA2 uses a 256-bit key make it even harder to crack.
+         Another common way to help secure wireless networks is through MAC filtering.
+         With MAC filtering, you configure your access points to only allow for connections from a specific set of MAC addresses belonging to devices you trust.
+         This doesn't do anything more to help encrypt wireless traffic being sent through the air, but it does provide an additional barrier preventing
+         unauthorized devices from connecting to the wireless network itself.
+
+    - Cellular Neworking:   
+        -- Another super popular form of wireless networking is cellular networking,
+         also called mobile networking.
+         Cellular networks are now common all over the world.
+         In some places, using a cellular network for
+         Internet access is the most common way of connecting.
+         At a high level, cellular networks have a lot in common with the 802.11
+         networks we've already talked about.
+         Just like there are many different 802.11 specifications,
+         there are lots of different cellular specifications.
+         Just like Wi-Fi, cellular networking operates over radio waves, and there
+         are specific frequency bands specifically reserved for cellular transmissions.
+         One of the biggest differences is that these frequencies can travel over longer
+         distances more easily, usually over many kilometers or miles.
+         
+        Cellular networks are built around the concept of cells.
+         Each cell is assigned a specific frequency band for use.
+         Neighboring cells are set up to use bands that don't overlap, just like how we
+         discussed the optimal setup for a W Lan with multiple access points.
+         In fact, the cell towers that broadcast and receive cellular transmissions can be
+         thought of like access points, just with a much larger range.
+         Lots of devices today use cellular networks for communication.
+         And not just phones, also tablets and some laptops also have cellular antennas.
+         It's become more and
+         more common for high-end automobiles to have built-in cellular access, too.
+         One module down, one final module to go.
+         Once you're done with the assessments we've got for you, I'll see you there.
+         
+         
+                 
+         
+         
