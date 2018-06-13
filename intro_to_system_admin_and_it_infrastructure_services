@@ -1,0 +1,443 @@
+What is system aadministrator:
+
+    Servers Revisited:
+        - Basically, a sysadmin is responsible for their company's I.T.
+         services. Employees need these I.T.
+         services so that they can be productive.
+         This includes things like email,
+         file storage, running a website and more.
+         The services have to be stored somewhere,
+         they don't just appear out of nowhere.
+         Any thoughts on where they're stored?
+         If you answered servers, you're correct.
+         We talked about servers in an earlier course and you've
+         learned that the term servers can have multiple meanings.
+         In one course we discussed how servers have
+         web content that they serve to other computers.
+         In another course, we talked about how servers can
+         be software that perform a certain function.
+         In this video, we're going to talk about servers more in-depth because,
+         in many cases sysadmins are responsible for maintaining all of the company's servers.
+         If you're working as an I.T.
+         support specialist and have systems administration responsibilities,
+         these tasks could be something you'll perform.
+         A server is essentially software or
+         a machine that provides services to other software or machines.
+         For example, a web server stores and serves content to clients through the Internet.
+         You can access the web server through a domain name like google.com.
+         We'll dive deeper into web servers in a later course.
+         Right now, let's run down some other examples of servers.
+         An email server, provides email service to other machines.
+         And an SSH server provides SSH services to other machines and so on and so forth.
+         We call them machines that use the services provided by a server, clients.
+         Clients request the services from a server and in turn,
+         the servers respond with the services.
+         A server can provide services to multiple clients
+         at once and the client can use multiple servers.
+         Any computer can be a server.
+         I can start up a web server on my own home computer
+         that would be able to serve my own personal website on the internet for me.
+         But, I don't really want to do that because I have to leave my computer
+         on all the time in order for my website to be available all the time.
+         Industry Standard Servers are typically running
+         24 seven and they don't run dinky little hardware like my home laptop.
+         They run on a really powerful and reliable hardware.
+         Server hardware can come in lots of different forms.
+         They can be towers that sit upright,
+         they look very similar to the desktops we've seen.
+         Those towers can be put in a closet or can sit on the table if you want them to.
+         But, what if you needed to have 10 servers?
+         The towers would start taking up way too much space.
+         Instead, you can use rack servers which lay
+         flat and are usually mounted in a 90 inch wide server rack.
+         If you needed even more space,
+         you could use blade servers that are even slimmer than racks.
+         There are other types of form factors for servers but these are the most common ones.
+         You can also customize the hardware on your servers depending on the services.
+         For example, on a file server you'll
+         want more storage resources so that you can store more files.
+         What about connecting to our servers?
+         Working in a small IT organization,
+         you could potentially deal with a handful of servers.
+         You don't want to have a monitor, keyboard and a mouse for each of these servers, do you?
+         Fortunately, you don't have to thanks to something we learned in an earlier course.
+         We can remotely connect to them with something like SSH.
+         Even so, you should always have a monitor keyboard on hand.
+         Sometimes when you're working your network might
+         be having issues and SSH won't be an option.
+         A common industry practice is to use something known as a KVM Switch.
+         KVM stands for keyboard, video and mouse.
+         A KVM Switch looks like a hub that you can connect
+         multiple computers to and control them using one keyboard, mouse and monitor.
+         You can read more about using KVMs in the next supplemental reading.
+         Now though we've got a better understanding of servers and what they do,
+         you can go out and start buying
+         server hardware and setting up services for your organization.
+         Or maybe not.
+         You don't actually have to buy
+         your own server hardware or even maintain your own services.
+         In the next video, were going to learn about a wave of
+         computing that started to overtake the IT world,
+         cloud computing. See you there.
+
+    - The Cloud:
+        -- Oh, the Cloud, the magical wonderful Cloud that you hear
+         about in the news that moves data across the white fluffy windows in the sky.
+         The magical Cloud dispersed bits of data across the world in itty bitty raindrops, right?
+         No, that's not how the Cloud works at all,
+         but you'd be surprised how many people believed that.
+         There's no doubt you've heard the term Cloud in the news or from other people.
+         Your photos are stored in the Cloud,
+         your email is stored in the Cloud.
+         Cloud computing is the concept that you can access your data, use applications,
+         store files, et cetera,
+         from anywhere in the world as long as you have an internet connection.
+         But the Cloud isn't a magical thing.
+         It's just a network of servers that store and process our data.
+         You might have heard the word data center before.
+         A data center is a facility that stores hundreds,
+         if not thousands of servers.
+         Companies with large amounts of data have to keep
+         their information stored in places like data centers.
+         Large companies like Google and Facebook usually own their own data centers because
+         they have billions of users that need access to their data at all times.
+         Smaller companies could do this,
+         but usually rent out part of a data center for their needs.
+         When you use the Cloud service,
+         this data is typically stored in the data center or multiple data centers,
+         anywhere that's large enough to hold the information of millions,
+         maybe even billions of users.
+         It's easy to see why the Cloud has become
+         a popular way of computing in the last few years.
+         Now instead of holding onto terabytes of storage space on your laptop,
+         you can upload that data to a file storage service like Dropbox,
+         which stores that data in a managed location like a data center.
+         The same goes for your organization.
+         Instead of managing your own servers,
+         you can use internet services that handle everything for you including security updates,
+         server hardware, routine software updates, and more.
+         But with each of these options come a few drawbacks.
+         The first is cost.
+         When you buy a server,
+         you pay upfront for the hardware.
+         That way, you can set up your services like
+         a file storage at potentially very little cost because you're the one managing it.
+         When you use Internet services like Dropbox,
+         that offer file storage online,
+         the starting cost may be smaller.
+         But in the long term,
+         costs could add up since you're paying a fixed amount every month.
+         When comparing the cost of services,
+         always keep in mind what a subscription
+         could cost you for every user in your organization.
+         Weigh that against maintaining your own hardware in
+         the long term and then make a decision that works best for your organization.
+         The second drawback is dependency.
+         Your data is beholden to these platforms.
+         If there's an issue with the service,
+         someone other than you is responsible for getting it up and running again.
+         That could cost your company precious loss of productivity and data.
+         No matter what method you choose,
+         remember that you're still responsible for the problems that arise when there's an issue.
+         If Dropbox is having an issue with your important user data,
+         it's still your problem and you have to get it working again no matter what.
+         To prevent a situation like that from popping up,
+         you might consider backing up some critical data in the Cloud and on a physical disk.
+         That way, if one system goes down,
+         you have another way to solve the problem.
+         Whether you choose to maintain physical service or use Cloud services,
+         these are the type of things you need to
+         think about when providing services to your company.
+         In the next couple of lessons,
+         we're going to talk about some of the other responsibilities of the system admin.
+         We'll give you a high level overview of these,
+         then dive even deeper later in this course.
+    - Systems Administration:
+        -- Organizational Policies:
+            - In a small company,
+         it's usually a sys admin's responsibility to decide what computer policies to use.
+         In larger companies with hundreds of employees or more,
+         this responsibility usually falls under the chief security officer.
+         But in smaller businesses or shops,
+         as the IT lingo goes,
+         the sys admin has to think carefully about
+         computer security and whether or not to allow access to certain users.
+         There are few common policy questions that
+         come up in most IT settings that you should know.
+         Should users be allowed to install software?
+         Probably not.
+         You could run the risk of having a user or accidentally install malicious software,
+         which we'll learn about in the upcoming course in security.
+         Should users have complex passwords with certain requirements?
+         It's definitely a good rule of thumb to create a complex password that has symbols,
+         random numbers, and letters.
+         A good guideline for a password blend is to make sure it has a minimum of 8 characters,
+         that make it more difficult for someone to crack.
+         Should you be able to view non-work related websites like Facebook?
+         That's a personal call.
+         Some organisations prefer that their employees
+         only use their work computer and network strictly for business,
+         but many allow other uses,
+         so their employee can promote their business or goods on social media platforms,
+         stay up to date on current events, and so on.
+         It will definitely be a policy that you and
+         your organization's leaders can work out together.
+         If you hand out a company phone to an employee,
+         should you set a device password?
+         Absolutely. People lose their mobile devices all the time.
+         If a device is lost or stolen,
+         it should be password protected,
+         at the very least, so that someone else can't easily view company emails.
+         We'll dive way deeper into the broader impact and implications of security and
+         organizational policies in the security course that's last up in this program.
+         These are just a few of the policy questions that can come up.
+         Whenever policies are decided upon,
+         have to be documented somewhere.
+         As you know from a lesson in documentation in the first course,
+         it's supercritical to maintain good documentation.
+         If you're managing systems,
+         you'll be responsible for documenting your company's policies,
+         routine procedures, and more.
+         You can store this documentation on internal wiki site,
+         file server, software, wherever.
+         The takeaway here is that having documentation of policies already
+         available to your employees will help them learn and maintain those policies.
+        
+     -- It Infrastructure Services:
+        -- We've talked a little bit about the services that are potentially used in
+         an organization like file storage, email, web content, et cetera.
+         But there are many other infrastructure services that you need to be aware of.
+         
+        As an IT support specialist doing system administration, you'd be responsible for
+         the IT infrastructure services in your organization.
+         Spoiler alert, there are a lot of them ahead.
+         As always, make sure to rewatch any lessons if you need some more time for
+         the material to sink in.
+         
+        Rome wasn't built in a day, you know, and neither are IT support specialists.
+         So, how about getting network access?
+         That's a service that needs to be managed.
+         What about secure connection to websites and other computers?
+         You guessed it, that's also a service that has to be managed.
+         And managing services doesn't just mean setting them up.
+         They have to be updated routinely, patched for security holes, and
+         compatible with the computer within your organization.
+         
+        Later in this course, we'll dive deeper into the essential infrastructure services
+         that you might see in an IT support specialist role
+
+    -- User and Hardware Provisioning:
+        -- Harware Lifecycle: Procurement ===> Deployment ==> Maintenance ==> Ritement
+        -- In other responsibilities sys admins have is managing users and hardware.
+         sys admins have to be able to create
+         new users and give them access to their company's resources.
+         On the flipside of that,
+         they also have to remove users from an IT infrastructure if users leave the company.
+         It's not just user accounts they have to worry about,
+         sys admins are also responsible for user machines.
+         They have to make sure a user is able to log in and that
+         the computer has the necessary software that a user needs to be productive.
+         Sys admins also have to ensure that the hardware they are
+         provisioning or setting up for users is standardized in some way.
+         We talked in an earlier course about imaging a machine with the same image.
+         This practice is industry standard with dealing with multiple user environments.
+         Not only do sys admins have to standardize settings on a machine,
+         they have to figure out the hardware lifecycle of a machine.
+         They often think of the hardware lifecycle of a machine in the literal way.
+         When was it built? When was it first used?
+         Did the organization buy it brand new or was it used?
+         Who maintained it before?
+         How many users have used it in the current organization?
+         What happens to this machine if someone needs a new one?
+         These are all good questions to ask when thinking about an organization's technology.
+         sys admins don't want to keep a ten year old computer in their organization.
+         Or maybe they do. Even that's something they might have to make a decision on.
+         There are four main stages of the hardware lifecycle.
+         Procurement. This is the stage where hardware is purchased or re-used for any employee.
+         Deployment. This is where hardware is set up so that the employee can do their job.
+         Maintenance. This is the stage where software is
+         updated and hardware issues are fixed if and when they occur.
+         Retirement. In this final stage,
+         hardware becomes unusable or no longer
+         needed and it needs to be properly removed from the fleet.
+         In a small position,
+         a typical hardware lifecycle might go something like this.
+         First, a new employee is hired by the company,
+         human resources tells you to provision a computer for them and set up their user account.
+         Next, you allocate a computer you have from
+         your inventory or you order a new one if you need it.
+         When you allocate hardware you may need to tag the machine with a sticker
+         so they can keep track of which inventory belongs to the organization.
+         Next, you image the computer with the base image for
+         further using a streamlined method that we discussed in our last course,
+         operating systems and you.
+         Next, you name the computer with a standardised host name.
+         This helps with managing machines.
+         More on that when we talk about directory services later.
+         In regards to the name itself,
+         we talked about using a format such as username-location,
+         but other host name starters can be used.
+         Check out the supplemental reading to find out more.
+         After that, you install software the user needs on their machine.
+         Then the new employee starts and you streamline the setup process for them by
+         providing instructions on how to log into their new machine, get email etc.
+         Eventually, if a computer sees a hardware issue,
+         a failure, you look into it and think through the next steps.
+         If it's getting too old,
+         you'll have to figure out where to recycle it and where to get new hardware.
+         Finally, if a user leaves the company you'll also have to remove their access
+         from IT resources and wipe the machine
+         so that you can eventually re-allocate it to someone else.
+         Imaging. Installing software and configuring
+         settings on a new computer can get a little time consuming.
+         In a small company you don't do it often enough where it makes much of a difference,
+         but in a larger company a time consuming process just won't cut it.
+         You'll have to learn automated ways to provision new machines so
+         that you only spend minutes on this and not hours.
+    -- Routine Maintenance:
+        -- When you manage machines for a company, you don't just set it and forget it,
+         you have to constantly provide updates and maintenance so
+         that they run the latest secure software.
+         When you have to do this for a fleet of machines,
+         you don't want to immediately install updates as soon as they come in.
+         That would be way too time-consuming.
+         Instead, to effectively update and
+         manage hardware, you do something called batch update.
+         This means that once every month or
+         so, you update all your servers with the latest security patches.
+         You have to find time to take their services offline, perform the update, and
+         verify that the new update works with the service.
+         You also don't have to perform an update every single time
+         a new software becomes available.
+         But, it's common practice to do batch updates for security updates and
+         very critical system updates.
+         And the security costs, we dive deeper into security practices, but
+         a good guideline is to keep your system secure
+         by installing the latest security patches routinely.
+         Staying on top of your security is always a good idea.
+    -- Vendors:
+        -- Not only do sys admins in a small company work with using computers,
+         they also have to deal with printers and phones, too.
+         Whether your employees have cellphones or
+         desk phones, their phone lines have to be set up.
+         Printers are still used in companies, which means they have to be set up so
+         employees can use them.
+         Sys admins might be responsible for
+         making sure printers are working or if renting a commercial printer,
+         they have to make sure that someone can be on site to fix it.
+         What if a company's fax machine isn't working?
+         If you don't know what a fax machine is, that's not totally surprising.
+         They've been slowly dying since the invention of email.
+         Fax machines are still alive and kicking at companies, and
+         they're a big pain to deal with.
+         Sys admins could be responsible for those, too.
+         Video-audio conferencing machines, yep, they probably need to handle those, too.
+         In an enterprise setting,
+         sys admins have to procure this hardware one way or another.
+         Working with vendors or other businesses to buy hardware is a common practice.
+         
+        Setting up businesses accounts with vendors like Hewlett Packard, Dell, Apple,
+         etc., is usually beneficial since these companies can offer
+         discounts to businesses.
+         These are things that sys admins have to think about.
+         It's typically not scalable just to go out and purchase devices on Amazon.
+         Although if that's what's decided, they could do that too.
+         Sys admins must be sure to weigh their option before purchasing anything.
+         They need to think about hardware supply.
+         So if a certain laptop model isn't used anymore,
+         they need to think of a suitable backup that works with their organization.
+         Price is also something to keep in mind.
+         They'll probably need formal approval from their manager or
+         another leader to establish this relationship with a vendor.
+         It's not just technical implementations of hardware that sys admins have to consider.
+         It's so many things.
+    -- Troubleshooting and Managing Issues:
+        -- We talked about troubleshooting alert.
+         In an earlier course,
+         but it's worth mentioning again,
+         when you're managing an entire IT infrastructure,
+         you'll constantly have to troubleshoot problems and find solutions for your IT needs.
+         This will probably take up most of your time as an IT support specialist.
+         This could involve a single client machine from an employee or
+         server or service that isn't behaving normally.
+         Some folks, who start their careers in IT
+         support deepen their knowledge to become system administrators.
+         They go from working on one machine to multiple machines.
+         For me, I made the leap during my internship as
+         an IT support specialist in college at a semiconductor lab.
+         The lab ended up closing and they needed help deprecating the environment.
+         So, what started as an IT help desk support quickly transition to assist admin role.
+         That opportunity was my golden ticket to dowland to Active Directory,
+         Sub netting and decision making which is a core part of this job.
+         Sys admins also have to troubleshoot and prioritize issues at a larger scale.
+         If a server that sys admin manage stop providing services
+         to a thousand users and one person had an issue about the printer,
+         which do you think would have to be worked on first.
+         Whatever the scenario, there are two skills that
+         are critical to arriving at a good solution for your users.
+         We already covered them in an earlier course. Do you know what they are?
+         The first is troubleshooting, asking questions,
+         isolating the problem, following the cookie crumbs,
+         and reading logs are the best ways to figure out the issue.
+         You might have to read logs from multiple machines or even the entire network.
+         We talked about centralized logging a little bit in the last course on
+         operating systems and you becoming a power user.
+         If you need a refresher to how centralized logging works,
+         check out the supplemental reading.
+         Anyway, the second super important skill that we covered is customer service;
+         showing empathy, using the right tone of
+         voice and dealing well with difficult situations.
+         These skills are essential to all IT roles.
+         In some companies, sysadmins have to be available around the clock.
+         If a server or network goes down in the middle of the night,
+         someone has to be available to get it working again.
+         Don't worry, a sysadmin doesn't have to be awake and available 24/7.
+         They can monitor their service and have it alert them in case of a problem.
+         So how do you keep track of your troubleshooting?
+         A common industry standard is to use some sort of ticketing or bug system.
+         This is where users can request help on
+         an issue and then you can track your troubleshooting work,
+         through the ticketing system.
+         This helps you organize and prioritize issues and document troubleshooting steps.
+         Throughout this course, we'll introduce types of services that a sysadmin
+         needs to maintain and what responsibilities they have in an organization.
+         We'll also share some best practices for
+         troubleshooting when it comes to systems administration.
+         When you work as an IT support specialist,
+         systems administration can become part of your job.
+         So it helps to think about all aspects of
+         managing an IT infrastructure in an organization.
+         The more prepared you are the better.
+ 
+    -- In case of fire, Break Glass:
+        -- Let's take a bit of a dark turn and talk about disasters.
+         Like it or not, something at some point will stop working,
+         no matter how much planning you do.
+         This happens in both small and large companies.
+         It's an equal opportunity problem.
+         You can't account for everything,
+         but you can be prepared to recover from it.
+         How? It's super important to make sure
+         that your company's data is routinely backed up somewhere.
+         Preferably, far away from it's current location.
+         What if a tornado struck your building?
+         And your backups got swept away with it?
+         You wouldn't have a building to work in, let alone,
+         be able to recover your data,
+         and get people up and running again.
+         Later in this course,
+         we'll talk more about what methods you can use to backup your organization's data,
+         and to recover from a disaster.
+         We'll try to keep things a little lighter in the meantime.
+         So far, you've learned a lot about the roles and responsibilities of a sys admin.
+         Some of it may seem like a lot of work.
+         Some might even seem scary.
+         Being responsible for keeping data available isn't easy.
+         But it's a rewarding role in IT,
+         and you're already building your SA or sys admin's
+         skill set by learning the fundamentals of IT support.
+         Next up, we've got a quiz for you.
+         Then, in the next module,
+         we'll discuss the technical details of
+         the infrastructure services used in IT. See you there.
+         
